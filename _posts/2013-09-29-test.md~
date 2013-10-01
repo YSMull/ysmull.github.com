@@ -5,13 +5,15 @@ tags:
     - jekyll
     - latex
 ---
+### 播放器
 
-## The Lorentz Equations
-
+<p><embed src="http://www.xiami.com/widget/2226270_1771491744/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed><p>
 ### 测试一下行内
+
 在干嘛呢？`\(\int_a^b f(x)\,\mathrm{d}x=F'(b)-F'(a)\)`没干嘛。
 
 ### 测试一下行间
+
 今天玩的好开心`\[\int_a^b f(x)\,\mathrm{d}x=F'(b)-F'(a)\]`我要去洗澡了
 
 ### C++
@@ -35,7 +37,7 @@ tags:
 
 <p style="text-align:center"><embed src="http://player.youku.com/player.php/sid/XNDkwMTg0MDI0/v.swf" quality="high" width="480" height="400" align="middle" allowScriptAccess="sameDomain" allowFullscreen="true" type="application/x-shockwave-flash"></embed></p>
 
-<p><embed src="http://www.xiami.com/widget/2226270_1771491744/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed><p>
+
 
 
 
