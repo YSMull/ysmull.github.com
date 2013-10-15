@@ -62,14 +62,14 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 .sidenav ul { margin-bottom:50px; }
 .sidenav li { margin-bottom:12px; }
 .sidenav a { color:#555; font-size:14px; display:block;}
-.entry{margin-bottom:80px;width:680px; float:left; background:rgba(243, 255, 223, 0.38); padding:30px; box-shadow:0 2px 6px #ccc; }
+.entry{margin-bottom:80px;width:680px; float:left; background:rgba(241, 241, 241, 0.80); padding:30px; box-shadow:0 0px 20px #3C3C3C; }
 .entry ul{margin-bottom:25px;margin-left:25px;}
 .entry p+ul {margin-top:-20px;}
 .entry ul li{margin-bottom:5px;list-style:disc;line-height:1.8em;}
 .entry ol{margin-bottom:25px;margin-left:25px;}
 .entry ol li{margin-bottom:5px;list-style:decimal;line-height:1.1em;}
 .entry blockquote{margin-left:25px;font-size:14px;font-style:italic;border-left:5px solid rgba(173, 173, 173, 0.63);}
-.entry img{max-width:670px;display:block;margin:10px auto;}
+.entry img{max-width:670px;display:block;margin:10px auto;box-shadow: 0 0 15px #000000;}
 
 
 .index-content .aside {
