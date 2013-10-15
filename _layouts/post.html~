@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+{% include setup %}
 <link rel="stylesheet" href="/js/prettify/prettify.css" />
 <style type="text/css">
     body {
@@ -22,16 +22,28 @@ layout: default
         <p class="entry-date">{{ page.date|date:"%Y-%m-%d" }}</p>
         {{ content }}
 
-<!--这里改的都是泪-->
+<!--这里改的都是泪>
 <ul class="tag_box inline">
+tags:
   {% for tag in page.tags %}
-    <a>&diams;</a>
+    <!--img src="{{ site.url }}/image/tag.gif" alt="tags" align="middle"/>
     <a href="{{ site.url }}/tags.html#{{ tag | cgi_encode }}" title="Pages tagged {{ tag }}" rel="tag">{{ tag }}</a>
     {% unless forloop.last %}
     {% endunless %}
  
   {% endfor %}
-</ul>
+</ul-->
+
+
+{% unless page.tags == empty %}
+    Tags:
+    <ul class="tag_box inline">
+    {% assign tags_list = page.tags %}
+    {% include tags_list %}
+    </ul>
+{% endunless %} 
+
+
         <div id="disqus_container">
             <div style="margin-bottom:20px" class="right">
                 <script type="text/javascript" charset="utf-8">
