@@ -1,0 +1,13 @@
+markdown: rdiscount
+pygments: true
+permalink: /:year/:month/:day/:title.html
+paginate: 10
+author: 
+    name: 简单小煜
+    email: maoyusu@outlook.com
+    link: www.mathao.com
+
+title: 简单小煜
+subscribe_rss: /pages/atom.xml
+
+

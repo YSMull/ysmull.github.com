@@ -1,0 +1,35 @@
+---
+layout: base
+title: 标签
+comments: false
+---
+<!--这里改的都是泪-->
+<ul class="tag_box inline">
+<strong>标签:</strong>
+  {% for tag in site.tags %}
+    <!--img src="{{ site.url }}/image/tag.gif" alt="tags" align="middle"/-->
+    <!--a href="/pages/tags.html#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }} </a-->
+    <a href="{{ site.url }}/pages/tags.html#{{ tag[0] | cgi_encode }}" title="Pages tagged {{ tag[0] }}" rel="tag[1]" >{{ tag[0] }} <span>{{ tag[1].size }}</span> </a>
+    {% unless forloop.last %}
+    {% endunless %}
+ 
+  {% endfor %}
+</ul>
+<hr>
+{% for tag in site.tags %} 
+  <legend id="{{ tag[0] }}">{{ tag[0] }}</legend>
+  <ul>
+    {% for post in tag[1] %}
+      <li><a href='{{ post.url }}'>{{post.title}}</a></li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+<script>
+  $(function(){
+    $.fn.tagcloud.defaults = {
+      size: {start: 14,end: 22,unit: 'px'},
+      color: {start: '#c09853',end: '#CD0000'}
+    };
+    $('#tag_cloud a').tagcloud();    
+  });
+</script>
