@@ -3,7 +3,7 @@ layout: base
 title: 关于
 ---
 <!--head><bgsound src="你的音乐连接" loop="-1"></head-->
-<strong>Email</strong>: <span class="dynamic-email">maoyusu@outlook.com</span> </p>
+<strong>Email</strong>: <span class="dynamic-email">znblhfh@bhgybbx.pbz</span> </p>
 
 <script type="text/javascript">
 function rot13(str) {
