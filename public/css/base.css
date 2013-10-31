@@ -26,11 +26,12 @@ body{padding-top: 70px;}
       display:none;
   }
 }
-.content p{text-indent: 2em;}
+/*段首缩进*/
+.content p{/*text-indent: 2em;*/}
 .content img{text-align:center;}
 .content {font-size:18px;line-height:1.8;}
 .content h2,h3{line-height: 2;}
-blockquote p{font-size:20px;}
+blockquote p{font-size:16px;font-style: italic;}
 .panel-title {font-size:18px;}
 .panel-body {font-size:16px;}
 
