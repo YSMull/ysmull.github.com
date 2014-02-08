@@ -556,8 +556,8 @@ abbr.initialism {
 blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
-  border: 5px solid #f9f3d9!important;
-  background: #fbf8e9!important;
+  border: 5px solid #CFC7FA!important;
+  background: #F3F2F2!important;
 }
 blockquote p {
   font-size: 17.5px;

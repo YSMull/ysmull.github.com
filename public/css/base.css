@@ -31,7 +31,7 @@ body{padding-top: 70px;}
 .content img{text-align:center;}
 .content {font-size:18px;line-height:1.8;}
 .content h2,h3{line-height: 2;}
-blockquote p{font-size:16px;font-style: italic;}
+blockquote p{font-size:14px;/*font-style: italic;*/}
 .panel-title {font-size:18px;}
 .panel-body {font-size:16px;}
 
