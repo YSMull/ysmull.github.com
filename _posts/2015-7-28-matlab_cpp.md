@@ -4,7 +4,8 @@ title: Matlab C++ 混合编程笔记
 category: 杂
 description: 给朱焕同学整理的笔记o(∩_∩)o
 tags: 
-    - MATLAB C++
+    - MATLAB
+    - C++
 ---
 
 ##方法一：直接调用C/C++生成的DLL
