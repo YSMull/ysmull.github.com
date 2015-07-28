@@ -19,7 +19,7 @@ tags:
 extern "C" double __declspec(dllexport)add(double x, double y);
 ```
 
-注意`extern "C"`不能掉，表明它按照C的编译和连接规约来编译和连接[^1],你可以认为这里的C++函数将要给C调用，因为下面讲到的MATLAB的`loadlibrary()`函数只能识别C格式的DLL。
+注意`extern "C"`不能掉，表明它按照C的编译和连接规约来编译和连接,你可以认为这里的C++函数将要给C调用，因为下面讲到的MATLAB的`loadlibrary()`函数只能识别C格式的DLL。
 源文件内容为：
 
 ```C++
@@ -113,7 +113,7 @@ extern Type2 func2(...);
 
 ##方法二：使用mex编译C++代码
 
-不细讲了，见参考文献3[^2]吧。
+不细讲了，见参考文献3，讲解了编写 *mexFunction* 。
     
 ##参考文献
 ---
@@ -122,6 +122,3 @@ extern Type2 func2(...);
 2. [C++项目中的extern "C" {}](http://www.cnblogs.com/skynet/archive/2010/07/10/1774964.html)
 3. [Matlab与C/C++混合编程接口及应用](http://www.cnblogs.com/lidabo/archive/2012/08/24/2654148.html) 
 
-[^1]: 见参考文献2
-
-[^2]: 讲解了mexFunction方法
