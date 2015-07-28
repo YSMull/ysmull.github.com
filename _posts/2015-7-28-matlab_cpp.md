@@ -49,7 +49,7 @@ char rep_str(char s)
 
 
 ###在matlab中调用dll中的函数
-将生成的test.dll与这里的 *main.h* 头文件放在同一个目录下,把`extern "C"`删除,因为此时相当于**在C中调用C++里的函数**。
+将生成的test.dll与这里的 *main.h* 头文件放在同一个目录下,并把头文件中的`extern "C"`删除，因为C语言中没有这种写法，而MATLAB以为自己在调用C的DLL。
 在matlab中使用`loadlibrary()`函数载入dll，使用`libfunctions()`函数查看该dll中包含的函数。
 运行结果：
 
@@ -113,7 +113,7 @@ extern Type2 func2(...);
 
 ##方法二：使用mex编译C++代码
 
-不细讲了，见参考文献3，讲解了编写 *mexFunction* 。
+不细讲了，见参考文献3，讲解了如何编写 *mexFunction* 。
     
 ##参考文献
 ---
