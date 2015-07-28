@@ -13,12 +13,15 @@ tags:
 ###用VS生成dll
 新建一个win32 dll工程，工程名为test，如果你的MATLAB和系统都是64位的，这里要修改平台参数到64位。
 例如要导出`add()`函数，那么头文件里就要写：
+
 ```C++
 //main.h
 extern "C" double __declspec(dllexport)add(double x, double y);
 ```
+
 注意`extern "C"`不能掉，表明它按照C的编译和连接规约来编译和连接[^1],你可以认为这里的C++函数将要给C调用，因为下面讲到的MATLAB的`loadlibrary()`函数只能识别C格式的DLL。
 源文件内容为：
+
 ```C++
 //main.cpp
 #include "main.h"
@@ -27,14 +30,17 @@ double add(double a, double b)
 	return a + b;
 }   
 ```
+
 这里的函数返回类型必须是**数值类型**。
 例如编写返回字符的函数 *rep_str*  
+
 ```C++
 char rep_str(char s)
 {
 	return s;
 }
 ```
+
 在Matlab中调用返回错误:
 
     >> calllib('test','rep_str','a')
@@ -84,6 +90,7 @@ char rep_str(char s)
 4. dll文件不能在某个磁盘的根目录，如`"F:\"`
 
 5. 头文件的编写最好统采用如下形式：
+
 ```C++
 #ifdef __cplusplus
 extern "C" {
@@ -100,6 +107,7 @@ extern Type2 func2(...);
 #endif
 
 ```
+
 这样就不需要二次修改头文件了。
 
 
