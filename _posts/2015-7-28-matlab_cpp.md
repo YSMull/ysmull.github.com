@@ -8,9 +8,9 @@ tags:
     - C++
 ---
 
-##方法一：直接调用C/C++生成的DLL
+##1. 直接调用C/C++生成的DLL
 
-###用VS生成dll
+###1.1 用VS生成dll
 新建一个win32 dll工程，工程名为test，如果你的MATLAB和系统都是64位的，这里要修改平台参数到64位。
 例如要导出`add()`函数，那么头文件里就要写：
 
@@ -48,7 +48,7 @@ char rep_str(char s)
     Array must be numeric or logical.
 
 
-###在matlab中调用dll中的函数
+###1.2 在matlab中调用dll中的函数
 将生成的test.dll与这里的 *main.h* 头文件放在同一个目录下,并把头文件中的`extern "C"`删除，因为C语言中没有这种写法，而MATLAB以为自己在调用C的DLL。
 在matlab中使用`loadlibrary()`函数载入dll，使用`libfunctions()`函数查看该dll中包含的函数。
 运行结果：
@@ -68,7 +68,7 @@ char rep_str(char s)
     
         21
 
-###常见错误与注意事项
+###1.3 常见错误与注意事项
 1. 参数个数必须匹配
 
         >> calllib('test', 'add', 8)
@@ -111,11 +111,11 @@ extern Type2 func2(...);
 这样就不需要二次修改头文件了。
 
 
-##方法二：使用mex编译C++代码
+##2. 使用mex编译C++代码
 
 不细讲了，见参考文献3，讲解了如何编写 *mexFunction* 。
     
-##参考文献
+##3. 参考文献
 ---
 
 1. [c++中的 extern "C"](http://songpengfei.iteye.com/blog/1100239)

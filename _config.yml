@@ -1,5 +1,5 @@
 markdown: rdiscount
-pygments: true
+highlighter: pygments
 permalink: /:year/:month/:day/:title.html
 paginate: 10
 author: 
@@ -9,5 +9,5 @@ author:
 
 title: 简单小煜
 subscribe_rss: /pages/atom.xml
-
+gems: [jekyll-paginate]
 

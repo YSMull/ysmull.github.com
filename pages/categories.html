@@ -3,11 +3,14 @@ layout: base
 title: 分类
 comments: false
 ---
-<p>
+
+<font style="font-size:21px">分类:</font>
   {% for category in site.categories %}
-    <a href="/pages/categories.html#{{ category | first }}"><h3 style="display:inline;"><span class="label label-primary">{{ category[0] }}<span>{{ category | last | size }}</span></span></h3></a> 
+    <a href="/pages/categories.html#{{ category | first }}">
+    <h1 style="display:inline;"><span class="label label-primary">{{ category[0] }}<span>{{ category | last | size }}</span></span></h1></a> 
   {% endfor %}
-</p>
+
+
 <hr>
 {% for category in site.categories %} 
   <legend id="{{ category[0] }}">{{ category[0] }}</legend>
