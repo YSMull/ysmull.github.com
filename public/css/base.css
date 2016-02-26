@@ -2,7 +2,7 @@
   height: 100%;
   background: #DDDCE2 url(../img/body_bg.jpg) repeat left top;
 }
-body{padding-top: 70px;}
+body{/*padding-top: 70px;*/}
 .body_wrap {
   min-height: 100%;
   height: auto !important;
@@ -13,8 +13,8 @@ body{padding-top: 70px;}
 .body_footer {height:100px;background-color: #f5f5f5;}
 .body_footer .container{padding-top: 30px;padding-bottom: 30px;}
 @media screen and (min-width: 992px) {
-  .affix {top:70px;}
-  .aside {width: 300px;}
+  .affix {top:auto;}
+  .aside {width: auto;}
 }
 @media print {
   .page-header,
