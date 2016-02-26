@@ -4105,18 +4105,17 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: #c9302c;
 }
 .badge {
-  display: inline-block;
+ display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
   font-size: 12px;
   font-weight: bold;
-  color: #ffffff;
+  color: rgba(42, 112, 161, 0.49);
   line-height: 1;
-  vertical-align: baseline;
-  white-space: nowrap;
-  text-align: center;
-  background-color: #999999;
-  border-radius: 10px;
+  /* vertical-align: baseline; */
+  /* white-space: nowrap; */
+  /* text-align: center; */
+  background-color: #eeeeee;
 }
 .badge:empty {
   display: none;
