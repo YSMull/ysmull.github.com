@@ -4527,7 +4527,7 @@ a.list-group-item:focus {
   border-top: 1px solid #dddddd;
 }
 .panel-heading {
-  padding: 0px 15px;
+  padding: 10px 15px;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -4588,6 +4588,7 @@ a.list-group-item:focus {
   color: #ffffff;
   background-color: #428bca;
   border-color: #428bca;
+  padding: 0px 15px;
 }
 .panel-primary > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #428bca;
