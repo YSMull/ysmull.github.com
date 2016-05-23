@@ -618,9 +618,10 @@ code {
   border-radius: 4px;
   border: 1px dashed rgba(160, 158, 158, 1);
 }
-code:hover {
+/*code:hover {
     background-color: #eee
 }
+*/
 pre {
   display: block;
   padding: 9.5px;
