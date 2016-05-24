@@ -28,7 +28,12 @@ body{/*padding-top: 70px;*/}
 }
 /*段首缩进*/
 .content p{/*text-indent: 2em;*/}
-.content img{text-align:center; max-width: 100%;}
+.content img {
+	text-align:center;
+	max-width: 100%;
+	border: 3px solid rgba(51, 51, 51, 0.49);
+	-webkit-border-radius:1em;
+}
 .content {font-size:18px;line-height:1.8;}
 .content h2,h3{line-height: 2;}
 blockquote p{font-size:14px;/*font-style: italic;*/}
