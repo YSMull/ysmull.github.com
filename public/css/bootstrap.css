@@ -613,7 +613,7 @@ code {
   padding: 0px 0px;
   font-size: 90%;
   color: #090996;
-  /*background-color: #E6E6E6;*/
+  background-color: rgba(66, 139, 202, 0.14);
   white-space: nowrap;
   border-radius: 4px;
   border: 1px dashed rgba(160, 158, 158, 1);
