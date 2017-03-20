@@ -4,10 +4,14 @@
 @import "reset";
 @import "config";
 
-@font-face { 
-  font-family: ShadowsIntoLight; /*这里是说明调用来的字体名字*/ 
-  src: url('ShadowsIntoLight.ttf'); /*这里是字体文件路径*/ 
-} 
+/* latin */
+@font-face {
+  font-family: 'Shadows Into Light';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Shadows Into Light'), local('ShadowsIntoLight'), url(https://fonts.gstatic.com/s/shadowsintolight/v6/clhLqOv7MXn459PTh0gXYKkG_nMAIv3PPZbC2XDns-o.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
 
 body {
 	color: $color-black;
@@ -79,7 +83,7 @@ blockquote {
 	}
 	h1 {
 		font-size: 2em;
-		font-family: ShadowsIntoLight;
+		font-family: 'Shadows Into Light';
 		margin-bottom: 0;
 	}
 	ul {
@@ -189,7 +193,7 @@ blockquote {
 		li {
 			font-size: 14px;
 			padding-bottom: 5px;
-			
+
 		}
 
 		strong {
@@ -200,7 +204,7 @@ blockquote {
 			font-style: italic;
 			padding: 2.2px;
 		}
-		
+
 		ul {
 			font-size: 1em;
 			list-style: disc;
@@ -279,5 +283,3 @@ blockquote {
 		}
 	}
 }
-
-
