@@ -1,0 +1,3 @@
+---
+layout: booknote
+---

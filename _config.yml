@@ -1,0 +1,32 @@
+# Blog settings
+permalink: /blog/:title
+
+
+# My variables
+name: YSMull
+description: 个人博客
+google_verification: null
+subscribe_rss: /atom.xml
+
+# File management
+include: [".htaccess"]
+exclude: ["README.md", "LICENSE"]
+
+author: 
+    name: 简单小煜
+    email: ysmull@aliyun.com
+    link: ysmull.me
+
+# Sass
+sass:
+  style: :compressed
+  sass_dir: _sass
+
+
+# Markdown
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  # input: GFM
+#   hard_wrap: false
+# highlighter: rouge

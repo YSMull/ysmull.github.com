@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<div class="books">
+    <div class="books__content">
+	    <ul>
+	        {% for item in site.data.books %}
+	        <li>
+	            <a href="{{ item.url }}">《{{ item.title }}》</a>
+	        </li>
+			{% endfor %}
+		</ul>
+    </div>
+</div>
+

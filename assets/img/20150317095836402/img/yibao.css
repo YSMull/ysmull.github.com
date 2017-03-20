@@ -1,0 +1,19 @@
+@charset "utf-8";
+/*商品显示*/
+.picInfo { float:left; width:340px; padding:20px; background-color:#fff; height:410px; border:1px solid #e9e9ee; }
+/*********************放大镜配置文件*******************************************************************************************/
+.MagicZoomHeader { color:#fff;background:#999; text-align:center !important; }
+.MagicZoomPup { background:#fff; cursor:hand;}
+.MagicZoomLoading { text-align:center; background:#fff; color:#444; opacity:0.8; padding:3px 3px 3px 3px !important; display:none; /* do not edit this line please */}
+.MagicZoomLoading img { padding-top:3px !important;}
+.MagicThumb { cursor:url(images/zoomin.cur), pointer; outline:none;}
+.MagicThumb-zoomed { cursor:default; }
+.MagicThumb span { display:none; }
+.MagicThumb img { outline:none; }
+.MagicThumb-image { outline:none; }
+.MagicThumb-image-zoomed { cursor:url(images/zoomout.cur),pointer; }
+.MagicThumb-caption { color:#333; background-color:#f0f0f0;padding:8px 16px;}
+.MagicThumb-controlbar { display:block; height:25px;}
+.MagicThumb-controlbar a { display:block; width:18px; height:25px; margin:0px 1px; outline:none; float:left; overflow:hidden;}
+.MagicThumb-controlbar a span { display:block; width:1000px; height:1000px; outline:none; position:absolute; left:0px; top:0px;}
+
