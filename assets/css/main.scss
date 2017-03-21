@@ -195,11 +195,18 @@ blockquote {
 			padding-bottom: 5px;
 
 		}
-    td,th {
+
+    td {
+      padding: 5px;
+      border: 1px solid #dddddd;
+    }
+
+    th {
       padding: 5px;
       border: 1px solid #dddddd;
 
     }
+    
 		strong {
 			font-weight: 700;
 			padding: 2.2px;
