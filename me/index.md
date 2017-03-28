@@ -16,7 +16,6 @@ function rot13(str) {
 }
 
 $(document).ready(function () {
-	console.log("Hello")
     $('.dynamic-email').each(function (idx, obj) {
         var email = rot13($(obj).html());
         $(obj).html("<a href='mailto:" + email + "'>" + email + "</a>");
