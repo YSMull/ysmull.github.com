@@ -3,6 +3,7 @@
 
 @import "reset";
 @import "config";
+@import "highlight";
 
 /* latin */
 @font-face {
@@ -66,7 +67,7 @@ blockquote {
 .wrapper {
 	max-width: 600px;
 	margin: auto;
-	padding: 60px 30px 60px 30px;
+	padding: 40px 30px 60px 30px;
 	@media screen and (max-width: $br) {
 		padding: 20px;
 	}
@@ -206,7 +207,7 @@ blockquote {
       border: 1px solid #dddddd;
 
     }
-    
+
 		strong {
 			font-weight: 700;
 			padding: 2.2px;
