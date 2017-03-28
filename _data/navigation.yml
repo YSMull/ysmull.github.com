@@ -1,13 +1,11 @@
-- title: article
+- title: Article
   url: /
 
-- title: notes
+- title: Reading
   url: /booknotes
 
 - title: Algorithm
   url: /algorithm
 
-- title: about
+- title: About
   url: /me
-
-
