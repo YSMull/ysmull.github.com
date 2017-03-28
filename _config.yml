@@ -12,7 +12,7 @@ subscribe_rss: /atom.xml
 include: [".htaccess"]
 exclude: ["README.md", "LICENSE"]
 
-author: 
+author:
     name: 简单小煜
     email: ysmull@aliyun.com
     link: ysmull.me
@@ -30,3 +30,8 @@ kramdown:
   # input: GFM
 #   hard_wrap: false
 # highlighter: rouge
+
+collections:
+   pages:
+     output: true
+     permalink: /:path/
