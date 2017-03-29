@@ -119,7 +119,6 @@ extern Type2 func2(...);
 不细讲了，见参考文献3，讲解了如何编写 *mexFunction* 。
 
 ## 3. 参考文献
----
 
 1. [c++中的 extern "C"](http://songpengfei.iteye.com/blog/1100239)
 2. [C++项目中的extern "C" {}](http://www.cnblogs.com/skynet/archive/2010/07/10/1774964.html)

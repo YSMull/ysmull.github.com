@@ -1,4 +1,4 @@
-- title: Article
+- title: Home
   url: /
 
 - title: Reading
@@ -6,6 +6,9 @@
 
 - title: Algorithm
   url: /algorithm
+
+- title: Project
+  url: /project
 
 - title: About
   url: /me

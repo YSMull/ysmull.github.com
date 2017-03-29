@@ -1,9 +1,6 @@
----
----
-
-@import "reset";
-@import "config";
-@import "highlight";
+@import "_reset.scss";
+@import "_config.scss";
+@import "_highlight.scss";
 
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
 
@@ -58,7 +55,7 @@ blockquote {
 }
 
 .wrapper {
-	max-width: 600px;
+	max-width: 700px;
 	margin: auto;
 	padding: 40px 30px 60px 30px;
 	@media screen and (max-width: $br) {
@@ -75,10 +72,18 @@ blockquote {
 	@media screen and (max-width: $br) {
 		display: block;
 	}
+	a {
+		font-size: 1.2em;
+	}
 	h1 {
 		font-size: 2em;
 		font-family: 'Shadows Into Light';
 		margin-bottom: 0;
+	}
+	._logo {
+		a {
+			color: #000000;
+		}
 	}
 	ul {
 		margin-top: 10px;
