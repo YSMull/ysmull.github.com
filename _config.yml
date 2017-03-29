@@ -10,7 +10,7 @@ subscribe_rss: /atom.xml
 
 # File management
 include: [".htaccess"]
-exclude: ["README.md", "LICENSE"]
+exclude: ["README.md", "assets/node_modules/", "assets/entry.js", "assets/webpack.config.js", "assets/css/"]
 
 author:
     name: 简单小煜
@@ -18,9 +18,9 @@ author:
     link: ysmull.me
 
 # Sass
-sass:
-  style: :compressed
-  sass_dir: _sass
+# sass:
+#   style: :compressed
+#   sass_dir: _sass
 
 
 # Markdown
