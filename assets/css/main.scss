@@ -57,6 +57,10 @@ ul {
 		padding: 5px;
 		padding-left: 10px;
 		padding-bottom: 5px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 400px;
 		@media screen and (max-width: $br) {
 			padding: 10px 0 10px 0;
 		}
@@ -72,7 +76,7 @@ blockquote {
 }
 
 .wrapper {
-	max-width: 700px;
+	max-width: 1000px;
 	margin: auto;
 	padding: 40px 30px 60px 30px;
 	@media screen and (max-width: $br) {
@@ -85,7 +89,7 @@ blockquote {
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
-	padding-bottom: 50px;
+	padding-bottom: 10px;
 	@media screen and (max-width: $br) {
 		display: block;
 	}
@@ -102,6 +106,9 @@ blockquote {
 			color: #000000;
 		}
 	}
+	._logo_header {
+		padding-left: 0px;
+	}
 	ul {
 		margin-top: 10px;
 		li {
@@ -112,12 +119,20 @@ blockquote {
 	}
 }
 
-.blog {
-	padding-bottom: 30px;
+.block {
+	padding: 8px;
+	// display: inline;
+	// float: left;
 	h1 {
 		font-size: 1.4em;
 		margin-bottom: 5px;
 	}
+}
+
+.block_tag {
+	padding: 8px;
+	font-size: 20px;
+	font-weight: 700;
 }
 
 .music {

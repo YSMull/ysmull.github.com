@@ -22,13 +22,17 @@
     <!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css"> -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"> -->
     <script type="text/javascript" src="/assets/build/bundle.js"></script>
-    <!-- <script type="text/javascript" src="http://7xpx1g.com1.z0.glb.clouddn.com/bundle.js"/></script> -->
+    <!-- <script type="text/javascript" src="http://onkj33w90.bkt.clouddn.com/bundle.js"/></script> -->
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="header">
+    <div class="wrapper container">
+        <div class="row header">
+          <div class="_logo_header col-md-5 text-left">
             <h1 class="_logo"><a href="/">{{ site.name }}</a></h1>
+          </div>
+          <div class="col-md-7">
+            <div class="text-left">
             <ul>
                 {% for item in site.data.navigation %}
                 <li>
@@ -36,6 +40,8 @@
                 </li>
                 {% endfor %}
             </ul>
+            </div>
+          </div>
         </div>
         {{ content }}
     </div>
