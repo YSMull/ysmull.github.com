@@ -3,26 +3,26 @@ layout: default
 ---
 <div class="row blocks">
 <!-- 算法 -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Algorithm</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "oj" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
     </ul>
   </div>
   <!-- 设计模式 -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Design Pattern</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "design_pattern" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
@@ -32,26 +32,26 @@ layout: default
 
 <div class="row blocks">
 <!-- Java&JVM -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Java&JVM</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "Java" or post.tags contains "JVM" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
     </ul>
   </div>
   <!-- 数据库 -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Database</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "database" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
@@ -61,26 +61,26 @@ layout: default
 
 <div class="row blocks">
 <!-- 多线程 -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Multithreading</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "multithreading" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
     </ul>
   </div>
   <!-- 源码 -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Source Analysis</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "source" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
@@ -90,26 +90,26 @@ layout: default
 
 <div class="row blocks">
 <!-- 框架 -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Framework</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "multithreading" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
     </ul>
   </div>
   <!-- 源码 -->
-  <div class="block col-md-6 text-left">
+  <div class="block col-md-6 col-sm-6 text-left">
     <div class="row text-left block_tag">Other</div>
     <ul>
         {% for post in site.posts %}
           {% if post.tags contains "article" %}
               <li>
-                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a href="{{ post.url }}">{{ post.title }}</a>
+                  <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
               </li>
           {% endif %}
         {% endfor %}
