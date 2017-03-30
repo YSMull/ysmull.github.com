@@ -1,6 +1,13 @@
 ---
 layout: default
 ---
+
+<style type="text/css">
+
+ul li {
+  max-width: none;
+}
+</style>
 {% for tag in site.tags %}
   {% if site.data.oj contains tag[0] %}
     <legend style="
