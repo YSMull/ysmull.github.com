@@ -16,7 +16,7 @@ author:
     name: 简单小煜
     email: ysmull@aliyun.com
     link: ysmull.me
-
+future: true
 # Sass
 # sass:
 #   style: :compressed
