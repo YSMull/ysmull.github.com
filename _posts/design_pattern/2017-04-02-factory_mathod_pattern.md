@@ -1,7 +1,7 @@
 ---
 layout: post
 title: (2) Factory Method Pattern
-data: 2017-04-02 23:16:28
+date: 2017-04-02 23:16:28
 tags:
     - design_pattern
 ---
@@ -40,14 +40,14 @@ public class ConcreteCreator2 extends AbstractCreator {
 }
 ...
 ```
-使用方法:``
+使用方法:
 ```java
 AbstractCreator creator1 = new ConcreteCreator1();
 creator1.operation();
 AbstractCreator creator2 = new ConcreteCreator2();
 creator2.operation();
 ```
-当需要增加一种产品的时候，新建一个类继承AbstractCreator，实现工厂方法getProduct即可。工厂方法模式客服了简单工厂模式违背「开放-封闭」原则的缺点，不过每增加一个产品，需要增加一个类。
+当需要增加一种产品的时候，新建一个类继承AbstractCreator，实现工厂方法getProduct即可。工厂方法模式客服了简单工厂模式违背「开放-封闭」原则的缺点,不过每增加一个产品，需要增加一个类。
 
 -----
 
