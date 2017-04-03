@@ -7,7 +7,7 @@ name: YSMull
 description: 个人博客
 google_verification: null
 subscribe_rss: /atom.xml
-
+timezone: +0800
 # File management
 include: [".htaccess"]
 exclude: ["README.md", "assets/node_modules/", "assets/entry.js", "assets/webpack.config.js", "assets/css/"]
