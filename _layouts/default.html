@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% if page.title %}
         <title>{{ page.title }}</title>
     {% else %}
@@ -19,31 +18,32 @@
     {% endif %}
 
     <link rel="icon" href="/assets/img/favicon.png">
-    <!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css"> -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"> -->
     <script type="text/javascript" src="/assets/build/bundle.js"></script>
     <!-- <script type="text/javascript" src="http://onkj33w90.bkt.clouddn.com/bundle.js"/></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Source+Code+Pro:200,300,400,500,600" rel="stylesheet">
 </head>
 
 <body>
-    <div class="wrapper container">
-        <div class="row header">
-          <div class="_logo_header col-md-5 text-left">
-            <h1 class="_logo" style="float: left;"><a href="/">{{ site.name }}</a></h1>
-            <h4 class="shake-constant  shake" style="padding-top: 20px;animation-duration: 7s;">「基础不牢，地动山摇」</h4>
-          </div>
-          <div class="col-md-7">
-            <div class="text-left">
-            <ul>
+    <div class="header_wrapper">
+      <div class="pure-g header">
+        <div class="_logo_header pure-u-1 pure-u-md-5-12">
+          <h1 class="_logo" style="float: left;"><a href="/">{{ site.name }}</a></h1>
+          <h4 class="shake-constant shake" style="padding-top: 20px;animation-duration: 7s;">「基础不牢，地动山摇」</h4>
+        </div>
+        <div class="menu pure-u-1 pure-u-md-7-12">
+          <div class="pure-menu pure-menu-horizontal header_menu">
+            <ul class="pure-menu-list">
                 {% for item in site.data.navigation %}
-                <li>
-                    <a href="{{ item.url }}">{{ item.title }}</a>
+                <li class="pure-menu-item">
+                    <a class="pure-menu-link" href="{{ item.url }}">{{ item.title }}</a>
                 </li>
                 {% endfor %}
             </ul>
-            </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="wrapper">
         {{ content }}
     </div>
 

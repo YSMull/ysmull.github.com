@@ -1,11 +1,19 @@
 ---
 layout: default
 ---
+
 <script >
-$('.wrapper').css('max-width', '700px');
+var div1 = document.getElementsByClassName('wrapper');
+div1[0].style.setProperty("max-width","700px");
+var div2 = document.getElementsByClassName('header_wrapper');
+div2[0].style.setProperty("max-width","700px");
 </script>
 
 <style type="text/css">
+.header a {
+    font-size: 0.9em;
+}
+
 .post__content h1 {
   font-size: 19px;
   font-weight: 700;
