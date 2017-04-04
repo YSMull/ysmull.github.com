@@ -10,7 +10,9 @@
     border: 1px solid rgba(145, 169, 185, 0.36);
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
 }
-
+.highlight code {
+    white-space: pre;
+}
 .highlight .hll {
     background-color: #EFEFEF
 }
