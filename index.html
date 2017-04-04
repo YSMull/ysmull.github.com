@@ -1,12 +1,12 @@
 ---
 layout: default
 ---
-{% for item in site.data.cat %}
 <div class="pure-g">
+  {% for item in site.data.cat %}
   <div class="pure-u-1 pure-u-md-1-2">
     <div class="block">
-      <div class="block_tag">{{ item.left }}</div>
-      {% assign block_tags =  item.left_tags %}
+      <div class="block_tag">{{ item.item }}</div>
+      {% assign block_tags =  item.tags %}
       <ul>
           {% for post in site.posts %}
             {% assign show = 0 %}
@@ -30,32 +30,5 @@ layout: default
       </ul>
     </div>
   </div>
-  <div class="pure-u-1 pure-u-md-1-2">
-    <div class="block">
-      <div class="block_tag">{{ item.right }}</div>
-      {% assign block_tags =  item.right_tags %}
-      <ul>
-          {% for post in site.posts %}
-            {% assign show = 0 %}
-            {% for post_tag in post.tags %}
-                {% if block_tags contains post_tag %}
-                  {% assign show = 1 %}
-                  {% break %}
-                {% endif %}
-            {% endfor %}
-            {% if show == 1 %}
-              <li class="pure-g">
-                <div class="pure-u-1-4">
-                  <span class="date">{{ post.date | date:"%Y-%m-%d" }}</span>
-                </div>
-                <div class="pure-u-3-4">
-                  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
-                </div>
-              </li>
-            {% endif %}
-          {% endfor %}
-      </ul>
-    </div>
-  </div>
+  {% endfor %}
 </div>
-{% endfor %}

@@ -1,27 +1,27 @@
-- left: Algorithm
-  left_tags:
-            -oj
-            -algorithm
-  right: Design Pattern
-  right_tags:
-            -design_pattern
-- left: Java&JVM
-  left_tags:
-            -java
-            -jvm
-  right: Database
-  right_tags:
-             -database
-             -sql
-- left: Multithreading
-  left_tags:
-            -multithreading
-  right: Source Analysis
-  right_tags:
-             -source
-- left: Framework
-  left_tags:
-            -source
-  right: Other
-  right_tags:
-             -article
+- item: Algorithm
+  tags:
+       -oj
+       -algorithm
+- item: Design Pattern
+  tags:
+       -design_pattern
+- item: Java&JVM
+  tags:
+       -java
+       -jvm
+- item: Database
+  tags:
+       -database
+       -sql
+- item: Multithreading
+  tags:
+       -multithreading
+- item: Source Analysis
+  tags:
+       -source
+- item: Framework
+  tags:
+       -source
+- item: Other
+  tags:
+       -article
