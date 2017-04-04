@@ -121,6 +121,11 @@ blockquote {
   padding-bottom: 8px;
   position: relative;
   margin: 20px;
+  @media screen and (max-width:600px) {
+    margin-left: -20px;
+    margin-right: -20px;
+    font-size: 0.9em;
+  }
   border: 1px solid #ccc;
   border-bottom: 2px solid #ccc;
   border-right: 2px solid #ccc;
