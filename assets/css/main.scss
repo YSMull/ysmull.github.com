@@ -2,34 +2,15 @@
 @import "_config.scss";
 @import "_highlight.scss";
 
-@font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Inconsolata Regular'), local('Inconsolata-Regular'), url(http://onkj33w90.bkt.clouddn.com/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff) format('woff');
-}
-@font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(http://onkj33w90.bkt.clouddn.com/AIed271kqQlcIRSOnQH0yTqR_3kx9_hJXbbyU8S6IN0.woff) format('woff');
-}
 
-@font-face {
-  font-family: 'Shadows Into Light';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Shadows Into Light'), local('ShadowsIntoLight'), url(http://onkj33w90.bkt.clouddn.com/clhLqOv7MXn459PTh0gXYHW1xglZCgocDnD_teV2lMU.woff) format('woff');
-}
 body {
-	color: $color-black;
-	background: $color-white;
-	font-family: 'Inconsolata', ;
+	// color: $color-black;
+	// background: $color-white;
+  background: #e8e6e3;
+  // background-image: url('http://gameprogrammingpatterns.com/images/background.png');
+	font-family: $body-font;
 	font-size: 100%;
 	font-weight: 400;
-  @media screen and (max-width: $br) {
-    font-size: 90%;
-  }
 }
 h1 {
 	margin-bottom: 5px;
@@ -38,21 +19,22 @@ p {
 	font-size: 1em;
 	line-height: 1.5;
 }
+
 a {
   color: $color-link;
   text-decoration: none;
-  &:visited {
-	color: $color-link;
-	text-decoration: none;
-  }
+  // &:visited {
+	// color: $color-link;
+	// text-decoration: none;
+  // }
   &:hover {
 	 background-color: $color-grey;
 	 text-decoration: none;
   }
-  &:active {
-	color: $color-link;
-	text-decoration: none;
-  }
+  // &:active {
+	// color: $color-link;
+	// text-decoration: none;
+  // }
 }
 ul {
 	list-style: none;
@@ -63,10 +45,7 @@ ul {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		max-width: 350px;
-		@media screen and (max-width: $br) {
-			max-width: 310px;
-		}
+		max-width: 100%;
 	}
 }
 blockquote {
@@ -74,34 +53,53 @@ blockquote {
     border-left: 2px solid rgba(39, 39, 39, 0.43);
     padding-left: 8px;
     font-size: 13px;
-	margin-top: 10px;
+    margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.header_wrapper {
+	max-width: 1000px;
+	margin: auto;
+	padding: 30px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  border-left: solid 1px #bbb;
+  border-right: solid 1px #bbb;
+  border-bottom: solid 1px #999;
+  background: white;
+  box-shadow: 0 0 40px rgba(71, 51, 31, 0.2);
 }
 
 .wrapper {
 	max-width: 1000px;
 	margin: auto;
 	padding: 40px 30px 60px 30px;
-	@media screen and (max-width: $br) {
-		padding: 20px;
-	}
+  border-left: solid 1px #bbb;
+  border-right: solid 1px #bbb;
+  border-bottom: solid 1px #999;
+  background: white;
+  box-shadow: 0 0 40px rgba(71, 51, 31, 0.2);
 }
 
+.header_menu {
+  display: inline-block;
+}
 
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: baseline;
+
+	// justify-content: space-between;
+	// align-items: baseline;
 	padding-bottom: 10px;
-	@media screen and (max-width: $br) {
-		display: block;
-	}
+
 	a {
 		font-size: 1.2em;
+    @media screen and (max-width:600px) {
+      font-size: 0.7em;
+    }
 	}
 	h1 {
 		font-size: 2em;
-		font-family: 'Shadows Into Light';
+		font-family: $logo-font;
 		margin-bottom: 0;
 	}
 	._logo {
@@ -112,42 +110,54 @@ blockquote {
 	._logo_header {
 		padding-left: 0px;
 	}
-	ul {
-		margin-top: 10px;
-		li {
-			display: inline;
-			padding: 0;
-			padding-left: 5px;
-		}
-	}
+  .menu {
+    font-family: $menu-font;
+  }
 }
 
 .block {
-	padding: 8px;
+	padding-left: 18px;
+  padding-right: 18px;
+  padding-bottom: 8px;
+  position: relative;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  box-sizing: border-box;
+  background: rgba(238, 238, 238, 0.71);
+  border-radius: 3px;
 	// display: inline;
 	// float: left;
+  a {
+    font-family: $block-font;
+    font-weight: 400;
+  }
 	h1 {
 		font-size: 1.4em;
 		margin-bottom: 5px;
 	}
+  ul {
+    padding-top: 10px;
+    li {
+        padding-left: 0px;
+    }
+  }
+  .date {
+    padding-right: 5px;
+    font-family: $date-font;
+    font-weight: 200;
+  }
 }
 
 .block_tag {
 	padding: 8px;
+  padding-left: 0px;
 	font-size: 20px;
 	font-weight: 700;
-}
-
-.music {
-	padding-bottom: 30px;
-	h1 {
-		font-size: 1.4em;
-		margin-bottom: 5px;
-	}
-	a {
-		padding: 5px;
-		padding-left: 10px;
-	}
+  font-family: $block-tag-font;
+  border-bottom: solid 2px;
+  color: rgba(68, 68, 68, 0.79);
 }
 
 .post {
@@ -173,7 +183,7 @@ blockquote {
 	}
 	&__date {
 		p {
-			font-size: 1em;
+			font-size: 1.2em;
 			// font-style: italic;
 		}
 	}
@@ -183,29 +193,30 @@ blockquote {
 		}
 	}
 	&__content {
+    font-family: $post-font;
 		padding-top: 18px;
 		h1 {
-			font-size: 1.4em;
+			font-size: 22px;
 			font-weight: 700;
 			margin-top: 25px;
 			margin-bottom: 15px;
 		}
 		h2 {
-			font-size: 1.2em;
+			font-size: 20px;
 			font-weight: 700;
 			margin-top: 10px;
 			margin-bottom: 10px;
 		}
 
 		h3 {
-			font-size: 1em;
+			font-size: 18px;
 			font-weight: 700;
 			margin-top: 10px;
 			margin-bottom: 5px;
 		}
 
 		h4 {
-			font-size: 13px;
+			font-size: 16px;
 			font-weight: 700;
 			margin-top: 10px;
 			margin-bottom: 5px;
@@ -213,7 +224,7 @@ blockquote {
 
 
 		p {
-			font-size: 13px;
+			font-size: 14px;
 			line-height: 1.5;
 		}
 		a {
@@ -225,7 +236,7 @@ blockquote {
 		}
 
 		li {
-			font-size: 13px;
+			font-size: 14px;
 			padding-bottom: 5px;
 
 		}
@@ -259,22 +270,12 @@ blockquote {
 			li {
 				padding: 5px;
     			padding-left: 0px;
-				@media screen and (max-width: $br) {
-					padding: 10px 0 10px 0;
-				}
-			}
-			@media screen and (max-width: $br) {
-				margin-left: 10px;
 			}
 		}
 		img {
 			margin-top: 10px;
 			margin-bottom: 10px;
 			max-width: 100%;
-			@media screen and (max-width: $br) {
-				width: 100%;
-				margin: auto;
-			}
 		}
 		ol {
 			padding: 8px;
