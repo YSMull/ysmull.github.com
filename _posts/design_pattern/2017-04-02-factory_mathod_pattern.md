@@ -17,6 +17,7 @@ tags:
 ```java
 public abstract class AbstractCreator {
     public void operation() {
+        //这里可以算是 client 的代码了
         Product product = getProduct();
         product.process();
     }
@@ -47,7 +48,12 @@ creator1.operation();
 AbstractCreator creator2 = new ConcreteCreator2();
 creator2.operation();
 ```
-当需要增加一种产品的时候，新建一个类继承AbstractCreator，实现工厂方法getProduct即可。工厂方法模式客服了简单工厂模式违背「开放-封闭」原则的缺点,不过每增加一个产品，需要增加一个类。
+当需要增加一种产品的时候，新建一个类继承AbstractCreator，实现工厂方法getProduct即可。工厂方法模式客服了简单工厂模式违背「开放-封闭」原则的缺点。
+我们来看一下，当增加一个产品的时候，我们需要做哪些事情：
+1. 添加一个产品类------>这个是无法避免的，我们对扩展开放。
+2. 如果工厂方法是在某个抽象类中，新建一个类继承该抽象类，覆盖工厂方法，返回新产品。
+3. 如果工厂方法在接口IFactory中，那么就要新建一个工厂实现IFactory来返回该产品。
+4. 在client使用时，得new一个新的类来产生新产品。
 
 -----
 

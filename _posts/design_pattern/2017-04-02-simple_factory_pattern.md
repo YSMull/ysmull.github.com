@@ -52,7 +52,12 @@ factory.getProduct("2").process();
 factory.getProduct("3").process();
 factory.getProduct("4").process();
 ```
-当需要增加一个ConcreteProduct5时，首先要新添加这个产品类，然后在工厂的实现里增加一个分支，为了避免增加分支，可以使用反射。
+当需要增加一个ConcreteProduct5时：
+1. 首先要新添加这个产品类，当然，这个是无法避免的。
+2. 然后在工厂的实现里增加一个分支判断，来返回对应产品。
+3. 在client使用时，只需要修改传给工厂方法的参数即可获取新的产品。
+
+上面第二点可以通过反射来避免，事实上，当我们的代码中有简单工厂模式的时候，我们都应该考虑使用反射来避免分支判断：
 ```java
 public Product getProduct(String className) {
     try {
