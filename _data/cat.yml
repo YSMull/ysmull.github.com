@@ -1,0 +1,27 @@
+- left: Algorithm
+  left_tags:
+            -oj
+            -algorithm
+  right: Design Pattern
+  right_tags:
+            -design_pattern
+- left: Java&JVM
+  left_tags:
+            -java
+            -jvm
+  right: Database
+  right_tags:
+             -database
+             -sql
+- left: Multithreading
+  left_tags:
+            -multithreading
+  right: Source Analysis
+  right_tags:
+             -source
+- left: Framework
+  left_tags:
+            -source
+  right: Other
+  right_tags:
+             -article
