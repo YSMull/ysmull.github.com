@@ -6,9 +6,10 @@
 body {
 	// color: $color-black;
 	// background: $color-white;
-  background: #e8e6e3;
+  // background: #e8e6e3;
   // background-image: url('http://gameprogrammingpatterns.com/images/background.png');
 	font-family: $body-font;
+	-webkit-font-smoothing: antialiased;
 	font-size: 100%;
 	font-weight: 400;
 }
@@ -38,6 +39,7 @@ a {
 }
 ul {
 	list-style: none;
+	font-family: $block-font;
 	li {
 		padding: 5px;
 		padding-left: 10px;
@@ -63,22 +65,22 @@ blockquote {
 	padding: 30px;
   padding-top: 10px;
   padding-bottom: 0px;
-  border-left: solid 1px #bbb;
-  border-right: solid 1px #bbb;
-  border-bottom: solid 1px #999;
+  // border-left: solid 1px #bbb;
+  // border-right: solid 1px #bbb;
+  // border-bottom: solid 1px #999;
   background: white;
-  box-shadow: 0 0 40px rgba(71, 51, 31, 0.2);
+  // box-shadow: 0 0 40px rgba(71, 51, 31, 0.2);
 }
 
 .wrapper {
 	max-width: 1000px;
 	margin: auto;
 	padding: 40px 30px 60px 30px;
-  border-left: solid 1px #bbb;
-  border-right: solid 1px #bbb;
-  border-bottom: solid 1px #999;
+  // border-left: solid 1px #bbb;
+  // border-right: solid 1px #bbb;
+  // border-bottom: solid 1px #999;
   background: white;
-  box-shadow: 0 0 40px rgba(71, 51, 31, 0.2);
+  // box-shadow: 0 2px 10px rgba(71, 51, 31, 0.2);
 }
 
 .header_menu {
@@ -120,10 +122,11 @@ blockquote {
     font-size: 0.9em;
   }
   border: 1px solid #ccc;
-  border-bottom: 2px solid #ccc;
-  border-right: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   box-sizing: border-box;
-  background: rgba(238, 238, 238, 0.71);
+	box-shadow: 0 0 7px #ddd;
+  // background: rgba(238, 238, 238, 0.71);
   border-radius: 3px;
 	// display: inline;
 	// float: left;
@@ -150,12 +153,12 @@ blockquote {
 
 .block_tag {
 	padding: 8px;
-  padding-left: 0px;
-	font-size: 20px;
-	font-weight: 700;
+  padding-left: 0;
+  font-size: 20px;
+  font-weight: 400;
   font-family: $block-tag-font;
-  border-bottom: solid 2px;
-  color: rgba(68, 68, 68, 0.79);
+  border-bottom: 1px solid rgba(68, 68, 68, 0.25);
+  color: rgba(68,68,68,.79);
 }
 
 .post {
@@ -173,7 +176,7 @@ blockquote {
 		h1 {
 			display: inline-block;
 			font-size: 1.6em;
-			font-weight: 700;
+			font-weight: 600;
 			padding-right: 10px;
 			padding-bottom: 2px;
 			text-decoration: none;
@@ -193,38 +196,41 @@ blockquote {
 	&__content {
     font-family: $post-font;
 		padding-top: 18px;
+		font-size: 15px;
+		line-height: 1.5;
+		color: #444;
+		text-align: justify;
 		h1 {
 			font-size: 22px;
-			font-weight: 700;
+			font-weight: 600;
 			margin-top: 25px;
 			margin-bottom: 15px;
+			font-family: $post-h;
 		}
 		h2 {
 			font-size: 20px;
-			font-weight: 700;
+			font-weight: 600;
 			margin-top: 10px;
 			margin-bottom: 10px;
+			font-family: $post-h;
 		}
 
 		h3 {
 			font-size: 18px;
-			font-weight: 700;
+			font-weight: 600;
 			margin-top: 10px;
 			margin-bottom: 5px;
+			font-family: $post-h;
 		}
 
 		h4 {
 			font-size: 16px;
-			font-weight: 700;
+			font-weight: 600;
 			margin-top: 10px;
 			margin-bottom: 5px;
+			font-family: $post-h;
 		}
 
-
-		p {
-			font-size: 14px;
-			line-height: 1.5;
-		}
 		a {
 			padding-bottom: 1px;
 			&:hover {
@@ -251,8 +257,8 @@ blockquote {
     }
 
 		strong {
-			font-weight: 700;
-			padding: 2.2px;
+			font-weight: 600;
+			font-size: 15px;
 		}
 		em {
 			font-style: italic;
@@ -285,7 +291,7 @@ blockquote {
 .about {
 	&__title {
 		font-size: 1.6em;
-		font-weight: 700;
+		font-weight: 600;
 		margin-top: 20px;
 		margin-bottom: 10px;
 	}
@@ -308,7 +314,7 @@ blockquote {
 .books.bootnote {
 	&__title {
 		font-size: 1.3em;
-		font-weight: 700;
+		font-weight: 600;
 		margin-top: 20px;
 		margin-bottom: 10px;
 	}

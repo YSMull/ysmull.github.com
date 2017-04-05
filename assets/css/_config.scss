@@ -33,6 +33,23 @@ h1 code, h2 code, h3 code, h4 code { color: #c7254e }
   url('//at.alicdn.com/t/5bawekc78og8pvi.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
   url('//at.alicdn.com/t/5bawekc78og8pvi.svg#思源黑体-极细') format('svg'); /* iOS 4.1- */
 }
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src:
+  url('http://onk1k9bha.bkt.clouddn.com/OpenSans.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src:
+  url('http://onk1k9bha.bkt.clouddn.com/Dosis.woff') format('woff');
+}
+
 @font-face {
   font-family: 'Inconsolata';
   font-style: normal;
@@ -51,12 +68,15 @@ h1 code, h2 code, h3 code, h4 code { color: #c7254e }
   url('http://onk1k9bha.bkt.clouddn.com/ShadowsIntoLight.woff') format('woff');
 }
 
-$block-font: 'Inconsolata';
+
+// 参考byvoid的字体
+$body-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Lantinghei TC','Hiragino Kaku Gothic ProN','Heiti TC','MS Mincho','MingLiU',sans-serif;
+$post-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Hiragino Sans GB','STHeiti','SimSun',sans-serif;
+$post-h: 'Dosis','Helvetica Neue','Arial','Verdana','Songti SC','STSong','SimSun',serif;
+
+$block-font: $post-font;
 $logo-font: 'Shadows Into Light';
-$body-font: 'siyuan regular';
-$menu-font: 'siyuan regular';
-$block-tag-font: 'siyuan regular';
-$post-font: 'siyuan regular';
+$menu-font: $body-font;
+$block-tag-font: $body-font;
 $code-font: Menlo,Monaco,Consolas,"Courier New",monospace;
-// $date-font: 'Source Code Pro';
-$date-font: 'Inconsolata', monospace;;
+$date-font: 'Inconsolata';
