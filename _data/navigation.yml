@@ -4,11 +4,11 @@
 - title: Reading
   url: /reading
 
-- title: Algorithm
-  url: /algorithm
-
-- title: Project
-  url: /project
+# - title: Algorithm
+#   url: /algorithm
+#
+# - title: Project
+#   url: /project
 
 - title: About
   url: /me
