@@ -18,8 +18,8 @@
     {% endif %}
 
     <link rel="icon" href="/assets/img/favicon.png">
-    <script type="text/javascript" src="http://onk1k9bha.bkt.clouddn.com/bundle.js"></script>
-    <!-- <script type="text/javascript" src="/assets/build/bundle.js"></script> -->
+    <!-- <script type="text/javascript" src="http://onk1k9bha.bkt.clouddn.com/bundle.js"></script> -->
+    <script type="text/javascript" src="/assets/build/bundle.js"></script>
 </head>
 
 <body>
@@ -36,14 +36,19 @@
           </div>
         </div>
         <div class="pure-u-1 pure-u-md-14-24 pure-u-sm-12-24 menu">
-          <div class="pure-menu pure-menu-horizontal header_menu">
-            <ul class="pure-menu-list">
-                {% for item in site.data.navigation %}
-                <li class="pure-menu-item">
-                    <a class="pure-menu-link" href="{{ item.url }}">{{ item.title }}</a>
-                </li>
-                {% endfor %}
-            </ul>
+          <div class="pure-menu pure-menu-horizontal">
+              <ul class="pure-menu-list" style="text-align: left;">
+                  <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+                  <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a class="pure-menu-link">Route</a>
+                      <ul class="pure-menu-children">
+                        {% for item in site.data.navigation %}
+                          <li class="pure-menu-item"><a href="{{ item.url }}" class="pure-menu-link">{{ item.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                  </li>
+                  <li class="pure-menu-item"><a href="/me" class="pure-menu-link">About</a></li>
+              </ul>
           </div>
         </div>
       </div>

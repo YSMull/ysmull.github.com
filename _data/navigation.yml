@@ -1,14 +1,14 @@
-- title: Home
-  url: /
+# - title: Home
+#   url: /
+
+- title: Design Pattern
+  url: /design_pattern
 
 - title: Reading
   url: /reading
 
-# - title: Algorithm
-#   url: /algorithm
+- title: Algorithm
+  url: /algorithm
 #
 # - title: Project
 #   url: /project
-
-- title: About
-  url: /me
