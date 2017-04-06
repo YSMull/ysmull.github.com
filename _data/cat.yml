@@ -1,8 +1,10 @@
 - item: Algorithm
+  page: /algorithm
   tags:
        -oj
        -algorithm
 - item: Design Pattern
+  page: /design_pattern
   tags:
        -design_pattern
 - item: Java&JVM

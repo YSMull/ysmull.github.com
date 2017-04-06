@@ -5,7 +5,11 @@ layout: default
   {% for item in site.data.cat %}
   <div class="pure-u-1 pure-u-lg-1-2 pure-u-md-1 pure-u-sm-1-1">
     <div class="block">
-      <div class="block_tag">{{ item.item }}</div>
+      <div class="block_tag">{{ item.item }}
+        {% if item.page  %}
+        <a href="{{ item.page }}" style="font-size:0.7em">more...</a>
+        {% endif %}
+      </div>
       {% assign block_tags =  item.tags %}
       <ul>
           {% for post in site.posts %}
