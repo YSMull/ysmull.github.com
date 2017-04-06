@@ -50,10 +50,16 @@ ul {
 blockquote {
     color: rgba(39, 39, 39, 0.52);
     border-left: 2px solid rgba(39, 39, 39, 0.43);
-    padding-left: 8px;
     font-size: 13px;
     margin-top: 10px;
     margin-bottom: 10px;
+		background: #f8f8f8;
+		font-family: $blockquote-font;
+		font-size: 1em;
+		padding: 5px 20px 5px 20px;
+		border-radius: 2px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
 }
 
 .header_wrapper {
@@ -72,7 +78,7 @@ blockquote {
 .wrapper {
 	max-width: 1000px;
 	margin: auto;
-	padding: 20px 30px 60px;
+	padding: 10px 30px 60px;
   // border-left: solid 1px #bbb;
   // border-right: solid 1px #bbb;
   // border-bottom: solid 1px #999;
@@ -171,6 +177,7 @@ blockquote {
 		margin-top: 20px;
 		margin-bottom: 6px;
 		h1 {
+			font-family: $title-font;
 			display: inline-block;
 			font-size: 1.6em;
 			font-weight: 600;
