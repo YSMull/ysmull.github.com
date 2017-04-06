@@ -1,0 +1,55 @@
+- type: 创建型
+  methods:
+        - name: Simple Factory（简单工厂）
+          page: /blog/simple_factory_pattern
+        - name: Factory Method（工厂方法）
+          page: /blog/factory_mathod_pattern
+        - name: Abstract Factory（抽象工厂）
+          page: /blog/abstract_factory_pattern
+        - name: Builder（建造者）
+          page: false
+        - name: Prototype（原型）
+          page: false
+        - name: Singleton（单例）
+          page: false
+- type: 结构型
+  methods:
+        - name: Adapter Class/Object（适配器）
+          page: false
+        - name: Bridge（桥接）
+          page: false
+        - name: Composite（组合）
+          page: false
+        - name: Decorator（装饰）
+          page: false
+        - name: Facade（外观）
+          page: false
+        - name: Flyweight（享元）
+          page: false
+        - name: Proxy（代理）
+          page: false
+
+- type: 行为型
+  methods:
+        - name: Interpreter（解释器）
+          page: false
+        - name: Template Method（模板方法）
+          page: false
+        - name: Chain of Responsibility（责任链）
+          page: false
+        - name: Command（命令）
+          page: false
+        - name: Iterator（迭代器）
+          page: false
+        - name: Mediator（中介者）
+          page: false
+        - name: Memento（备忘录）
+          page: false
+        - name: Observer（观察者）
+          page: false
+        - name: State（状态）
+          page: false
+        - name: Strategy（策略）
+          page: false
+        - name: Visitor（访问者）
+          page: false
