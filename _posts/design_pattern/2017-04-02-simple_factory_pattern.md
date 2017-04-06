@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (1) Simple Factory Pattern
+title: Simple Factory
 date: 2017-04-02 21:22:11
 tags:
     - design_pattern

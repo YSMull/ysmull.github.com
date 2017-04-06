@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (3) Abstract Factory Pattern
+title: Abstract Factory
 date: 2017-04-03 11:37:26
 tags:
     - design_pattern
