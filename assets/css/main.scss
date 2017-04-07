@@ -189,7 +189,8 @@ blockquote {
 	}
 	&__date {
 		p {
-			font-size: 1.2em;
+			font-size: 1.1em;
+			font-family: $date-font;
 			// font-style: italic;
 		}
 	}
