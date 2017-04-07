@@ -3,30 +3,23 @@ layout: default
 ---
 
 
-{% for tag in site.tags %}
+<div class="pure-g">
+  {% for tag in site.tags reversed %}
   {% if site.data.oj contains tag[0] %}
-    <legend style="
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    margin-top: 10px;" id="{{ tag[0] }}">{{ tag[0] }}</legend>
-    <ul>
-    {% for post in tag[1] %}
-      <li>
-      <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span>
-       - <a href="{{ post.url }}{{ '#back' }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-    </ul>
+  <div class="pure-u-1 pure-u-lg-1-3 pure-u-md-1-2 pure-u-sm-1">
+    <div class="block" style="font-size:1em;margin:10px">
+      <div class="block_tag">{{ tag[0] }}</div>
+      <ul>
+          {% for post in tag[1] %}
+              <li class="pure-g">
+                <div class="pure-u-1" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                      <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
+                </div>
+              </li>
+          {% endfor %}
+      </ul>
+    </div>
+  </div>
   {% endif %}
-{% endfor %}
-
-<!-- <ul>
-    {% for post in site.posts %}
-        {% if post.tags contains "oj" %}
-        <li>
-            <span class="date">{{ post.date | date:"%Y/%m/%d" }}</span> - <a href="{{ post.url }}{{ '#back' }}">{{ post.title }}</a>
-        </li>
-        {% endif %}
-    {% endfor %}
-</ul> -->
+  {% endfor %}
+</div>
