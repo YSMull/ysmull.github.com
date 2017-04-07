@@ -154,6 +154,39 @@ tags:
         <artifactId>aspectjrt</artifactId>
         <version>1.8.9</version>
     </dependency>
+
+    <!-- data source -->
+    <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>2.6.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.39</version>
+    </dependency>
+
+    <!-- File Upload -->
+    <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.3.2</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.2</version>
+    </dependency>
+
+    <!-- 解析对象为json -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.8.1</version>
+    </dependency>
+
 </dependencies>
 ```
 ## 2.2 配置jdk版本
@@ -182,5 +215,129 @@ tags:
     </plugins>
 </build>
 ```
+## 2.3 编写配置文件
+`web.xml`
+```xml
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
 
+    <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring/root-context.xml</param-value>
+    </context-param>
+
+    <!-- Creates the Spring Container shared by all Servlets and Filters -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Processes application requests -->
+    <servlet>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
+```
+`root-context.xml`
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:beans="http://www.springframework.org/schema/beans"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beans:import resource="classpath:biz-context.xml"/>
+    <beans:import resource="classpath:data-source.xml"/>
+
+</beans:beans>
+```
+`servlet-context.xml`
+```xml
+<annotation-driven/>
+<context:component-scan base-package="me.ysmull.x.web"/>
+
+<aop:aspectj-autoproxy/>
+
+<!-- Handles HTTP GET requests for /resources/** by efficiently serving
+    up static resources in the ${webappRoot}/resources/ directory -->
+
+<resources mapping="/resources/**" location="/resources/"/>
+<resources mapping="/view/**" location="/view/"/>
+<resources mapping="/asset/**" location="/asset/"/>
+<resources mapping="/dep/**" location="/dep/"/>
+
+<!-- Resolves views selected for rendering by @Controllers to .jsp resources
+    in the /WEB-INF/views directory -->
+<beans: class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <beans:property name="prefix" value="/WEB-INF/views/"/>
+    <beans:property name="suffix" value=".jsp"/>
+</beans:bean>
+
+<!-- Only needed because we require fileupload in the
+    org.springframework.samples.mvc.fileupload package -->
+<beans:bean id="multipartResolver"
+            class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+```
+`biz-context.xml`
+```xml
+<task:annotation-driven/>
+<tx:annotation-driven transaction-manager="txManager"/>
+<aop:aspectj-autoproxy/>
+
+<context:annotation-config/>
+<context:component-scan base-package="me.ysmull.x.biz"/>
+<context:component-scan base-package="me.ysmull.x.dao"/>
+
+<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" autowire="byName">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+
+<bean id="namedParameterJdbcTemplate"
+      class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"
+      autowire="byName">
+    <constructor-arg ref="dataSource" index="0"/>
+</bean>
+```
+`x-web`的目录结构：
+```
+x-web
+├── src
+│   ├── main
+│   │   ├── config
+│   │   │   └── local
+│   │   │       └── data-source.xml
+│   │   ├── filters
+│   │   │   └── local
+│   │   │       └── env.properties
+│   │   ├── java
+│   │   │
+│   │   ├── resources
+│   │   │   └── biz-context.xml
+│   │   └── webapp
+│   │       └── WEB-INF
+│   │           ├── spring
+│   │           │   ├── appServlet
+│   │           │   │   └── servlet-context.xml
+│   │           │   └── root-context.xml
+│   │           └── web.xml
+│   └── test
+│       └── java
+└── pom.xml
+```
 [设置webroot]:http://stackoverflow.com/questions/13390239/how-to-configure-custom-maven-project-structure/13390266
