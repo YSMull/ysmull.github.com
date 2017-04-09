@@ -6,11 +6,14 @@ tags:
     - framework
 ---
 
+* toc
+{:toc}
+
 **我们使用IDEA和Maven**
 
-# 1 模块
+## 模块
 
-## 1.1 新建模块
+### 新建模块
 
 将父模块的module命名为`x-parent`,新建两个子module，分别为`x-web`和`x-biz`。
 
@@ -43,7 +46,7 @@ tags:
 <artifactId>x-web</artifactId>
 ```
 
-## 1.2 在`x-web`模块里面引入`x-biz`依赖
+### 在`x-web`模块里面引入`x-biz`依赖
 `x-web`模块主要是一些Controller，会引用到`x-biz`模块的类，我们可以直接在`x-web`的pom里加入`x-biz`的dependency
 ```xml
 <dependencies>
@@ -67,7 +70,7 @@ tags:
 </dependencyManagement>
 ```
 
-## 1.3 设置 webroot
+### 设置 webroot
 
 在x-web模块中新建一个叫`webapp`的文件夹，然后在x-web的pom里增加一句
 ```xml
@@ -78,9 +81,9 @@ tags:
 在父模块的pom中增加如下语句来指定jdk版本。
 
 
-# 2 配置 Spring
+## 配置 Spring
 
-## 2.1 引入依赖
+### 引入依赖
 
 在父模块的pom里加入如下语句
 ```xml
@@ -189,7 +192,7 @@ tags:
 
 </dependencies>
 ```
-## 2.2 配置jdk版本
+### 配置jdk版本
 在父模块的pom里加入如下语句
 ```xml
 <build>
@@ -215,7 +218,7 @@ tags:
     </plugins>
 </build>
 ```
-## 2.3 编写配置文件
+### 编写配置文件
 `web.xml`
 ```xml
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
