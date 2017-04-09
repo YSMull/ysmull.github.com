@@ -1,12 +1,11 @@
 # Blog settings
 permalink: /blog/:title
-
+host: 0.0.0.0
 
 # My variables
 name: YSMull
 description: 个人博客
 google_verification: null
-subscribe_rss: /atom.xml
 timezone: +0800
 # File management
 include: [".htaccess"]
@@ -27,6 +26,10 @@ future: true
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
+  auto_ids:       true
+  auto_id_prefix: 'id-'
+  toc_levels:     '2,3'
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
   # input: GFM
 #   hard_wrap: false
 # highlighter: rouge

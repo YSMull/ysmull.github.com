@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="wrapper">
-        {{ content }}
+        {{ content | replace_first:'id="markdown-toc"','class="post-toc"'}}
     </div>
 
 </body>

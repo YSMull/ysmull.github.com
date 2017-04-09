@@ -206,6 +206,9 @@ blockquote {
 		line-height: 1.5;
 		color: #444;
 		text-align: justify;
+		>* {
+			margin: 18px 0;
+		}
 		h1 {
 			font-size: 22px;
 			font-weight: 600;
@@ -318,4 +321,52 @@ blockquote {
 			margin-bottom: 10px;
 		}
 	}
+}
+.post-toc {
+    position: fixed;
+    visibility: hidden;
+    top: 32px;
+    margin: 0;
+    min-width: 160px;
+    list-style: none;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .06);
+    padding: 5px;
+    &:before {
+        content: '目录';
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 30px;
+        height: 30px;
+    }
+    li {
+        line-height: 20px;
+				list-style: none;
+        a {
+            display: inline-block;
+            width: 100%;
+            font-size: 12px;
+            text-indent: 5px;
+            &:hover {
+                border-radius: 3px;
+                background-color: rgb(230, 230, 230);
+                border-bottom: none;
+            }
+        }
+        .active {
+            background-color: rgb(230, 230, 230);
+            border-radius: 3px;
+        }
+        li {
+            margin-left: 10px;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            a {
+                font-size: 12px;
+                line-height: 25px;
+            }
+        }
+    }
 }
