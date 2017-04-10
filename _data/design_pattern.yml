@@ -6,7 +6,7 @@
           page: /blog/factory_mathod_pattern
         - name: Abstract Factory（抽象工厂）
           page: /blog/abstract_factory_pattern
-        - name: Builder（建造者）
+        - name: Builder（建造者/生成器）
           page: /blog/builder_pattern
         - name: Prototype（原型）
           page: false
