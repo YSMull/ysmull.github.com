@@ -11,7 +11,11 @@ div2[0].style.setProperty("max-width","700px");
 
 <div class="post">
 	<div id="back" class="post__back">
-    	<a href="/">&lt;-- home</a>
+		{% if page.tags contains "design_pattern" %}
+    	<a href="/design_pattern">&lt;-- Design Pattern</a>
+		{% else %}
+			<a href="/">&lt;-- home</a>
+		{% endif %}
   </div>
   <div class="post__title">
   	<h1>{{ page.title }}</h1>
