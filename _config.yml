@@ -4,8 +4,9 @@ host: 0.0.0.0
 
 # My variables
 name: YSMull
-description: 个人博客
-google_verification: null
+description: YSMull的个人博客
+baidu_verification: true
+
 timezone: +0800
 # File management
 include: [".htaccess"]

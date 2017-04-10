@@ -13,8 +13,17 @@
 
     <meta name="description" content="{{ site.description }}">
 
-    {% if site.google_verification %}
-        <meta name="google-site-verification" content="{{ site.google_verify }}">
+    {% if site.baidu_verification %}
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?378f3cbce80b822c46a5aa3381a3acdd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
     {% endif %}
 
     <!-- <link rel="icon" href="/assets/img/favicon.png"> -->
