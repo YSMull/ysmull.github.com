@@ -24,6 +24,7 @@ p {
 a {
   color: $color-link;
   text-decoration: none;
+	transition: all .15s ease-in-out;
   // &:visited {
 	// color: $color-link;
 	// text-decoration: none;
@@ -50,6 +51,9 @@ ul {
 blockquote {
     color: rgba(39, 39, 39, 0.52);
     border-left: 2px solid rgba(39, 39, 39, 0.43);
+		border-radius: 2px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
     font-size: 13px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -57,9 +61,6 @@ blockquote {
 		font-family: $blockquote-font;
 		font-size: 1em;
 		padding: 5px 20px 5px 20px;
-		border-radius: 2px;
-		-moz-border-radius: 3px;
-		-webkit-border-radius: 3px;
 }
 
 .header_wrapper {
@@ -153,6 +154,18 @@ blockquote {
     font-family: $date-font;
     font-weight: 200;
   }
+	.algorithm_id {
+		border: 1px solid rgba(39, 39, 39, 0.43);
+		border-radius: 2px;
+		text-align:center;
+		font-family: $algorithm_id-font;
+		font-weight: 400;
+		font-size: 14px;
+		transition: all .2s ease-in-out;
+	}
+	.algorithm_id:hover {
+		background: #eee;
+	}
 }
 
 .block_tag {
@@ -242,6 +255,7 @@ blockquote {
 
 		a {
 			padding-bottom: 1px;
+			transition: all .2s ease-in-out;
 			&:hover {
 				background-color: $color-grey;
 				text-decoration: none;
@@ -346,6 +360,7 @@ blockquote {
             width: 100%;
             font-size: 12px;
             text-indent: 5px;
+						transition: all .2s ease-in-out;
             &:hover {
                 border-radius: 3px;
                 background-color: rgb(230, 230, 230);
