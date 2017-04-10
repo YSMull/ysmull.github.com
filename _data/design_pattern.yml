@@ -7,7 +7,7 @@
         - name: Abstract Factory（抽象工厂）
           page: /blog/abstract_factory_pattern
         - name: Builder（建造者）
-          page: false
+          page: /blog/builder_pattern
         - name: Prototype（原型）
           page: false
         - name: Singleton（单例）
