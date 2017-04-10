@@ -7,6 +7,8 @@ tags:
     - article
 ---
 
+* toc
+{:toc}
 ## 1. 直接调用C/C++生成的DLL
 
 ### 1.1 用VS生成dll
