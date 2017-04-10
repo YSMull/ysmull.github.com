@@ -25,7 +25,7 @@ tags:
 
 ## Practice
 
-### ordinary version
+### Ordinary Version
 ```java
 // Product
 @Data // using Lombok
@@ -131,8 +131,8 @@ public class GenericBuilder<T> {
 ```
 
 ## Reference
-1. [wikipedia builder pattern][1]{:target="_blank"}
-2. [how-to-implement-the-builder-pattern-in-java-8][2]{:target="_blank"}
+1. [wikipedia builder pattern][1]
+2. [how-to-implement-the-builder-pattern-in-java-8][2]
 
 [1]: https://en.wikipedia.org/wiki/Builder_pattern#Java "a"
 [2]: http://stackoverflow.com/questions/31754786/how-to-implement-the-builder-pattern-in-java-8 "b"
