@@ -11,7 +11,7 @@ tags:
 ## Definition
 >The intent of the Builder design pattern is to separate the construction of a complex object from its representation. By doing so the same construction process can create different representations.
 
-## Structure
+## Participants
 * **Product** 表示被构造的复杂对象
 * **Builder** 指定 `Product` 各个部件的创建过程的接口(或抽象类)
 * **ConcreteBuilder** 实现`Builder`

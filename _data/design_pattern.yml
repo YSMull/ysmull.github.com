@@ -9,7 +9,7 @@
         - name: Builder（建造者/生成器）
           page: /blog/builder_pattern
         - name: Prototype（原型）
-          page: false
+          page: /blog/prototype_pattern
         - name: Singleton（单例）
           page: false
 - type: 结构型
