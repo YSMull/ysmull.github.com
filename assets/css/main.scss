@@ -220,7 +220,7 @@ blockquote {
 		color: #444;
 		text-align: justify;
 		>* {
-			margin: 18px 0;
+			margin: 10px 0;
 		}
 		h1 {
 			font-size: 22px;
@@ -233,7 +233,7 @@ blockquote {
 			font-size: 20px;
 			font-weight: 600;
 			margin-top: 10px;
-			margin-bottom: 10px;
+			margin-bottom: 4px;
 			font-family: $post-h;
 		}
 
@@ -305,7 +305,7 @@ blockquote {
 			max-width: 100%;
 		}
 		ol {
-			padding: 8px;
+			padding: 4px;
 			padding-left: 40px;
 		}
 		code {
