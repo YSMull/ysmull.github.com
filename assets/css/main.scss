@@ -22,7 +22,7 @@ p {
 }
 
 a {
-  color: $color-link;
+  color: rgba(30, 83, 156, 0.86);;
   text-decoration: none;
 	transition: all .15s ease-in-out;
   // &:visited {
@@ -60,7 +60,26 @@ blockquote {
 		background: #f8f8f8;
 		font-family: $blockquote-font;
 		font-size: 1em;
-		padding: 5px 20px 5px 20px;
+		padding: 5px 21px;
+		quotes: '\201C' '\201D';
+		p {
+			font-size: 1.1em;
+	    font-family: Roboto Slab;
+	    line-height: 1.5;
+		}
+
+		&:before {
+			left: -23px;
+	    top: 10px;
+	    position: relative;
+			color: rgba(20,19,59,.4);
+			content: open-quote;
+			font-family: 'Source Sans Pro',sans-serif;
+			font-size: 4em;
+			line-height: .1em;
+	    margin-right: .25em;
+	    vertical-align: -.4em;
+		}
 }
 
 .header_wrapper {
@@ -110,7 +129,6 @@ blockquote {
 	    text-align: center;
 	  }
   }
-
 }
 
 .outer_block {
@@ -130,14 +148,18 @@ blockquote {
   padding-bottom: 8px;
   position: relative;
 
+
   border: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
   box-sizing: border-box;
-	box-shadow: 0 0 7px #ddd;
-	// &:hover {
-	// 	box-shadow: inset 0 0 7px #ddd;
-	// }
+	box-shadow: 0px 2px 9px #e6e6e6;
+
+	background-color: #f7f7f7;
+	transition: all .2s ease-in-out;
+	&:hover {
+		background-color: #ffffff;
+	}
   // background: rgba(238, 238, 238, 0.71);
   border-radius: 3px;
 	// display: inline;
@@ -178,11 +200,11 @@ blockquote {
 .block_tag {
 	padding: 8px;
   padding-left: 0;
-  font-size: 20px;
+  font-size: 1.5em;
   font-weight: 400;
   font-family: $block-tag-font;
+	color: #0a5365;
   border-bottom: 1px solid rgba(68, 68, 68, 0.25);
-  color: rgba(68,68,68,.79);
 }
 
 .post {
@@ -201,7 +223,9 @@ blockquote {
 			font-family: $title-font;
 			display: inline-block;
 			font-size: 1.6em;
-			font-weight: 600;
+			font-weight: 400;
+			font-size: 1.7em;
+    	color: #0a5365;
 			padding-right: 10px;
 			padding-bottom: 2px;
 			text-decoration: none;
@@ -262,10 +286,13 @@ blockquote {
 
 		a {
 			padding-bottom: 1px;
-			transition: all .2s ease-in-out;
+			color: rgba(123, 25, 25, 0.7);
+			border-bottom: .1em solid rgba(10,83,101,.1);
+			transition: all .15s linear;
 			&:hover {
-				background-color: $color-grey;
-				text-decoration: none;
+				background: none;
+	 			color: #b71010;
+				border-bottom: .1em solid rgba(123, 25, 25, 0.4);;
 			}
 		}
 
@@ -316,7 +343,10 @@ blockquote {
 			padding-left: 40px;
 		}
 		code {
-			color: #c7254e;
+			color: #9e023b;
+	    // border: 1px solid #ddd;
+	    // border-radius: .2em;
+	    padding: 0 .3em;
 		}
 	}
 }
@@ -348,7 +378,7 @@ blockquote {
     visibility: hidden;
     top: 32px;
     margin: 0;
-		width: 170px;
+		// width: 170px;
     min-width: 160px;
     list-style: none;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .06);
@@ -360,13 +390,21 @@ blockquote {
         line-height: 30px;
         height: 30px;
     }
+		ul {
+			li {
+				padding: 2px;
+			}
+		}
     li {
         line-height: 20px;
 				list-style: none;
+				padding: 2px;
         a {
             display: inline-block;
+						border: none;
+						color: #4271ae;
+						font-size: 15px;
             width: 100%;
-            font-size: 12px;
             text-indent: 5px;
 						transition: all .2s ease-in-out;
             &:hover {
@@ -387,7 +425,7 @@ blockquote {
             margin: 0;
             padding: 0;
             a {
-                font-size: 12px;
+                font-size: 14px;
                 line-height: 25px;
             }
         }
