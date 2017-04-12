@@ -34,31 +34,34 @@ div2[0].style.setProperty("max-width","700px");
 <script async="async" src="http://cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 {% endif %}
 
+{% if site.comments %}
 <div id="SOHUCS" sid="{{ page.date }}" ></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
-(function(){
-var appid = 'cysWdmiVA';
-var conf = 'prod_2d112b398344b3a9e778a8ad0267da49';
-var width = window.innerWidth || document.documentElement.clientWidth;
-if (width < 960) {
-window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+window.changyan.api.config({
+appid: 'cysWdmiVA',
+conf: 'prod_2d112b398344b3a9e778a8ad0267da49'
+});
+</script>
+{% endif %}
 
 <script>
 // 参考 https://github.com/fooleap/fooleap.github.io/blob/master/assets/js/main.js
 var toc = document.querySelector('.post-toc');
-toc.offsetWidth = 170;
-console.log(toc.offsetWidth)
+// toc.offsetWidth = 170;
+// console.log(toc.offsetWidth)
 var subTitles = document.querySelectorAll('.post__content h2,h3');
 
 var clientHeight = document.documentElement.clientHeight;
 if (toc) {
     function tocShow() {
         var clientWidth = document.documentElement.clientWidth;
-        var tocFixed = clientWidth / 2 - 390 - toc.offsetWidth;
-				console.log('clientWidth/2: ' + clientWidth / 2)
-				console.log('toc.offsetWidth: ' + toc.offsetWidth)
-				console.log('tocFixed: ' + tocFixed)
-        if (tocFixed < 15) {
+				// var tocFixed = clientWidth / 2 - 410 - toc.offsetWidth;
+				var tocFixed = clientWidth / 2 - 410 - 170;
+				// console.log('clientWidth/2: ' + clientWidth / 2)
+				// console.log('toc.offsetWidth: ' + toc.offsetWidth)
+				// console.log('tocFixed: ' + tocFixed)
+        if (tocFixed < -20) {
             toc.style.visibility = 'hidden';
         } else {
             toc.style.visibility = 'visible';
