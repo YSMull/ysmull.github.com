@@ -11,7 +11,7 @@
         - name: Prototype（原型）
           page: /blog/prototype_pattern
         - name: Singleton（单例）
-          page: false
+          page: /blog/singleton_pattern
 - type: 结构型
   methods:
         - name: Adapter Class/Object（适配器）
