@@ -4,14 +4,16 @@ layout: default
 <div class="pure-g">
   {% for item in site.data.cat %}
   <div class="pure-u-1 pure-u-lg-1-2 pure-u-md-1 pure-u-sm-1-1">
-    <div class="block">
+    <div class="outer_block">
+      <div class="block">
       <div class="block_tag">{{ item.item }}
         {% if item.page  %}
-        <a href="{{ item.page }}" style="font-size:0.7em">more...</a>
+        <a class="tag_text" href="{{ item.page }}" style="font-size:0.7em">more...</a>
         {% endif %}
       </div>
       {% assign block_tags =  item.tags %}
-      <ul>
+      <div class="block_content">
+        <ul>
           {% for post in site.posts %}
             {% assign show = 0 %}
             {% for post_tag in post.tags %}
@@ -32,7 +34,20 @@ layout: default
             {% endif %}
           {% endfor %}
       </ul>
+      </div>
+    </div>
     </div>
   </div>
   {% endfor %}
 </div>
+<script>
+$(".outer_block").hover3d({
+	selector: ".block",
+  sensitivity: 90
+});
+// $(".outer_block").hover3d({
+// 	selector: ".block_content",
+//   sensitivity: 100,
+//   invert: true
+// });
+</script>
