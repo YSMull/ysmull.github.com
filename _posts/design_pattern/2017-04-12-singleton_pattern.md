@@ -111,7 +111,7 @@ public final class Singleton {
 引入result中间变量，是因为大多数时候，instance已经被实例化了，这样代码对instance的访问就只有一次，《effectiv java》的作者说在他的电脑上这样做相对不引入临时变量，提高了25%的性能。
 
 ### Lazy initialization V
-参考[[2]][2]
+使用 *initialize-on-demand holder class* 参考[[2]][2]
 ```java
 public class Singleton {
     private Singleton() {}
