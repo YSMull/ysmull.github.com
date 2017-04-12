@@ -72,9 +72,9 @@
 </body>
 <script>
     var links = document.querySelectorAll( '.post__content a' );
-    console.log(window.location.host + window.location.pathname)
+    // console.log(window.location.host + window.location.pathname)
     for (var i = 0, length = links.length; i < length; i++) {
-      console.log(i + links[i].host + links[i].pathname)
+      // console.log(i + links[i].host + links[i].pathname)
         if ((links[i].host + links[i].pathname) != (window.location.host + window.location.pathname)) {
             links[i].target = '_blank';
         }
