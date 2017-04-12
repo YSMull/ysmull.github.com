@@ -129,7 +129,7 @@ public class Singleton {
 1. 如果我们要延迟加载的是instance filed，考虑使用 *dobule-checked locking*
 2. 如果我们要延迟加载的是static filed，考虑使用 *initialize-on-demand holder class*
 
-### Lazy initialization VI
+### Enum Singleton
 上面的单利模式的实现可能会被反射或者序列化攻击，我们使用enum singleton
 ```java
 public enum Singleton {
