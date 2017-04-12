@@ -17,7 +17,7 @@ tags:
 * **ConcreteBuilder** 实现`Builder`
 * **Director** 使用Builder的实例实际创建一个`Product`
 
-说明：
+## Description
 1. `Builder`处理`Director`的请求。
 2. `Client`从`Director`获取`Product`。
 3. `Builder` 和 `ConcreteBuilder` 都不应该有部件的具体业务数据，它们只负责抽象的创建过程。具体的数据只出现在`Director`。

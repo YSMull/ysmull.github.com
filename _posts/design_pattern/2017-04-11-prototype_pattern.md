@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Prototype Pattern
-date: 2017-04-10 20:05:15
+date: 2017-04-11 20:05:15
 tags:
     - design_pattern
 ---
