@@ -92,8 +92,8 @@ public class Client {
 4. 需要注意`深拷贝`和`浅拷贝`的问题。
 
 ## Reference
-1. [`sourcemaking`: prototype][1]
-2. [`howtodoinjava`: prototype-design-pattern-in-java][2]
+1. [sourcemaking: prototype][1]
+2. [howtodoinjava: prototype-design-pattern-in-java][2]
 3. [Java \'Prototype\' pattern - new vs clone vs class.newInstance][3]
 4. [cloning vs instantiating a new class][4]
 
