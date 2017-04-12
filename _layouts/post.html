@@ -38,13 +38,18 @@ div2[0].style.setProperty("max-width","700px");
 <script>
 // 参考 https://github.com/fooleap/fooleap.github.io/blob/master/assets/js/main.js
 var toc = document.querySelector('.post-toc');
+toc.offsetWidth = 170;
+console.log(toc.offsetWidth)
 var subTitles = document.querySelectorAll('.post__content h2,h3');
 
 var clientHeight = document.documentElement.clientHeight;
 if (toc) {
     function tocShow() {
         var clientWidth = document.documentElement.clientWidth;
-        var tocFixed = clientWidth / 2 - 410 - toc.offsetWidth;
+        var tocFixed = clientWidth / 2 - 390 - toc.offsetWidth;
+				console.log('clientWidth/2: ' + clientWidth / 2)
+				console.log('toc.offsetWidth: ' + toc.offsetWidth)
+				console.log('tocFixed: ' + tocFixed)
         if (tocFixed < 15) {
             toc.style.visibility = 'hidden';
         } else {
@@ -72,7 +77,9 @@ if (toc) {
                 if (document.querySelector('.active')) {
                     document.querySelector('.active').classList.remove('active');
                 }
-                document.querySelector('[href="#' + sectionIds[i] + '"').classList.add('active');
+								var queryStr = '[href="#' + sectionIds[i] + '"]';
+								// console.log(queryStr)
+                document.querySelector(queryStr).classList.add('active');
             }
         }
     }
