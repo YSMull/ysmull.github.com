@@ -28,3 +28,6 @@ permalink: /Selenium
 2. **根据Wire协议给Webdriver发送HTTP请求**
     * request和response都以Wire协议规定的**JSON格式**的字符串通信
 3. **webdriver接收到请求后再去操纵浏览器**
+
+## 附：Wire 协议图一张
+![](http://onk1k9bha.bkt.clouddn.com/2017-04-13-114724.jpg)
