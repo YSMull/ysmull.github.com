@@ -15,8 +15,10 @@ permalink: /JMeter
 先解释什么叫代理服务器，代理服务器是一个程序，运行在特定的IP地址和端口号上。
 
 1. 无代理服务器：HTTP请求直接发送出去。
+![](http://onk1k9bha.bkt.clouddn.com/2017-04-13-120507.jpg)
 
 2. 有代理服务器：HTTP请求先通过代理服务器，代理服务器再转发出去。
+![](http://onk1k9bha.bkt.clouddn.com/2017-04-13-120831.jpg)
 
 JMeter和Charles会创建一个HTTP代理服务器（HTTP Proxy Server），拦截所有从操作系统上发出的HTTP请求并记录，这就是录请求的原理。
 
