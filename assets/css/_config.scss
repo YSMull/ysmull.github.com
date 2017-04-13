@@ -64,6 +64,19 @@ color:$selection-cl;
   url('http://onk1k9bha.bkt.clouddn.com/ShadowsIntoLight.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url('http://onk1k9bha.bkt.clouddn.com/RobotoSlabLight.woff') format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url('http://onk1k9bha.bkt.clouddn.com/RobotSlabRegular.woff') format('woff');
+}
+
 
 // 参考byvoid的字体
 $body-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Lantinghei TC','Hiragino Kaku Gothic ProN','Heiti TC','MS Mincho','MingLiU',sans-serif;
