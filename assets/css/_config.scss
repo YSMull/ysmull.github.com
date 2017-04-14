@@ -35,7 +35,8 @@ color:$selection-cl;
   font-style: normal;
   font-weight: 400;
   src:
-  url('http://onk1k9bha.bkt.clouddn.com/OpenSans.woff') format('woff');
+  // url('http://onk1k9bha.bkt.clouddn.com/OpenSans.woff') format('woff');
+  url('/assets/font/OpenSans.woff') format('woff');
 }
 
 @font-face {
@@ -43,7 +44,8 @@ color:$selection-cl;
   font-style: normal;
   font-weight: 400;
   src:
-  url('http://onk1k9bha.bkt.clouddn.com/Dosis.woff') format('woff');
+  // url('http://onk1k9bha.bkt.clouddn.com/Dosis.woff') format('woff');
+  url('/assets/font/Dosis.woff') format('woff');
 }
 
 @font-face {
@@ -51,7 +53,8 @@ color:$selection-cl;
   font-style: normal;
   font-weight: 400;
   src:
-  url('http://onk1k9bha.bkt.clouddn.com/Inconsolata.woff') format('woff');
+  // url('http://onk1k9bha.bkt.clouddn.com/Inconsolata.woff') format('woff');
+  url('/assets/font/Inconsolata.woff') format('woff');
   // url('http://onk1k9bha.bkt.clouddn.com/Inconsolata.woff2') format('woff2')  /* chrome、firefox */;
 }
 
@@ -60,21 +63,28 @@ color:$selection-cl;
   font-family: 'Shadows Into Light';
   font-style: normal;
   font-weight: 400;
-  src: local('Shadows Into Light'), local('ShadowsIntoLight'),
-  url('http://onk1k9bha.bkt.clouddn.com/ShadowsIntoLight.woff') format('woff');
+  src:
+  // local('Shadows Into Light'), local('ShadowsIntoLight'),
+  url('/assets/font/ShadowsIntoLight.woff') format('woff');
+  // url('http://onk1k9bha.bkt.clouddn.com/ShadowsIntoLight.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 300;
-  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url('http://onk1k9bha.bkt.clouddn.com/RobotoSlabLight.woff') format('woff');
+  src:
+  // local('Roboto Slab Light'), local('RobotoSlab-Light'),
+  //  url('http://onk1k9bha.bkt.clouddn.com/RobotoSlabLight.woff') format('woff');
+  url('/assets/font/RobotoSlabLight.woff') format('woff');
 }
 @font-face {
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 400;
-  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url('http://onk1k9bha.bkt.clouddn.com/RobotSlabRegular.woff') format('woff');
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
+  // url('http://onk1k9bha.bkt.clouddn.com/RobotSlabRegular.woff') format('woff');
+  url('/assets/font/RobotSlabRegular.woff') format('woff');
 }
 
 
