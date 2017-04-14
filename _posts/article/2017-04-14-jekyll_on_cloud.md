@@ -35,3 +35,5 @@ server {
   }
 }
 ```
+
+http://gwokae.mewggle.com/wordpress/2010/08/%E8%B6%85%E6%98%93-%E5%85%A9%E8%A1%8C%E6%8C%87%E4%BB%A4%E6%90%9E%E5%AE%9A-linux-ssh%E7%99%BB%E5%85%A5%E5%85%8D%E5%AF%86%E7%A2%BC/
