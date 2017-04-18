@@ -12,7 +12,7 @@ tags:
 ## Intent
 >Ensure a class has only one instance, and provide a global point of access to it.
 >
->确保一个类只有一个实例，并提供一个全局访问点。
+>确保一个类只有一个实例，并提供一个全局访问点。[[1]][1]
 
 ## Implements
 ### Eager initialization
@@ -82,7 +82,7 @@ public final class Singleton {
 }
 ```
 说明：
-1. 我上面写的这种 *dobule-checked locking* 只适用于java 5+
+1. 我上面写的这种 *dobule-checked locking* [[3]][3]只适用于java 5+
 2. 假设多个线程同时调用`getInstance()`方法，首先在 *a* 处判断instance是否为null，假设大家都判断为null，然后执行到 *b* 处，只有一个线程能进入同步代码块执行 *b* 里面的代码，这个线程创建完instance实例离开同步区后，其它线程就可以一个一个的进入同步代码块了，由于volaile保证了`instance`的**可见性**，当其它线程执行到 *c* 时，会发现instance不为null了，就不会创建新实例。
 
 ### Lazy initialization IV
@@ -111,7 +111,7 @@ public final class Singleton {
 引入result中间变量，是因为大多数时候，instance已经被实例化了，这样代码对instance的访问就只有一次，《effectiv java》的作者说在他的电脑上这样做相对不引入临时变量，提高了25%的性能。
 
 ### Lazy initialization V
-使用 *initialize-on-demand holder class* 参考[[2]][2]
+使用 *initialize-on-demand holder class* [[2]][2]
 ```java
 public class Singleton {
     private Singleton() {}
@@ -145,12 +145,7 @@ public final class Singleton {
 这个方法被[[4]][4]的作者认为是单例模式最佳实践。
 
 ## Reference
-1. [Singleton pattern][1]
-2. [Initialization-on-demand holder idiom][2]
-3. [Double-checked locking][3]
-4. [Effective Java, 2nd Edition.pdf][4]
-
-[1]:https://en.wikipedia.org/wiki/Singleton_pattern
-[2]:https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom
-[3]:https://en.wikipedia.org/wiki/Double-checked_locking
-[4]:https://raw.githubusercontent.com/IMCG/books/master/books/Effective%20Java%2C%202nd%20Edition.pdf
+[1]:https://en.wikipedia.org/wiki/Singleton_pattern "Singleton pattern"
+[2]:https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom "Initialization-on-demand holder idiom"
+[3]:https://en.wikipedia.org/wiki/Double-checked_locking "Double-checked locking"
+[4]:https://raw.githubusercontent.com/IMCG/books/master/books/Effective%20Java%2C%202nd%20Edition.pdf "Effective Java, 2nd Edition.pdf"
