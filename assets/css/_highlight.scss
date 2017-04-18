@@ -10,9 +10,9 @@
     font-size: 12px;
     line-height: 15px;
     border: 1px solid rgba(145, 169, 185, 0.36);
-    font-family: $code-font;
 }
 .highlight code {
+    background-color: none;
     white-space: pre;
 }
 .highlight .hll {
