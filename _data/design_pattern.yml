@@ -1,17 +1,17 @@
 - type: 创建型
   methods:
         - name: Simple Factory（简单工厂）
-          page: /blog/simple_factory_pattern
+          page: /blog/simple_factory_pattern.html
         - name: Factory Method（工厂方法）
-          page: /blog/factory_mathod_pattern
+          page: /blog/factory_mathod_pattern.html
         - name: Abstract Factory（抽象工厂）
-          page: /blog/abstract_factory_pattern
+          page: /blog/abstract_factory_pattern.html
         - name: Builder（建造者/生成器）
-          page: /blog/builder_pattern
+          page: /blog/builder_pattern.html
         - name: Prototype（原型）
-          page: /blog/prototype_pattern
+          page: /blog/prototype_pattern.html
         - name: Singleton（单例）
-          page: /blog/singleton_pattern
+          page: /blog/singleton_pattern.html
 - type: 结构型
   methods:
         - name: Adapter Class/Object（适配器）
