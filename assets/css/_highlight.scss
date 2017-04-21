@@ -2,18 +2,17 @@
     overflow-x: scroll;
     overflow-y: scroll;
     max-height: 500px;
-    // background: rgba(150, 83, 0, 0.08);
+    background-color: #eff0f1;
     padding: 10px;
     padding-left: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 12px;
     line-height: 15px;
-    border: 1px solid rgba(145, 169, 185, 0.36);
-}
-.highlight code {
-    background-color: none;
-    white-space: pre;
+    code {
+       font-family: $code-font;
+    }
+    // border: 1px solid rgba(145, 169, 185, 0.36);
 }
 .highlight .hll {
     background-color: #EFEFEF
