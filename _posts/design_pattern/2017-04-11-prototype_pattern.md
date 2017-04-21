@@ -10,9 +10,9 @@ tags:
 {:toc}
 
 ## Quote
-* >Prototype design pattern is used in scenarios where application needs to create a number of instances of a class, which has almost same state or differs very little.
+* >Prototype design pattern is used in scenarios where application needs to create a number of instances of a class, which has almost same state or differs very little.[[2]][2]
 
-* >Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.
+* >Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.[[1]][1]
 
 * >当创建给定类的实例很昂贵或很复杂时使用原型模式。---《Head First设计模式》
 
@@ -92,12 +92,8 @@ public class Client {
 4. 需要注意`深拷贝`和`浅拷贝`的问题。
 
 ## Reference
-1. [sourcemaking: prototype][1]
-2. [howtodoinjava: prototype-design-pattern-in-java][2]
-3. [Java \'Prototype\' pattern - new vs clone vs class.newInstance][3]
-4. [cloning vs instantiating a new class][4]
 
-[1]:https://sourcemaking.com/design_patterns/prototype
-[2]:http://howtodoinjava.com/design-patterns/creational/prototype-design-pattern-in-java
-[3]:http://stackoverflow.com/questions/2427317/java-prototype-pattern-new-vs-clone-vs-class-newinstance
-[4]:http://stackoverflow.com/questions/3707612/cloning-vs-instantiating-a-new-class
+[1]:https://sourcemaking.com/design_patterns/prototype "sourcemaking: prototype"
+[2]:http://howtodoinjava.com/design-patterns/creational/prototype-design-pattern-in-java "howtodoinjava: prototype-design-pattern-in-java"
+[3]:http://stackoverflow.com/questions/2427317/java-prototype-pattern-new-vs-clone-vs-class-newinstance "Java 'Prototype' pattern - new vs clone vs class.newInstance"
+[4]:http://stackoverflow.com/questions/3707612/cloning-vs-instantiating-a-new-class "cloning vs instantiating a new class"
