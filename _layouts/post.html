@@ -58,8 +58,8 @@ if (toc) {
         var clientWidth = document.documentElement.clientWidth;
 				// var tocFixed = clientWidth / 2 - 410 - toc.offsetWidth;
 				var tocFixed = clientWidth / 2 - 370 - toc.offsetWidth;
-				console.log(tocFixed)
-				console.log(toc.offsetWidth)
+				// console.log(tocFixed)
+				// console.log(toc.offsetWidth)
 				// console.log('clientWidth/2: ' + clientWidth / 2)
 				// console.log('toc.offsetWidth: ' + toc.offsetWidth)
 				// console.log('tocFixed: ' + tocFixed)
@@ -108,7 +108,12 @@ if (toc) {
 (function(){
 
 		var links = document.querySelectorAll('a');
-		var reftag = document.querySelectorAll('h2')[document.querySelectorAll('h2').length - 1];
+		var reftag = document.querySelectorAll('h2');
+		if (reftag.length == 0) {
+			return;
+		} else {
+			reftag = reftag[document.querySelectorAll('h2').length - 1];
+		}
     if (reftag.innerHTML === '参考资料' || reftag.innerHTML.toString().toLowerCase() === 'reference' ) {
         reftag.insertAdjacentHTML('afterend', '<ol id="refs"></ol>');
     }
@@ -116,8 +121,7 @@ if (toc) {
         if (links[i].hostname != location.hostname && /^javascript/.test(links[i].href) === false) {
             var numText = links[i].innerHTML;
             var num = numText.substring(1, numText.length - 1);
-						console.log(numText)
-						console.log(num)
+
             if (!isNaN(num) && num) {
                 var note = 'note-' + num;
                 var ref = 'ref-' + num;
@@ -142,7 +146,6 @@ if (toc) {
 				return a.id.split('-')[1].localeCompare(b.id.split('-')[1])
     }
 		list = $('#refs > li').sort(sort_by_name);
-		console.log(list)
 		for (var i = 0; i < list.length; i++) {
         list[i].parentNode.appendChild(list[i]);
     }
