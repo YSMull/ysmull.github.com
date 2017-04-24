@@ -87,22 +87,31 @@ color:$selection-cl;
   url('/assets/font/RobotSlabRegular.woff') format('woff');
 }
 
+$general: '微软雅黑','Ubuntu', Arial, Helvetica, sans-serif;
 
 // 参考byvoid的字体
-$body-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Lantinghei TC','Hiragino Kaku Gothic ProN','Heiti TC','MS Mincho','MingLiU',sans-serif;
-$post-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Hiragino Sans GB','STHeiti','SimSun',sans-serif;
-$post-h: 'Dosis','Helvetica Neue','Arial','Verdana','Songti SC','STSong','SimSun',serif;
+// $body-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Lantinghei TC','Hiragino Kaku Gothic ProN','Heiti TC','MS Mincho','MingLiU',sans-serif;
+// $post-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Hiragino Sans GB','STHeiti','SimSun',sans-serif;
+// $post-h: 'Dosis','Helvetica Neue','Arial','Verdana','Songti SC','STSong','SimSun',serif;
+$body-font: $general;
+$post-font: $general;
+$post-h: $general;
+
+// $title-font: 'Roboto Slab';
+$title-font: $general;
+// $blockquote-font: 'Inconsolata';
+$blockquote-font: $general;
+// $algorithm_id-font: 'Inconsolata';
+$algorithm_id-font: $general;
+// $date-font: 'Inconsolata';
+$date-font: $general;
 
 
-$title-font: 'Roboto Slab';
-$blockquote-font: 'Inconsolata';
-// $content-code-font: 'Roboto Slab';
 $block-font: $post-font;
-$algorithm_id-font: 'Inconsolata';
 $logo-font: 'Shadows Into Light';
 $menu-font: $body-font;
-$block-tag-font: 'Roboto Slab';
+// $block-tag-font: 'Roboto Slab';
+$block-tag-font: $general;
 $code-font: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
-$date-font: 'Inconsolata';
 
 $about_font: $post-font;

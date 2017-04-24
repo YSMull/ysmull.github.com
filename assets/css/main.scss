@@ -117,13 +117,16 @@ blockquote {
 .header {
 	// justify-content: space-between;
 	// align-items: baseline;
+	// margin-left: 20px;
 	padding-bottom: 6px;
-	@media screen and (max-width:20.5em) {
+	@media screen and (max-width:600px) {
     padding-bottom: 0px;
+		margin-left: -20px;
   }
 	text {
-		font-size: 2.3em;
-		font-family: $logo-font;
+		font-size: 2.2em;
+		font-weight: 300;
+		// font-family: $logo-font;
 		margin-bottom: 0;
 	}
   .menu {
@@ -186,7 +189,12 @@ blockquote {
   .date {
     padding-right: 5px;
     font-family: $date-font;
-    font-weight: 200;
+    font-weight: normal;
+		font-size: 13px;
+		display: block;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
   }
 	.algorithm_id {
 		border: 1px solid rgba(39, 39, 39, 0.43);
@@ -222,15 +230,14 @@ blockquote {
 	}
 	&__title {
 		display: block;
-		margin-top: 20px;
-		margin-bottom: 6px;
+		margin-top: 15px;
+		// margin-bottom: 6px;
 		h1 {
 			font-family: $title-font;
+			color: #ac1e06;
+    	font-weight: normal;
 			display: inline-block;
 			font-size: 1.6em;
-			font-weight: 400;
-			font-size: 1.7em;
-    	color: #0a5365;
 			padding-right: 10px;
 			padding-bottom: 2px;
 			text-decoration: none;
@@ -238,8 +245,9 @@ blockquote {
 	}
 	&__date {
 		p {
-			font-size: 1.1em;
+			font-size: 0.7em;
 			font-family: $date-font;
+			border-bottom: 1px solid #ccc;
 			// font-style: italic;
 		}
 	}
@@ -266,26 +274,34 @@ blockquote {
 			font-family: $post-h;
 		}
 		h2 {
-			font-size: 20px;
-			font-weight: 600;
-			margin-top: 10px;
-			margin-bottom: 4px;
+			// font-size: 20px;
+			// font-weight: 600;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			font-size: 1.6em;
+			color: #ac1e06;
+			font-weight: normal;
 			font-family: $post-h;
 		}
 
 		h3 {
-			font-size: 18px;
-			font-weight: 600;
-			margin-top: 10px;
+			// font-size: 18px;
+			// font-weight: 600;
+			margin-top: 5px;
 			margin-bottom: 5px;
+			font-size: 1.4em;
+			color: #ac1e06;
+    	font-weight: normal;
 			font-family: $post-h;
 		}
 
 		h4 {
-			font-size: 16px;
-			font-weight: 600;
-			margin-top: 10px;
+			margin-top: 5px;
 			margin-bottom: 5px;
+			font-size: 1.2em;
+			color: #ac1e06;
+    	font-weight: normal;
+			font-family: $post-h;
 			font-family: $post-h;
 		}
 
