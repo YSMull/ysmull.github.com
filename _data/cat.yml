@@ -11,6 +11,10 @@
   tags:
        -java
        -jvm
+- item: Java Collections Framwork
+  page: /JCF
+  tags:
+       -JCF
 - item: Database
   tags:
        -database

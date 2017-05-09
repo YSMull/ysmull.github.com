@@ -1,6 +1,6 @@
 ---
 layout: booknote
-permalink: /java_performance
+permalink: /java_performance.html
 ---
 
 # 123

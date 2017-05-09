@@ -1,6 +1,5 @@
 ---
 layout: default
-comments: true
 ---
 <script >
 var div1 = document.getElementsByClassName('wrapper');
@@ -29,13 +28,55 @@ div2[0].style.setProperty("max-width","700px");
   <div class="post__content"?>
       {{ content }}
   </div>
+	<!-- <div class="post__comment">
+		<form id="form1" class="pure-form">
+	    <fieldset>
+					<input id="nickName" type="text" placeholder="昵称">
+	        <input id="email" type="email" placeholder="邮箱">
+	        <button id="content" type="text" class="pure-button pure-button-primary" onclick="comment()">发表</button>
+	    </fieldset>
+			<fieldset>
+					<textarea class="pure-input-1" placeholder="谢谢评论"></textarea>
+			</fieldset>
+		</form>
+	</div>
 </div>
+
+<script type="text/javascript">
+function comment() {
+	$.ajax({
+    type: 'POST',
+    url: 'http://localhost:8080/comment',
+    data: {
+			article_id: '{{ page.date }}' + '&{{ page.title }}',
+			nickName: $('#nickName').val(),
+			email: $('#email').val(),
+			comment: $('#content').text(),
+			date: new Date().getTime()
+		},
+    // type of data we are expecting in return:
+    dataType: 'json',
+    timeout: 300,
+    success: function(data){
+	    // Supposing this JSON payload was received:
+	    //   {"project": {"id": 42, "html": "<div>..." }}
+	    // append the HTML to context object.
+	    alert("sucess")
+    },
+    error: function(xhr, type){
+	    alert('Ajax error!')
+    }
+  })
+}
+</script> -->
+
 {% if page.math %}
 <script async="async" src="cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 {% endif %}
 
-{% if site.comments %}
-<div id="SOHUCS" sid="{{ page.date }}" ></div>
+{% if page.comments %}
+<!--PC版-->
+<div id="SOHUCS" sid="{{ page.date }}"></div>
 <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
 window.changyan.api.config({
