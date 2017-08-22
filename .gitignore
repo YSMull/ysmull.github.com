@@ -4,3 +4,4 @@ _site/
 .sass-cache/
 nohup.out
 node_modules/
+.vscode
