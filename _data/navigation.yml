@@ -1,17 +1,12 @@
-# - title: Home
-#   url: /
-
 - title: Design Pattern
   url: /design_pattern
 
-- title: Reading
-  url: /reading
+- title: Reading Notes
+  url: /reading_notes
 
 - title: Algorithm
   url: /algorithm
 
 - title: JCF
   url: /JCF
-#
-# - title: Project
-#   url: /project
+

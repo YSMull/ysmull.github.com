@@ -9,6 +9,7 @@ baidu_verification: false
 comments: false
 
 timezone: +0800
+
 # File management
 include: [".htaccess"]
 exclude: ["README.md", "assets/node_modules/", "assets/entry.js", "assets/webpack.config.js", "assets/css/"]
@@ -16,7 +17,7 @@ exclude: ["README.md", "assets/node_modules/", "assets/entry.js", "assets/webpac
 author:
     name: 简单小煜
     email: ysmull@aliyun.com
-    link: ysmull.me
+    link: ysmull.cn
 future: true
 # Sass
 # sass:

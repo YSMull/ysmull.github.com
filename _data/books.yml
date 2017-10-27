@@ -1,8 +1,11 @@
-- title: 深入理解 Java 虚拟机
-  url: /mastering_jvm
+# - title: 深入理解 Java 虚拟机
+#   url: /mastering_jvm
 
 - title: SQL 基础教程
   url: /SQL_Basic_tutorial
 
-- title: Java 性能优化权威指南
-  url: /java_performance
+# - title: Java 性能优化权威指南
+#   url: /java_performance
+
+- title: 微服务设计
+  url: /micro_service
