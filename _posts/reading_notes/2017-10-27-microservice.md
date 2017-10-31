@@ -25,7 +25,7 @@ permalink: /micro_service
 
 ### 1.2.1 技术异构性
 
-![](http://onk1k9bha.bkt.clouddn.com/2017-10-26-084412.png)
+![](http://onk1k9bha.bkt.clouddn.com/2017-10-26-084412.png){: width="500px"}
 
 ### 1.2.2 弹性
 
@@ -38,7 +38,8 @@ permalink: /micro_service
 
 单块服务如果只是其中一小部分有性能问题，那么也得对整个服务进行扩展。
 微服务则可以对需要扩展的服务进行扩展。
-![](http://onk1k9bha.bkt.clouddn.com/2017-10-26-091627.png)
+
+![](http://onk1k9bha.bkt.clouddn.com/2017-10-26-091627.png){: width="500px"}
 
 ### 1.2.4 简化部署
 
@@ -99,7 +100,8 @@ SOA(Service-Oriented Architecture)是一种**设计方法**，其中包含多个
 ## 4.3 共享数据库
 
 如果其它服务想从一个服务获取信息，可以直接访问数据库。
-![](http://onk1k9bha.bkt.clouddn.com/2017-10-31-065242.png)
+
+![](http://onk1k9bha.bkt.clouddn.com/2017-10-31-065242.png){: width="500px"}
 
 ## 4.4 同步与异步
 

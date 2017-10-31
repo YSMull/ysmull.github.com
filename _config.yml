@@ -34,7 +34,7 @@ kramdown:
   toc_levels:     '2,3'
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
   # input: GFM
-#   hard_wrap: false
+  hard_wrap: true
 # highlighter: rouge
 
 collections:
