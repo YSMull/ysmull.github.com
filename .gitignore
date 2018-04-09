@@ -5,3 +5,4 @@ _site/
 nohup.out
 node_modules/
 .vscode
+package-lock.json

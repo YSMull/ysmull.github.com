@@ -9,3 +9,6 @@ require('./css/grids-responsive-min.css')
 // require('./css/bootstrap.min.css')
 // require('./css/bootstrap-theme.min.css')
 require('./css/main.scss')
+
+require('./disqus/iDisqus.min.css')
+iDisqus = require('./disqus/iDisqus.min.js')

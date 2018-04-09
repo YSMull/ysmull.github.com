@@ -12,7 +12,7 @@ tags:
 ### 实践
 工厂方法模式需要使用继承。在《大话数据结构》里使用的是继承一个只含有工厂方法的接口。《Head First 设计模式》里是继承一个抽象类，这个类不仅包括未实现的抽象工厂方法，而且实现了操纵产品的方法。这个抽象类就是产品的使用者。我们使用后者来讲述这个设计模式。
 
-首先，Product同[simple factory pattern](/blog/simple_factory_pattern)。
+首先，Product同[simple factory pattern](/blog/simple_factory_pattern.html)。
 然后定义一个抽象的基类，其中`protected abstract Product getProduct(String type)`就是**工厂方法**，它将在子类被实现。
 ```java
 public abstract class AbstractCreator {

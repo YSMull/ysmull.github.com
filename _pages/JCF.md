@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Java Collections Framework"
-comments: true
+comments: false
 
 ---
 

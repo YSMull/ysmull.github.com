@@ -1,18 +1,17 @@
 # Blog settings
 permalink: /blog/:title.html
-host: 0.0.0.0
+# host: 0.0.0.0
 
 # My variables
 name: YSMull
 description: YSMull的个人博客
 baidu_verification: false
-comments: false
 
 timezone: +0800
 
 # File management
 include: [".htaccess"]
-exclude: ["README.md", "assets/node_modules/", "assets/entry.js", "assets/webpack.config.js", "assets/css/"]
+exclude: ["README.md", "assets/node_modules/", "assets/entry.js", "assets/webpack.config.js", "assets/css/", "./upload.sh"]
 
 author:
     name: 简单小煜
@@ -41,3 +40,7 @@ collections:
    pages:
      output: true
      permalink: /:path/
+
+url: "https://ysmull.cn"
+plugins:
+  - jekyll-sitemap
