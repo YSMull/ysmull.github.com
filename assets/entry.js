@@ -1,14 +1,11 @@
-// $ = jQuery = require('./node_modules/jquery/dist/jquery.min.js')
-// require('./node_modules/bootstrap/dist/css/bootstrap.min.css')
-// require('./node_modules/bootstrap/dist/js/bootstrap.min.js')
 $ = require('./js/zepto.min.js')
-// require('./js/jquery.hover3d.min.js')
-// require('./css/csshake.min.css')
+_ = require('./js/lodash.min.js')
+readHis = require('./js/reading.js')
+
 require('./css/pure.min.css')
 require('./css/grids-responsive-min.css')
-// require('./css/bootstrap.min.css')
-// require('./css/bootstrap-theme.min.css')
 require('./css/main.scss')
 
 require('./disqus/iDisqus.min.css')
 iDisqus = require('./disqus/iDisqus.min.js')
+

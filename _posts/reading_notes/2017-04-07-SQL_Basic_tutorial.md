@@ -1,6 +1,6 @@
 ---
 layout: booknote
-permalink: /SQL_Basic_tutorial.html
+permalink: /SQL_Basic_tutorial
 ---
 
 >看这本书的目的是温故标准 SQL 基础知识。
