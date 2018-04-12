@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Java Collections Framework"
-comments: false
-
 ---
 
 | Interface |  Hash Table  | Resizable Array | Balanced Tree |   Linked List   | Hash Table + Linked List |
