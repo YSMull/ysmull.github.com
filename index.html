@@ -14,7 +14,11 @@ layout: default
       {% assign block_tags =  item.tags %}
       <div class="block_content">
         <ul>
+          {% assign max_show_nums = 0 %}
           {% for post in site.posts %}
+            {% if max_show_nums >= 5 %}
+              {% break %}
+            {% endif %}
             {% assign show = 0 %}
             {% for post_tag in post.tags %}
                 {% if block_tags contains post_tag %}
@@ -23,6 +27,7 @@ layout: default
                 {% endif %}
             {% endfor %}
             {% if show == 1 %}
+              {% assign max_show_nums = max_show_nums | plus: 1 %}
               <li class="pure-g">
                 <div class="pure-u-6-24 pure-u-md-4-24 pure-u-lg-5-24">
                   <span class="date">{{ post.date | date:"%Y-%m-%d" }}</span>
