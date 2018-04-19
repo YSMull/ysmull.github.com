@@ -1,6 +1,6 @@
 @import "_reset.scss";
 @import "_config.scss";
-@import "_highlight.scss";
+// @import "_highlight.scss";
 
 
 body {
@@ -368,7 +368,7 @@ blockquote {
 		code {
 	    font-size: 90%;
 			font-family: $post-font;
-			background-color: #eff0f1;
+			// background-color: #eff0f1;
 		}
 		.ref {
 			vertical-align: super;
@@ -463,6 +463,7 @@ blockquote {
   	font-family: $code-font;
     background: none;
 		border: none;
+		color: #333;
     white-space: pre;
 		font-size: 13px;
 	}

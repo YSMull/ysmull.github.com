@@ -1,5 +1,5 @@
-# - title: 深入理解 Java 虚拟机
-#   url: /mastering_jvm
+- title: 深入理解 Java 虚拟机
+  url: /mastering_jvm
 
 - title: SQL 基础教程
   id: sql_basic_tutorial
@@ -9,15 +9,6 @@
   id: java_performance
   url: /java_performance
 
-- title: 微服务设计
-  id: micro_service
-  url: /micro_service
-  page: 1000
-  progress:
-    - '[6,10]'
-    - '[100,100]'
-    - '[1,4]'
-
 - title: 计算机程序的构造和解释
   id: sicp
   url: /sicp
@@ -25,4 +16,20 @@
   progress:
     - '[1,31]'
 
+- title: 魔力Haskell
+  id: magic_haskell
+  url: /magic_haskell
+  page: 354
+  progress:
+    - '[1, 22]'
 
+- title: 领域驱动设计
+  id: DDD
+  url: /DDD
+
+- title: 深入浅出Node.js
+  id: nodejs_easy_to_understand
+  url: /nodejs_easy_to_understand
+  page: 305
+  progress:
+    - '[-10,-20]'

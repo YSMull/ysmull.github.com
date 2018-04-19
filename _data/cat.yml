@@ -3,6 +3,11 @@
   tags:
         -fp
 
+- item: Node & JavaScript
+  tags:
+       -javascript
+       -node
+
 - item: Java&JVM
   tags:
        -java
@@ -12,6 +17,10 @@
   tags:
        -database
        -sql
+
+- item: Framework
+  tags:
+       -framework
 
 - item: Multithreading
   tags:
@@ -32,10 +41,6 @@
   page: /JCF
   tags:
        -JCF
-
-- item: Framework
-  tags:
-       -framework
 
 - item: Other
   tags:

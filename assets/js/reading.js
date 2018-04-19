@@ -36,8 +36,8 @@
   readHis.prototype.create = function (target, page, readHistory) {
     let pg = [];
     readHistory.forEach(a => {
-      let p = Math.min(_.min(a), page)
-      let q = Math.min(_.max(a), page)
+      let p = Math.max(Math.min(_.min(a), page),1)
+      let q = Math.max(Math.min(_.max(a), page),1)
       pg = pg.concat(_.range(p, q + 1))
     });
     pg = _.uniqBy(_.sortBy(pg));

@@ -6,6 +6,9 @@ require('./css/pure.min.css')
 require('./css/grids-responsive-min.css')
 require('./css/main.scss')
 
-require('./disqus/iDisqus.min.css')
-iDisqus = require('./disqus/iDisqus.min.js')
+require('./plugins/prism/prism.js')
+require('./plugins/prism/prism.css')
 
+require('./plugins/disqus/iDisqus.min.css')
+iDisqus = require('./plugins/disqus/iDisqus.min.js')
+// clickEval = require('./js/scheme.js')

@@ -27,13 +27,19 @@ future: true
 # Markdown
 markdown: kramdown
 kramdown:
-  syntax_highlighter: rouge
+  syntax_highlighter: none
   auto_ids:       true
   auto_id_prefix: 'id-'
   toc_levels:     '2,3'
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
-  # input: GFM
+  input: GFM
   hard_wrap: true
+  syntax_highlighter_opts:
+      disable : true
+  # syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    # css_class: 'acc'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
 # highlighter: rouge
 
 collections:
