@@ -28,6 +28,11 @@ div2[0].style.setProperty("max-width","700px");
   <div class="post__content"?>
       {{ content }}
   </div>
+  <div style="border-top: 1px solid #66666666;margin-top: 15px;margin-bottom: 15px;"></div>
+  <div>
+    <button class="pure-button pure-button-primary" onclick="expand_comment()">评论</button>
+    <span style="font-size: 14px;color: #7f919e;">感谢指教！</span>
+  </div>
   <div id="comment"></div>
 {% if page.math %}
 <script async="async" src="//cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
@@ -139,4 +144,52 @@ if (toc) {
     }
 
 })();
+</script>
+
+<script>
+
+    var head = document.head,
+    site = {
+        home: head.dataset.home,
+        api: head.dataset.api,
+        img: head.dataset.img,
+        tongji: head.dataset.tongji,
+        analytics: head.dataset.analytics,
+        emoji: '//assets-cdn.github.com/images/icons/emoji/unicode'
+    },
+    page = {
+        layout: head.dataset.layout,
+        title: head.dataset.title,
+        url: location.pathname,
+        // desc: document.querySelector('[name="description"]').content,
+        id: head.dataset.id,
+        category: head.dataset.category,
+        // tags: head.dataset.tags.split(',')
+    },
+    browser = {
+        macos: /Mac/i.test(navigator.platform),
+        windows: /Win/i.test(navigator.platform),
+        // mobile: /AppleWebKit.*Mobile.*/i.test(ua),
+        // wechat: /MicroMessenger/i.test(ua),
+    };
+
+    function expand_comment() {
+        var disq = new iDisqus('comment', {
+            forum: 'ysmull',
+            site: 'https://ysmull.cn',
+            api: 'https://disqus.ysmull.cn/api/',
+            title:  page.title,
+            url: page.url,
+            mode: 3,
+            timeout: 3000,
+            // popular: document.getElementById('popular-posts'),
+            slug: page.url.slice(1).split('.')[0],
+            init: true,
+            toggle: 'comment-toggle',
+            sort: 'newest',
+            emoji_path: 'https://assets.github.com/images/icons/emoji/unicode/',
+            emoji_preview: true,
+            badge: '博主'
+        });
+    }
 </script>
