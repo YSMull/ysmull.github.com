@@ -20,6 +20,20 @@
     .outer-bar .inner-bar:hover {
       background-color: #3e999f61 !important;
     }
+    .inner-bar:hover .reading-progress {
+        display: block;
+    }
+    .reading-progress {
+        display: none;
+        background: #7f919e47;
+        margin-left: 10px;
+        padding: 5px;
+        position: fixed;
+        z-index: 1000;
+        width:auto;
+        height:auto;
+        font-size: 12px;
+    }
     `
     head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
@@ -79,12 +93,17 @@
       let percent = res[i] / page * 100;
       let sp = read_log[i][0]
       let ep = read_log[i][1]
+      let tooltip = document.createElement('span');
+      tooltip.className = 'reading-progress'
       if (percent > 0) {
-        b.title = '已阅读:第' + (sp != ep ? (sp+ '~' + ep) : sp) + '面';
+        // b.title = '已阅读:第' + (sp != ep ? (sp+ '~' + ep) : sp) + '面';
+        tooltip.innerText = '已阅读:第' + (sp != ep ? (sp+ '~' + ep) : sp) + '面';
+
         b.style.backgroundColor = "#2db7f5"
         b.style.width = percent + "%"
       } else {
-        b.title = '未阅读:第' + (sp != ep ? (sp+ '~' + ep) : sp) + '面';
+        // b.title = '未阅读:第' + (sp != ep ? (sp+ '~' + ep) : sp) + '面';
+        tooltip.innerText = '未阅读:第' + (sp != ep ? (sp+ '~' + ep) : sp) + '面';
         if (-percent <= 0.2) {
           b.style.backgroundColor = "#928f8f"
         } else {
@@ -92,7 +111,21 @@
         }
         b.style.width = -percent + "%"
       }
-      barlist.appendChild(b)
+      b.appendChild(tooltip);
+      barlist.appendChild(b);
+    }
+    document.addEventListener('mousemove', fn, false);
+    function fn(e) {
+        debugger
+        console.log(e)
+        console.log("c:",e.clientX,e.clientY)
+        console.log("p:",e.pageX, e.pageY)
+        console.log("e:",e.offsetX, e.offsetY)
+        var tooltip = document.querySelectorAll('.reading-progress');
+        for (var i=tooltip.length; i--;) {
+            tooltip[i].style.left = e.clientX + 'px';
+            tooltip[i].style.top = e.clientY + 10 + 'px';
+        }
     }
   }
 
