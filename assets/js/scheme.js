@@ -223,6 +223,7 @@
   }
 
   function Str(obj) {
+    if (obj == undefined) return "";
     if (obj == null) return "#null";
     if (obj.Str) return obj.Str();
     var c = obj.constructor, r;
@@ -929,6 +930,7 @@
     return s;
   }
   TopEnv['rnd'] = function (list) { return Math.random(); }
+  TopEnv['current-milliseconds'] = function (list) {return new Date().getTime(); }
   TopEnv['string->number'] = function (list) {
     return list.cdr.car ? parseInt(list.car, list.cdr.car) : parseFloat(list.car);
   }
@@ -1049,7 +1051,7 @@
   TopEnv['trace'] = function (list) { trace = list.car.valueOf(); }
   TopEnv['read'] = function (list) { return TopParser.getObject(); }
   TopEnv['write'] = function (list) { printLog(list.car.Str(), true); }
-  TopEnv['newline'] = function (list) { printLog(''); }
+  TopEnv['newline'] = function (list) { printLog(' '); }
   TopEnv['write-char'] =
     TopEnv['display'] = function (list) {
       printLog((list.car instanceof Char) ? list.car.value :
