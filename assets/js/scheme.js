@@ -1051,12 +1051,16 @@
   TopEnv['trace'] = function (list) { trace = list.car.valueOf(); }
   TopEnv['read'] = function (list) { return TopParser.getObject(); }
   TopEnv['write'] = function (list) { printLog(list.car.Str(), true); }
-  TopEnv['newline'] = function (list) { printLog(' '); }
+  TopEnv['newline'] = function (list) { printLog('',false); }
   TopEnv['write-char'] =
     TopEnv['display'] = function (list) {
       printLog((list.car instanceof Char) ? list.car.value :
         ((typeof (list.car) == 'string') ? list.car : Str(list.car)), true);
     }
+  TopEnv['displayln'] = function (list) {
+    printLog((list.car instanceof Char) ? list.car.value :
+      ((typeof (list.car) == 'string') ? list.car : Str(list.car)), false);
+  }
 
   TopEnv['eof-object?'] =
     TopEnv['js-null?'] = function (list) { return list.car == null; }

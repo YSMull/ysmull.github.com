@@ -366,9 +366,15 @@ blockquote {
 			padding-left: 40px;
 		}
 		code {
-	    font-size: 90%;
 			font-family: $post-font;
 			// background-color: #eff0f1;
+		}
+		pre code {
+			font-family: $code-font;
+			background: none;
+			border: none;
+			color: #333;
+			white-space: pre;
 		}
 		.ref {
 			vertical-align: super;
@@ -458,16 +464,6 @@ blockquote {
     }
 }
 
-.highlight {
-	code {
-  	font-family: $code-font;
-    background: none;
-		border: none;
-		color: #333;
-    white-space: pre;
-		font-size: 13px;
-	}
-}
 
 .about {
 
