@@ -10,8 +10,22 @@ baidu_verification: false
 timezone: +0800
 
 # File management
-include: [".htaccess"]
-exclude: ["README.md", "assets/node_modules/", "assets/entry.js", "assets/webpack.config.js", "assets/css/", "./upload.sh"]
+exclude: [
+  "README.md",
+  "assets/node_modules/",
+  "assets/entry.js",
+  "assets/webpack.config.js",
+  "assets/css/",
+  "assets/plugins",
+  "assets/package.json",
+  "assets/font",
+  "./upload.sh",
+  "CNAME"
+]
+include: [
+  "assets/build",
+  "assets/js"
+]
 
 author:
     name: 简单小煜

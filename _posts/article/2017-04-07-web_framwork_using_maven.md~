@@ -318,7 +318,7 @@ tags:
 </bean>
 ```
 `x-web`的目录结构：
-```
+```text
 x-web
 ├── src
 │   ├── main

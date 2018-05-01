@@ -24,7 +24,7 @@ tags:
 ![](http://7xpx1g.com1.z0.glb.clouddn.com/16-5-30/27094952.jpg)
 爬取结果：
 
-```
+```text
 ApplicationsInfo [path=/, version=None specified, running=true, sessions=0]
 ApplicationsInfo [path=/docs, version=None specified, running=true, sessions=0]
 ApplicationsInfo [path=/examples, version=None specified, running=true, sessions=0]
@@ -39,7 +39,7 @@ ApplicationsInfo [path=/manager, version=None specified, running=true, sessions=
 ![](http://7xpx1g.com1.z0.glb.clouddn.com/16-5-30/7382891.jpg)
 爬取结果：
 
-```
+```text
 ServerInfo [tomcatVersion=Apache Tomcat/7.0.56, jvmVersion=1.8.0_77-b03, jvmVendor=Oracle Corporation, osName=Windows 10, osVersion=10.0, osArchitecture=x86, hostName=DESKTOP-N07ESK1, ipAddress=192.168.32.43]
 ```
 
@@ -49,7 +49,7 @@ ServerInfo [tomcatVersion=Apache Tomcat/7.0.56, jvmVersion=1.8.0_77-b03, jvmVend
 ![](http://7xpx1g.com1.z0.glb.clouddn.com/16-5-30/92063734.jpg)
 
 
-```
+```text
 MemoryInfo [memoryPool=Eden Space, type=Heap memory, initial=4.31 MB, total=11.68 MB, maximum=68.31 MB, used=9.29 MB (13%)]
 MemoryInfo [memoryPool=Survivor Space, type=Heap memory, initial=0.50 MB, total=1.43 MB, maximum=8.50 MB, used=1.43 MB (16%)]
 MemoryInfo [memoryPool=Tenured Gen, type=Heap memory, initial=10.68 MB, total=29.07 MB, maximum=170.68 MB, used=20.62 MB (12%)]

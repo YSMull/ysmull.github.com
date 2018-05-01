@@ -1,13 +1,21 @@
-- title: 深入理解 Java 虚拟机
-  url: /mastering_jvm
+- title: JavaScript 函数式编程
+  id: jsfp
+  url: /jsfp
+  page: 199
+  progress:
+    - '[1,1]'
 
-- title: SQL 基础教程
-  id: sql_basic_tutorial
-  url: /SQL_Basic_tutorial
+- title: ES6 标准入门
+  id: es6_tutorial
+  url: es6-tutorial
+  page: 678
+  progress: '[0,0]'
 
-- title: Java 性能优化权威指南
-  id: java_performance
-  url: /java_performance
+- title: 编程语言实现模式
+  id: language_implementation_patterns
+  url: /language_implementation_patterns
+  page: 358
+  progress: '[1,43]'
 
 - title: 计算机程序的构造和解释
   id: sicp
@@ -26,10 +34,13 @@
 - title: 领域驱动设计
   id: DDD
   url: /DDD
+  page: 349
+  progress:
+    - '[0, 0]'
 
 - title: 深入浅出Node.js
   id: nodejs_easy_to_understand
   url: /nodejs_easy_to_understand
   page: 305
   progress:
-    - '[-10,-20]'
+    - '[0, 0]'

@@ -71,7 +71,7 @@ print _serverinfo.text
 
 输出为：
 
-```
+```text
 OK - Listed applications for virtual host localhost
 /:running:0:ROOT
 /examples:running:0:examples
