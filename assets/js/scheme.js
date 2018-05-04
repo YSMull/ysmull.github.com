@@ -161,9 +161,9 @@
 
       if (!isNaN(n)) {
         return n.valueOf();
-      } else if (t == '#f' || t == '#F') {
+      } else if (t == '#f' || t == '#F' || t == 'False' || t == 'false') {
         return false;
-      } else if (t == '#t' || t == '#T') {
+      } else if (t == '#t' || t == '#T' || t == 'True' || t == 'true') {
         return true;
       } else if (t.toLowerCase() == '#\\newline') {
         return getChar('\n');
@@ -184,7 +184,9 @@
   //
 
   Boolean.prototype.Str = function () {
-    return this.valueOf() ? '#t' : '#f';
+    // return this.valueOf() ? '#t' : '#f';
+    // 修改scheme默认的true和false输出
+    return this.valueOf() ? 'true' : 'false';
   }
 
   Char.prototype.Str = function () {
