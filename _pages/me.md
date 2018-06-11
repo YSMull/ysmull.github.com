@@ -2,7 +2,7 @@
 layout: about
 ---
 
-我是 YSMull，目前华中科技大学软件学院研二在读。
+我是 YSMull，目前就职于网易。
 
 >**在实战中锻炼自己**
 >
@@ -12,7 +12,7 @@ layout: about
 
 
 
-<p><strong>Email</strong>:<span class="dynamic-email">lfzhyy@nyvlha.pbz</span></p>
+<p><strong>Email</strong>: <span class="dynamic-email">lfzhyy@nyvlha.pbz</span></p>
 
 
 <!-- <script src="//onk1k9bha.bkt.clouddn.com/zepto.min.js"></script> -->
