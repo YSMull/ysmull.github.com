@@ -9,14 +9,16 @@
   url: https://book.douban.com/subject/1148282/
   page: 430
   progress:
-    - '[1,75]'
+    - '[1,105]'
 
 - title: 魔力Haskell
   id: magic_haskell
   url: https://book.douban.com/subject/26877215/
   page: 354
   progress:
-    - '[1, 22]'
+    - '[1, 52]'
+    - '[107,110]'
+
 
 
 - title: A Little Java, A Few Patterns
