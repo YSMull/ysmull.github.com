@@ -1,14 +1,14 @@
-$ = require('./js/zepto.min.js')
-_ = require('./js/lodash.min.js')
-readHis = require('./js/reading.js')
+$ = require('./js/zepto.min.js');
+_ = require('./js/lodash.min.js');
+readHis = require('./js/reading.js');
 
-require('./css/pure.min.css')
-require('./css/grids-responsive-min.css')
-require('./css/main.scss')
+require('./css/pure.min.css');
+require('./css/grids-responsive-min.css');
+require('./css/main.scss');
 
-require('./plugins/prism/prism.js')
-require('./plugins/prism/prism.css')
+require('./plugins/prism/prism.js');
+require('./plugins/prism/prism.css');
 
-require('./plugins/disqus/iDisqus.min.css')
-iDisqus = require('./plugins/disqus/iDisqus.min.js')
+require('./plugins/disqus/iDisqus.min.css');
+iDisqus = require('./plugins/disqus/iDisqus.min.js');
 // clickEval = require('./js/scheme.js')
