@@ -22,10 +22,6 @@
   tags:
        -framework
 
-- item: Multithreading
-  tags:
-       -multithreading
-
 - item: Algorithm
   page: /algorithm
   tags:
@@ -36,11 +32,6 @@
   page: /design_pattern
   tags:
        -design_pattern
-
-- item: Java Collections Framwork
-  page: /JCF
-  tags:
-       -JCF
 
 - item: Other
   tags:
