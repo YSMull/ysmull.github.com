@@ -11,7 +11,9 @@ timezone: +0800
 
 # File management
 exclude: [
+  ".idea/*",
   "README.md",
+  "assets/yarn.lock",
   "assets/node_modules/",
   "assets/entry.js",
   "assets/webpack.config.js",
@@ -28,9 +30,9 @@ include: [
 ]
 
 author:
-    name: 简单小煜
-    email: ysmull@aliyun.com
-    link: ysmull.cn
+  name: 简单小煜
+  email: ysmull@aliyun.com
+  link: ysmull.cn
 future: true
 # Sass
 # sass:
@@ -49,17 +51,17 @@ kramdown:
   input: GFM
   hard_wrap: true
   syntax_highlighter_opts:
-      disable : true
-  # syntax_highlighter_opts:
+    disable: true
+    # syntax_highlighter_opts:
     # Rouge Options › https://github.com/jneen/rouge#full-options
     # css_class: 'acc'
     #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
 # highlighter: rouge
 
 collections:
-   pages:
-     output: true
-     permalink: /:path/
+  pages:
+    output: true
+    permalink: /:path/
 
 url: "https://ysmull.cn"
 plugins:

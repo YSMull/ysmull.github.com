@@ -1,5 +1,4 @@
 - item: Functional Programming
-  page: /fp
   tags:
         -fp
 
@@ -29,7 +28,7 @@
        -algorithm
 
 - item: Design Pattern
-  page: /design_pattern
+  page: /designPattern
   tags:
        -design_pattern
 

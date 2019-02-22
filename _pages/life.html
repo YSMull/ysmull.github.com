@@ -1,0 +1,190 @@
+---
+layout: default
+---
+<style type="text/css">
+    figure {
+        max-width: 675px;
+        position: relative;
+        overflow: hidden;
+        /*border-radius: 4px;*/
+    }
+    figure[data-exif]:hover:before {
+        opacity: 0.8;
+        content: attr(data-exif);
+    }
+    figure[data-exif]:before {
+        content: attr(data-exif);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transition: opacity .5s;
+        transition: opacity .5s;
+        opacity: 0;
+        background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.6)), to(transparent));
+        background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+        width: 100%;
+        height: 25px;
+        font-size: 14px;
+        line-height: 25px;
+        padding: 0 15px;
+        color: #fff;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    body {
+        background-color: #ededef;
+    }
+    .pics-date {
+        font-size: 20px;
+        color: #454645;
+        padding: 10px;
+    }
+    .item-group {
+        display: block;
+        padding: 15px;
+        margin-left: 150px;
+        margin-bottom: 50px;
+    }
+    .pic-row {
+        margin-left: 50px;
+    }
+    .pics-comment {
+        margin-left: 30px;
+        color: #888;
+    }
+    .custom-img {
+        cursor: pointer;
+        display: block;
+        max-width: 100%;
+        width: auto;
+        overflow: hidden;
+    }
+    .header_wrapper {
+        width: 700px;
+    }
+    .post-toc {
+        box-shadow: none;
+        min-width: 100px;
+    }
+    .post-toc:before {
+        content: '时间轴';
+     }
+    .post-figcaption {
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: #fff;
+        padding: 0 5px;
+        line-height: 30px;
+        text-shadow: 0 0 1px rgba(0,0,0,0.3);
+        font-size: 12px;
+        background: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0.8)), to(transparent));
+        background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+    }
+</style>
+<ul class="post-toc">
+    {% for item in site.data.life %}
+    <li>
+        <a href="#{{item.id}}" >{{item.date}}</a>
+    </li>
+    {% endfor %}
+</ul>
+<div id="results1" class="results">
+
+    {% for item in site.data.life %}
+        <ul class="item-group">
+            <h2 class="pics-date" id="{{ item.id }}">
+                <span>{{ item.date }}</span>
+            </h2>
+            <li class="pics-comment">{{ item.comment }}</li>
+            {% for pic in item.pics %}
+                <li class="pic-row">
+                    <figure>
+                        <a target="_blank" href="/life/{{ pic }}">
+                            <!--?imageView2/2/w/1080/q/100-->
+                            <img class="lazy custom-img" data-src="/life/{{ pic }}" height="450" width="675">
+                        </a>
+                        <figcaption class="post-figcaption">▲ 态度</figcaption>
+                    </figure>
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+
+
+<script>
+    new LazyLoad({
+        elements_selector: ".lazy",
+        load_delay: 100,
+        to_webp: true
+    });
+</script>
+
+<script>
+    let figures = document.querySelectorAll("figure");
+    for (let i = 0; i < figures.length; i++ ){
+        let figure = figures[i];
+        let imga = figure.children[0];
+        let picUrl = imga.getAttribute("href");
+        let img = imga.children[0];
+        fetch(picUrl+"?exif").then(value => {
+            return value.json();
+        }).then(json => {
+            let {Model, DateTime, Make, FNumber, ExposureTime, FocalLengthIn35mmFilm, ISOSpeedRatings} = json;
+            let desc = `器材:${Make.val}  ${Model.val}  光圈:${FNumber.val}  快门:${ExposureTime.val}  感光度:${ISOSpeedRatings.val}  等效焦距:${FocalLengthIn35mmFilm.val}  时间:${DateTime.val}`;
+            figure.setAttribute("data-exif", desc);
+            return desc;
+        }).catch(e => {
+            figure.setAttribute("data-exif", "test");
+            console.warn(picUrl);
+        })
+    }
+
+    let toc = document.querySelector('.post-toc');
+    let subTitles = document.querySelectorAll('h2,h3');
+    let clientHeight = document.documentElement.clientHeight;
+    function tocShow() {
+        let clientWidth = document.documentElement.clientWidth;
+        let tocFixed = clientWidth / 2 - 410 - toc.offsetWidth;
+        if (tocFixed < 5) {
+            toc.style.visibility = 'hidden';
+        } else {
+            toc.style.visibility = 'visible';
+            toc.style.left = tocFixed + 'px';
+        }
+    }
+    function tocScroll() {
+        let sectionIds = [];
+        let sections = [];
+        for (let i = 0; i < subTitles.length; i++) {
+            sectionIds.push(subTitles[i].getAttribute('id'));
+            sections.push(subTitles[i].offsetTop);
+        }
+        let pos = document.documentElement.scrollTop || document.body.scrollTop;
+        let lob = document.body.offsetHeight - subTitles[subTitles.length - 1].offsetTop;
+        for (let i = 0; i < sections.length; i++) {
+            if (i === subTitles.length - 1 && clientHeight > lob) {
+                pos = pos + (clientHeight - lob);
+            }
+            if (sections[i] <= pos && sections[i] < pos + clientHeight) {
+                if (document.querySelector('.active')) {
+                    document.querySelector('.active').classList.remove('active');
+                }
+                let queryStr = '[href="#' + sectionIds[i] + '"]';
+                document.querySelector(queryStr).classList.add('active');
+            }
+        }
+    }
+    document.addEventListener('scroll', tocScroll, false);
+    window.addEventListener('resize', tocShow, false);
+    // $(toc).ready(tocShow)
+    tocShow();
+</script>
+
+

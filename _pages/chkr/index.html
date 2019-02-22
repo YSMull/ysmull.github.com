@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="out/production/chkrConverter/lib/kotlin.js"></script>
+    <script src="out/production/chkrConverter/chkrConverter.js"></script>
+
+    <script src="codemirror/codemirror.min.js"></script>
+    <script src="codemirror/matchbrackets.js"></script>
+    <script src="codemirror/mode/javascript.js"></script>
+    <link rel=stylesheet href="codemirror/codemirror.css">
+    <link rel=stylesheet href="codemirror/theme/idea.css">
+    <script src="codemirror/beautify.min.js"></script>
+
+    <style type="text/css">
+        .container {
+            width: 100%;
+        }
+
+        .container #origin {
+            width: 49%;
+            float: left;
+        }
+
+        .container #eDSL {
+            width: 49%;
+            float: right;
+        }
+
+        .code-panel {
+        }
+
+        .CodeMirror {
+            border: 1px solid #eee;
+            height: 500px;
+            font-size: 14px;
+        }
+
+        .CodeMirror div.CodeMirror-cursor {
+            border-left: 2px solid #5689ff;
+        }
+
+        .syntax-error {
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJDw4cOCW1/KIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAHElEQVQI12NggIL/DAz/GdA5/xkY/qPKMDAwAADLZwf5rvm+LQAAAABJRU5ErkJggg==");
+            background-position: left bottom;
+            background-repeat: repeat-x;
+        }
+
+        #status {
+            height: 50px;
+            border: 1px solid #eee;
+            width: 300px;
+            margin: 10px 10px 10px 0;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="status"></div>
+<div class="container">
+    <div id="origin" class="code-panel"></div>
+    <div id="eDSL" class="code-panel"></div>
+</div>
+<script>
+    var initV = `Mixin (
+    {
+        "reports": [{
+            "id": Num,
+            "title": Str,
+            "relatedDataModelIds": [Num]
+        }]
+    },
+    Or (
+        {
+            "dataModels": [{
+                "status": OrVal("extract", "direct"),
+                "relatedDataConnectionIds": [Num]
+            }]
+        },
+        {
+            "dataModels": [{
+                "status": OrVal("extract", "direct"),
+                "relatedTableExtractIds": [Num]
+            }]
+        }
+    )
+)
+`;
+    var editor = CodeMirror(document.getElementById("origin"), {
+        autofocus: true,
+        mode: 'javascript',//编辑器语言
+        matchBrackets: true,
+        indentUnit: 4,
+        value: initV,
+        theme: 'idea',
+        styleActiveLine: true,
+        lineNum: true
+    });
+    editor.on('change', function () {
+        render();
+    });
+    let smartDelete = function (codePanel, event, ck) {
+        // 如果是删除，并且前面都是空格，直接删除这一行
+        if (ck.key === 'Backspace') {
+            let {ch, line} = event.getCursor();
+            let row = event.getLine(line);
+            let subs = row.substring(0, ch);
+            if (subs.split('').every(c => c === ' ')) {
+                codePanel.execCommand('delLineLeft');
+            }
+        }
+    };
+    editor.on('keydown', function (event, ck) {
+        smartDelete(editor, event, ck)
+    });
+
+    var eDSL = CodeMirror(document.getElementById("eDSL"), {
+        matchBrackets: true,
+        mode: 'javascript', //编辑器语言,
+        indentUnit: 4,
+        theme: 'idea'
+    });
+    eDSL.on('keydown', function (event, ck) {
+        smartDelete(eDSL, event, ck)
+    });
+
+    function eraseMarks() {
+        editor.getAllMarks().forEach(mark => mark.clear())
+    }
+
+    function render() {
+        console.log('render');
+        eraseMarks();
+        var origin = editor.getValue();
+        if (origin.length === 0) {
+            document.querySelector("#status").innerHTML = "请输入表达式";
+        } else {
+            try {
+                eDSL.setValue(js_beautify(chkrConverter.convert(origin)));
+                document.querySelector("#status").innerHTML = "";
+            } catch (e) {
+                let msg = e.message;
+                let group = msg.match(/\[pos]:(\d+),(.*)/);
+                let pos = parseInt(group[1]);
+                let {line, ch} = editor.posFromIndex(pos);
+                let from = {
+                    line,
+                    ch: ch === 0 ? 0 : ch - 1
+                };
+                let to = {
+                    line,
+                    ch: ch
+                };
+                editor.markText(from, to, {
+                    className: 'syntax-error',
+                    title: msg
+                });
+                console.log(e.stack);
+                document.querySelector("#status").innerHTML = "<b style='color: red;'>输入表达式错误:</b><br>" +
+                    group[2]
+            }
+        }
+    }
+
+    render()
+</script>
+</body>
+<script>
+
+</script>
+</html>
