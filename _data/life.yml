@@ -1,9 +1,18 @@
 - id: 1
-  comment: 帮妹子去公司拿本子的路上
+  comment: ''
   date: 2019.02.19
   pics:
-    - night_card/DSCF0050.jpg
-    - night_card/DSCF0060.jpg
-    - night_card/DSCF0069.jpg
-    - night_card/DSCF0082.jpg
-    - night_card/DSCF0099.jpg
+    - url: night_card/DSCF0050.jpg
+      note: 帮女票去公司拿东西的路上
+    - url: night_card/DSCF0060.jpg
+    - url: night_card/DSCF0069.jpg
+    - url: night_card/DSCF0082.jpg
+    - url: night_card/DSCF0099.jpg
+      note: 尝试一下夜景长暴光
+
+- id: 2
+  comment: 两次路过嘉里中心
+  date: 2019.01.22
+  pics:
+    - url: DSCF5319.jpg
+      note: 嘉里中心对面的中国银行

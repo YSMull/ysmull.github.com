@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 for file in `ls | grep .JPG`
 do
     newfile=`echo $file |  sed 's/JPG$/jpg/g'`

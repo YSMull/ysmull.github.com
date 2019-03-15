@@ -9,6 +9,6 @@ require('./css/main.scss');
 require('./plugins/prism/prism.js');
 require('./plugins/prism/prism.css');
 
-require('./plugins/disqus/iDisqus.min.css');
-iDisqus = require('./plugins/disqus/iDisqus.min.js');
+require('gitalk/dist/gitalk.css');
+Gitalk = require('gitalk');
 // clickEval = require('./js/scheme.js')

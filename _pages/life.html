@@ -32,6 +32,7 @@ layout: default
         overflow: hidden;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+        text-align: center;
     }
     body {
         background-color: #ededef;
@@ -100,15 +101,19 @@ layout: default
             <h2 class="pics-date" id="{{ item.id }}">
                 <span>{{ item.date }}</span>
             </h2>
-            <li class="pics-comment">{{ item.comment }}</li>
+            {% if item.comment %}
+                <li class="pics-comment">{{ item.comment }}</li>
+            {% endif %}
             {% for pic in item.pics %}
                 <li class="pic-row">
                     <figure>
-                        <a target="_blank" href="/life/{{ pic }}">
+                        <a target="_blank" href="/life/{{ pic.url }}">
                             <!--?imageView2/2/w/1080/q/100-->
-                            <img class="lazy custom-img" data-src="/life/{{ pic }}" height="450" width="675">
+                            <img class="lazy custom-img" data-src="/life/{{ pic.url }}" height="450" width="675">
                         </a>
-                        <figcaption class="post-figcaption">▲ 态度</figcaption>
+                        {% if pic.note %}
+                            <figcaption class="post-figcaption">{{ pic.note }}</figcaption>
+                        {% endif %}
                     </figure>
 
                 </li>
@@ -137,7 +142,7 @@ layout: default
             return value.json();
         }).then(json => {
             let {Model, DateTime, Make, FNumber, ExposureTime, FocalLengthIn35mmFilm, ISOSpeedRatings} = json;
-            let desc = `器材:${Make.val}  ${Model.val}  光圈:${FNumber.val}  快门:${ExposureTime.val}  感光度:${ISOSpeedRatings.val}  等效焦距:${FocalLengthIn35mmFilm.val}  时间:${DateTime.val}`;
+            let desc = `器材:${Make.val}  ${Model.val}  光圈:${FNumber.val}  快门:${ExposureTime.val}  感光度:${ISOSpeedRatings.val}  等效焦距:${FocalLengthIn35mmFilm.val}mm`;
             figure.setAttribute("data-exif", desc);
             return desc;
         }).catch(e => {

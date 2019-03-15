@@ -33,7 +33,7 @@ div2[0].style.setProperty("max-width","700px");
     <button class="pure-button pure-button-primary" onclick="expand_comment()">评论</button>
     <span style="font-size: 14px;color: #7f919e;">感谢指教！</span>
   </div>
-  <div id="comment"></div>
+  <div id="gitalk-container"></div>
 {% if page.math %}
 <script async="async" src="//cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 {% endif %}
@@ -135,33 +135,19 @@ if (toc) {
 </script>
 
 <script>
-
-    let head = document.head,
-    page = {
-        layout: head.dataset.layout,
-        title: head.dataset.title,
-        url: location.pathname,
-        id: head.dataset.id,
-        category: head.dataset.category,
-    };
-
     function expand_comment() {
-        new iDisqus('comment', {
-            forum: 'ysmull',
-            site: 'https://ysmull.cn',
-            api: 'https://disqus.ysmull.cn/api/',
-            title:  page.title,
-            url: page.url,
-            mode: 3,
-            timeout: 3000,
-            // popular: document.getElementById('popular-posts'),
-            slug: page.url.slice(1).split('.')[0],
-            init: true,
-            toggle: 'comment-toggle',
-            sort: 'newest',
-            emoji_path: 'https://assets.github.com/images/icons/emoji/unicode/',
-            emoji_preview: true,
-            badge: '博主'
+        var gitalk = new Gitalk({
+            clientID: 'd666a4339c38b486abf4',
+            clientSecret: 'ce81d1481ce8f64f8923f17d93f94cbf23068441',
+            repo: 'ysmull.github.com',
+            owner: 'YSMull',
+            admin: ['YSMull'],
+            perPage: 20,
+            id: location.pathname,
+            distractionFreeMode: false,
+            labels: ["blog-post"],
+            body: location.href
         });
+        gitalk.render('gitalk-container')
     }
 </script>
