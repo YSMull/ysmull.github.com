@@ -107,9 +107,9 @@ layout: default
             {% for pic in item.pics %}
                 <li class="pic-row">
                     <figure>
-                        <a target="_blank" href="/life/{{ pic.url }}">
+                        <a target="_blank" href="/life/jpg/{{ pic.url }}">
                             <!--?imageView2/2/w/1080/q/100-->
-                            <img class="lazy custom-img" data-src="/life/{{ pic.url }}" height="450" width="675">
+                            <img class="lazy custom-img" data-src="/life/webp/{{ pic.url }}" height="450" width="675">
                         </a>
                         {% if pic.note %}
                             <figcaption class="post-figcaption">{{ pic.note }}</figcaption>
@@ -126,7 +126,7 @@ layout: default
 <script>
     new LazyLoad({
         elements_selector: ".lazy",
-        load_delay: 100,
+        load_delay: 75,
         to_webp: true
     });
 </script>
@@ -146,7 +146,7 @@ layout: default
             figure.setAttribute("data-exif", desc);
             return desc;
         }).catch(e => {
-            figure.setAttribute("data-exif", "test");
+            figure.setAttribute("data-exif", "");
             console.warn(picUrl);
         })
     }
