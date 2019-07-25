@@ -283,7 +283,7 @@ blockquote {
 			margin-bottom: 5px;
 			font-size: 1.4em;
 			color: #ac1e06;
-    	font-weight: normal;
+    	    font-weight: normal;
 			font-family: $post-h;
 		}
 
@@ -292,7 +292,17 @@ blockquote {
 			margin-bottom: 5px;
 			font-size: 1.2em;
 			color: #ac1e06;
-    	font-weight: normal;
+    	    font-weight: normal;
+			font-family: $post-h;
+			font-family: $post-h;
+		}
+
+		h5 {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			font-size: 1.1em;
+			color: #ac1e06;
+    	    font-weight: normal;
 			font-family: $post-h;
 			font-family: $post-h;
 		}

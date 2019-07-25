@@ -16,6 +16,10 @@ layout: about
 > 
 > https://zedongh.github.io/blog
 
+> `华科学长` `长者` `菜鸟网络`
+>
+> https://www.cnblogs.com/stevenczp
+
 > `蚂蚁金服工程师` `大牛姿态`
 >
 > https://samray.me

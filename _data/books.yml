@@ -110,7 +110,7 @@
   url: https://book.douban.com/subject/24708143/
   page: 436
   progress:
-    - '[1, 1]'
+    - '[249, 284]'
 
 - title: 高性能MySQL
   id: high_performance_MySQL
