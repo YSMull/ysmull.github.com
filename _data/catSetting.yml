@@ -1,0 +1,9 @@
+database:
+  sub_tags:
+      - theory
+      - action
+oj:
+  sub_tags:
+      - leetcode
+      - interview
+      - other

@@ -16,6 +16,8 @@
   tags:
        -database
        -sql
+  page: /dbNotes
+
 
 - item: Framework
   tags:
