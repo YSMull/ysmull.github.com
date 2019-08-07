@@ -1,7 +1,7 @@
 database:
   sub_tags:
-      - theory
-      - action
+      - {type: theory, name: '理论'}
+      - {type: action, name: '实战'}
 oj:
   sub_tags:
       - leetcode

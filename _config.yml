@@ -46,7 +46,7 @@ kramdown:
   syntax_highlighter: none
   auto_ids:       true
   auto_id_prefix: 'id-'
-  toc_levels:     '2,3'
+  toc_levels:     '2,3,4'
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
   input: GFM
   hard_wrap: true
