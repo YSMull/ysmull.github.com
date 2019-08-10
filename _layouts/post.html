@@ -7,7 +7,6 @@ div1[0].style.setProperty("max-width","700px");
 let div2 = document.getElementsByClassName('header_wrapper');
 div2[0].style.setProperty("max-width","700px");
 </script>
-
 <div class="post">
     <div id="back" class="post__back">
         {% if page.tags contains "design_pattern" %}
@@ -29,10 +28,10 @@ div2[0].style.setProperty("max-width","700px");
       {{ content }}
   </div>
   <div style="border-top: 1px solid #66666666;margin-top: 15px;margin-bottom: 15px;"></div>
-  <div>
-    <button class="pure-button pure-button-primary" onclick="expand_comment()">评论</button>
-    <span style="font-size: 14px;color: #7f919e;">感谢指教！</span>
-  </div>
+<!--  <div>-->
+<!--    <button class="pure-button pure-button-primary" onclick="expand_comment()">评论</button>-->
+<!--    <span style="font-size: 14px;color: #7f919e;">感谢指教！</span>-->
+<!--  </div>-->
   <div id="gitalk-container"></div>
 {% if page.math %}
 <script async="async" src="//cdn.mathjax.org/mathjax/2.1-latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
@@ -151,19 +150,23 @@ if (toc) {
 </script>
 
 <script>
-    function expand_comment() {
+    let allTags = [];
+    {% for tag in page.tags %}
+    allTags.push('{{ tag }}');
+    {% endfor %}
+  (function expand_comment() {
         var gitalk = new Gitalk({
             clientID: 'd666a4339c38b486abf4',
             clientSecret: 'ce81d1481ce8f64f8923f17d93f94cbf23068441',
-            repo: 'ysmull.github.com',
+            repo: 'blog',
             owner: 'YSMull',
             admin: ['YSMull'],
             perPage: 20,
             id: location.pathname,
             distractionFreeMode: false,
-            labels: ["blog-post"],
-            body: location.href
+            labels: allTags,
+            body: `<div>原文链接: <a href="${location.href}">${location.href}</a></div><br>{{ content }}`
         });
         gitalk.render('gitalk-container')
-    }
+    })()
 </script>

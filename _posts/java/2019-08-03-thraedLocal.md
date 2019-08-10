@@ -2,7 +2,7 @@
 layout: post
 title: "Thread Local 之我见"
 date: 2019-08-03 19:35:00
-tags: ["jvm"]
+tags: ["jvm", "multi thread"]
 ---
 
 * toc

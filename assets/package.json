@@ -3,13 +3,13 @@
     "webpack": "webpack -p"
   },
   "dependencies": {
+    "clipboard": "^2.0.4",
     "css-loader": "^0.28.11",
-    "gitalk": "^1.5.0",
+    "gitalk": "git+https://github.com/dongyuanxin/gitalk.git",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "^7.2.0",
     "style-loader": "^0.21.0",
-    "vanilla-lazyload": "^10.20.1",
-    "clipboard": "^2.0.4"
+    "vanilla-lazyload": "^10.20.1"
   },
   "devDependencies": {
     "webpack": "^4.12.0",
