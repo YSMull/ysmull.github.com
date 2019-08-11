@@ -67,6 +67,7 @@ url: "https://ysmull.cn"
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-katex
 
 feed:
   path: atom.xml

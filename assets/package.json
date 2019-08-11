@@ -5,13 +5,16 @@
   "dependencies": {
     "clipboard": "^2.0.4",
     "css-loader": "^0.28.11",
-    "gitalk": "git+https://github.com/dongyuanxin/gitalk.git",
+    "gitalk": "https://github.com/dongyuanxin/gitalk.git#b31e24deabbfc52614abe8399eb2df007bc246d5",
+    "katex": "^0.10.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.2.0",
     "style-loader": "^0.21.0",
     "vanilla-lazyload": "^10.20.1"
   },
   "devDependencies": {
+    "url-loader": "^2.1.0",
+    "file-loader": "^4.2.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.3"
   }

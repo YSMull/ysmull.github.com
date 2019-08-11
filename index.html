@@ -47,11 +47,3 @@ layout: default
   </div>
   {% endfor %}
 </div>
-
-<script>
-  {% for item in site.data.books %}
-    {% if item.page %}
-        new readHis('{{ item.id }}', {{ item.page }}, [{{ item.progress | join: "," }}])
-    {% endif %}
-  {% endfor %}
-</script>
