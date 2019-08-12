@@ -5,7 +5,7 @@
   "dependencies": {
     "clipboard": "^2.0.4",
     "css-loader": "^0.28.11",
-    "gitalk": "https://github.com/dongyuanxin/gitalk.git#b31e24deabbfc52614abe8399eb2df007bc246d5",
+    "gitalk": "^1.5.0",
     "katex": "^0.10.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.2.0",

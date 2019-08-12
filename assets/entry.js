@@ -15,17 +15,19 @@ require('katex/dist/katex.min.css');
 require('gitalk/dist/gitalk.css');
 Gitalk = require('gitalk');
 
-gitalk = (id, title, labels, body) => new Gitalk({
-  clientID: 'd666a4339c38b486abf4',
-  clientSecret: 'ce81d1481ce8f64f8923f17d93f94cbf23068441',
-  repo: 'blog',
-  owner: 'YSMull',
-  admin: ['YSMull'],
-  perPage: 20,
-  id,
-  title,
-  distractionFreeMode: false,
-  labels,
-  body
-});
+gitalk = (id, title, labels, body) => {
+  return new Gitalk({
+    clientID: 'd666a4339c38b486abf4',
+    clientSecret: 'ce81d1481ce8f64f8923f17d93f94cbf23068441',
+    repo: 'blog',
+    owner: 'YSMull',
+    admin: ['YSMull'],
+    perPage: 20,
+    id,
+    title,
+    distractionFreeMode: false,
+    labels,
+    body
+  });
+};
 // clickEval = require('./js/scheme.js')

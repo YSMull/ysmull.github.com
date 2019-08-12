@@ -12,14 +12,26 @@ layout: about
 </style>
 
 
-> `科大高材生` `民间PL科学家` `前同事`
+> `中科大高材生` `民间PL科学家😂`
 > 
 > https://zedongh.github.io/blog
 
-> `华科学长` `长者` `菜鸟网络`
+> `菜鸟网络` `学长`
 >
 > https://www.cnblogs.com/stevenczp
 
-> `蚂蚁金服工程师` `大牛姿态`
+> `蚂蚁金服` `大牛姿态`
 >
 > https://samray.me
+
+> `腾讯` `前端`
+> https://xin-tan.com/
+
+> `阿里` `GO语言`
+> https://pengrl.com
+
+<div id="gitalk-container"></div>
+
+<script>
+    gitalk(location.pathname, '友链', ['友链'], '留下友链').render('gitalk-container');
+</script>
