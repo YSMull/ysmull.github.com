@@ -1,9 +1,23 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
 module.exports = {
-    entry: __dirname + '/entry.js',
+    entry: {
+        index: __dirname + '/entry.js',
+        vendors: __dirname + '/vendors.js',
+    },
     output: {
         path: __dirname + '/build',
-        filename: 'bundle.js'
+        chunkFilename: '[name].[hash].chunk.js',
+        filename: '[name].[hash].js'
     },
+    plugins:[
+        new HtmlWebpackPlugin({
+            template: __dirname + '/../template/head.ejs',
+            filename: __dirname + '/../_includes/head.html',
+            inject: false
+        })
+    ],
     module: {
         rules: [
             {
@@ -25,8 +39,43 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-                use: ['url-loader']
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: '/font',
+                        publicPath: (url, resourcePath, context) => {
+                            return `/assets/build/font/${url}`;
+                        }
+                    }
+
+                }],
+
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            automaticNameMaxLength: 30,
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        }
     }
 };

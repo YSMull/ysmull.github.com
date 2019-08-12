@@ -91,4 +91,13 @@
       }
   }
   </script>
+<!--  修正 katex dispaly 模式下多余的空行  -->
+<script>
+  let display = document.querySelectorAll('.katex-display');
+  for (let e of display) {
+    if (e.nextSibling && e.nextSibling.tagName === 'BR') {
+      e.nextSibling.remove()
+    }
+  }
+</script>
 </html>

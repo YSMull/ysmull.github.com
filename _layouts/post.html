@@ -156,13 +156,3 @@ if (toc) {
         gitalk(location.pathname, '{{ page.title }}', allTags, body).render('gitalk-container');
     })()
 </script>
-
-<!--  修正 dispaly 模式下多余的空行  -->
-<script>
-    let display = document.querySelectorAll('.katex-display');
-    for (let e of display) {
-      if (e.nextSibling.tagName === 'BR') {
-        e.nextSibling.remove()
-      }
-    }
-</script>
