@@ -44,6 +44,7 @@ future: true
 markdown: kramdown
 kramdown:
   syntax_highlighter: none
+  math_engine: mathjax
   auto_ids:       true
   auto_id_prefix: 'id-'
   toc_levels:     '2,3,4'
@@ -67,7 +68,7 @@ url: "https://ysmull.cn"
 plugins:
   - jekyll-sitemap
   - jekyll-feed
-  - jekyll-katex
+#  - jekyll-katex
 
 feed:
   path: atom.xml
