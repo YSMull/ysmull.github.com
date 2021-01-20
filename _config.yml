@@ -7,7 +7,7 @@ name: YSMull
 description: YSMull的个人博客
 baidu_verification: false
 
-timezone: +0800
+timezone: Asia/Shanghai
 
 # File management
 exclude: [
