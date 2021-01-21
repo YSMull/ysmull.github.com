@@ -2,47 +2,155 @@
 layout: default
 ---
 
-<div class="pure-g">  
+<div id="mynetwork" style="height: 510px"></div>
+
+<script>
+  var items = [];
   {% for tag in site.tags reversed %}
-  {% if site.data.catSetting.oj.sub_tags contains tag[0] %}
-  <div class="pure-u-1 pure-u-lg-1-2 pure-u-md-1-2 pure-u-sm-1">
-    <div class="block" style="font-size:1em;margin:10px">
-      <div class="block_tag">{{ tag[0] }}</div>
-      <ul>
-          {% assign sorted_post = tag[1] | sort: 'leetcode_id' %}
-          {% for post in sorted_post %}
-              <li class="pure-g">
-                <div class="pure-u-1" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                  <div class="pure-g">
-                    <div class="pure-u-2-24">
-                        <div class="emoji">
-                          {% if post.emoji %}
-                              <span>{{ post.emoji }}</span>
-                          {% endif%}
-                        </div>
-                    </div>
-                    <div class="pure-u-3-24">
-                      <div class="algorithm_id">
-                      {% if post.leetcode_id %}
-                        {{ post.leetcode_id }}
-                      {% endif%}
-                      {% if post.interview_origin %}
-                        {{ post.interview_origin }}
-                      {% endif%}
-                      </div>
-                    </div>
-                    <div class="pure-u-18-24" style="margin-left:5px;">
-                      <a title="{{ post.title }}" href="{{ post.url }}" style="margin-left: 5px;">
-                        {{ post.title }}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-          {% endfor %}
-      </ul>
-    </div>
-  </div>
-  {% endif %}
+    {% if site.data.catSetting.oj.sub_tags contains tag[0] %}
+        {% assign sorted_post = tag[1] | sort: 'leetcode_id' %}
+        {% for post in sorted_post %}
+          { // {{ post.title }}
+            let category = [];
+            {% for cat in post.category %}
+            category.push('{{ cat }}');
+            {% endfor %}
+            let id , type;
+            if (`{{ post.leetcode_id }}`) {
+                id = `{{ post.leetcode_id }}`;
+                type = 'LeetCode'
+            }
+            items.push({
+              tag: `{{ tag[0] }}`,
+              title: `{{ post.title }}`,
+              label: id || `{{ post.title }}`,
+              url: `{{ post.url }}`,
+              id,
+              type,
+              parentId: `{{ post.parent_id }}`,
+              category
+            });
+          }
+       {% endfor %}
+    {% endif %}
   {% endfor %}
-</div>
+
+
+  function getC(category) {
+      let cad = document.createElement('div');
+      cad.className = "category";
+      for (let c of category) {
+          let span = document.createElement('span');
+          span.innerText = c;
+          span.style = "margin-left: 20px"
+          cad.appendChild(span);
+      }
+      return cad;
+  }
+  // create an array with nodes
+  var nodes = new vis.DataSet(items.map(t => {
+      return {
+          id: t.id,
+          label: t.label,
+          title: t.title,
+          group: t.tag
+      }
+  }));
+
+  // create an array with edges
+  var relations = items.map(t => {
+      if (t.parentId) {
+          console.log(t)
+          return {
+              from: t.id,
+              to: t.parentId,
+          }
+      }
+  }).filter(a => a);
+  var edges = new vis.DataSet(relations);
+
+  // create a network
+  var container = document.getElementById("mynetwork");
+  var data = {
+      nodes: nodes,
+      edges: edges,
+  };
+  var options = {
+      nodes: {
+          physics: true,
+          shape: "box",
+          scaling: {
+              min: 10,
+              max: 30,
+              label: {
+                  enabled: true,
+                  min: 14,
+                  max: 30,
+                  maxVisible: 30,
+                  drawThreshold: 5
+              },
+          },
+          font: {
+              size: 16
+          },
+          borderWidth: 1,
+          borderWidthSelected: 2
+      },
+      edges: {
+          arrows: {
+              to: {
+                  enabled: true,
+              }
+          },
+          color: {inherit: true},
+          width: 1,
+          smooth: {
+              type: "continuous",
+          },
+      },
+      interaction: {
+          hideEdgesOnDrag: false,
+          tooltipDelay: 200,
+      },
+      groups: {
+          leetcode: {
+              color: {
+                  border: '#fda022',
+                  background: '#f6ae718f',
+                  highlight: {
+                      border: '#fda022',
+                      background: '#f6ae718f',
+                  }
+              },
+              borderWidth:1,
+          }
+      },
+      layout: {
+          randomSeed: undefined,
+          improvedLayout: true,
+          clusterThreshold: 150,
+          hierarchical: {
+              enabled: false,
+              levelSeparation: 250,
+              nodeSpacing: 100,
+              treeSpacing: 100,
+              blockShifting: true,
+              edgeMinimization: true,
+              parentCentralization: true,
+              direction: 'RL',        // UD, DU, LR, RL
+              sortMethod: 'directed',  // hubsize, directed
+              shakeTowards: 'roots'  // roots, leaves
+          }
+      }
+  };
+
+  var network = new vis.Network(container, data, options);
+
+  network.on('doubleClick',function({nodes}){
+      if (nodes.length > 0) {
+          let nodeId = nodes[0];
+          let item = items.find(i => i.id === nodeId);
+          item && window.open(item.url);
+      }
+  })
+</script>

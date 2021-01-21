@@ -7,3 +7,8 @@ oj:
       - leetcode
       - interview
       - other
+
+algorithm_tags:
+  - 动态规划
+  - 字符串
+  - 数组

@@ -1,10 +1,11 @@
 $ = require('./js/zepto.min.js');
 _ = require('./js/lodash.min.js');
+vis = require('./js/vis-network.min');
 
 require('./css/pure.min.css');
 require('./css/grids-responsive-min.css');
 
-require('katex/dist/katex.min.css');
+// require('katex/dist/katex.min.css');
 
 require('gitalk/dist/gitalk.css');
 let Gitalk = require('gitalk');
