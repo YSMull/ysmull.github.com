@@ -156,9 +156,9 @@ public static void main(String[] args) {
 }
 ```
 在线程执行完 test() 方法后，执行 System.gc() 之前，也就是上述代码注释 1 的位置，当前线程的 threadLocals 对象如下：
-![](http://image.ysmull.cn/2019-08-03-123120.png)
+![](/img/2019-08-03-123120.png)
 可以看见 ThreadLocalMap 的 Entry 的 referent 和 value 都还在，当执行 System.gc() 后，我们看一下有什么变化：
-![](http://image.ysmull.cn/2019-08-03-123316.png)
+![](/img/2019-08-03-123316.png)
 此时由于 threadLocal 对象已经不可达，所以会被 gc 回收。然而，**value 对象还没回收呢**！
 
 怎样才能让 value 对象也可以回收呢？**上面已经说过很多次了**，value 对象被回收当且仅当：
