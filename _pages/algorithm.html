@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div id="mynetwork" style="height: 510px"></div>
+<div id="mynetwork" style="height: 680px"></div>
 
 <script>
   var items = [];
@@ -78,7 +78,7 @@ layout: default
   var options = {
       nodes: {
           physics: true,
-          shape: "box",
+          shape: "dot",
           scaling: {
               min: 10,
               max: 30,
@@ -130,10 +130,10 @@ layout: default
           improvedLayout: true,
           clusterThreshold: 150,
           hierarchical: {
-              enabled: false,
+              enabled: true,
               levelSeparation: 250,
               nodeSpacing: 100,
-              treeSpacing: 100,
+              treeSpacing: 10,
               blockShifting: true,
               edgeMinimization: true,
               parentCentralization: true,
