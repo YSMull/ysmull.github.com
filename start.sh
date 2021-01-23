@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-jekyll clean && jekyll serve --watch --incremental
+jekyll clean && jekyll serve --watch

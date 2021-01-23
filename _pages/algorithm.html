@@ -19,6 +19,9 @@ layout: default
             if (`{{ post.leetcode_id }}`) {
                 id = `{{ post.leetcode_id }}`;
                 type = 'LeetCode'
+            } else if (`{{ post.method_id }}`) {
+                id = `{{ post.method_id }}`;
+                type = 'method'
             }
             items.push({
               tag: `{{ tag[0] }}`,
@@ -130,7 +133,7 @@ layout: default
           improvedLayout: true,
           clusterThreshold: 150,
           hierarchical: {
-              enabled: true,
+              enabled: false,
               levelSeparation: 250,
               nodeSpacing: 100,
               treeSpacing: 10,

@@ -5,6 +5,9 @@
   url: /dbNotes
 
 - title: Algorithm
+  url: /algorithm_list
+
+- title: Algorithm(graph)
   url: /algorithm
 
 - title: Design Pattern
