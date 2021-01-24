@@ -2,42 +2,40 @@
 layout: default
 ---
 
+<div class="block_tag">LeetCode 笔记  <a style="font-size: 16px;" href="/algorithm_list">列表视图</a></div>
 <div id="mynetwork" style="height: 680px"></div>
 
 <script>
-  var items = [];
-  {% for tag in site.tags reversed %}
-    {% if site.data.catSetting.oj.sub_tags contains tag[0] %}
-        {% assign sorted_post = tag[1] | sort: 'leetcode_id' %}
-        {% for post in sorted_post %}
-          { // {{ post.title }}
-            let category = [];
-            {% for cat in post.category %}
-            category.push('{{ cat }}');
-            {% endfor %}
-            let id , type;
-            if (`{{ post.leetcode_id }}`) {
-                id = `{{ post.leetcode_id }}`;
-                type = 'LeetCode'
-            } else if (`{{ post.method_id }}`) {
-                id = `{{ post.method_id }}`;
-                type = 'method'
-            }
-            items.push({
-                tag: `{{ tag[0] }}`,
-                title: `{{ post.title }}`,
-                label: id || `{{ post.title }}`,
-                url: `{{ post.url }}`,
-                id,
-                type,
-                parentId: `{{ post.parent_id | join: "," }}`.split(','),
-                difficult: `{{ post.difficult }}`,
-                category
-            });
-          }
-       {% endfor %}
-    {% endif %}
-  {% endfor %}
+    var items = [];
+    {% assign sorted_post = site.algorithms | sort: 'leetcode_id' %}
+    {% for post in sorted_post %}
+    {
+        let category = [];
+        {% for cat in post.category %}
+        category.push('{{ cat }}');
+        {% endfor %}
+        let id , type;
+        if (`{{ post.leetcode_id }}`) {
+            id = `{{ post.leetcode_id }}`;
+            type = 'LeetCode'
+        } else if (`{{ post.method_id }}`) {
+            id = `{{ post.method_id }}`;
+            type = 'method'
+        }
+        items.push({
+            tag: `{{ post.tags[0] }}`,
+            title: `{{ post.title }}`,
+            label: id || `{{ post.title }}`,
+            url: `{{ post.url }}`,
+            id,
+            type,
+            parentId: `{{ post.parent_id | join: "," }}`.split(','),
+            difficult: `{{ post.difficult }}`,
+            category
+        });
+    }
+    {% endfor %}
+
 
 
   // create an array with nodes

@@ -1,10 +1,8 @@
 ---
-layout: post
 title: "如何进行二分查找"
 date: 2021-01-23 20:30:00
 method_id: 二分查找
 tags:
-    - oj
     - 方法学习
 ---
 

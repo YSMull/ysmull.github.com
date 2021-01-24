@@ -64,6 +64,21 @@ collections:
   pages:
     output: true
     permalink: /:path/
+  algorithms:
+    output: true
+    layout: post
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "algorithms"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "post"
 
 url: "https://ysmull.cn"
 plugins:
