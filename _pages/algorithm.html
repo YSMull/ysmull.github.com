@@ -52,6 +52,10 @@ layout: default
       }
   }));
 
+    let isMethodNode = pid => {
+        return ['二分查找'].includes(pid);
+    }
+
   // create an array with edges
   var relations = [];
   items.forEach(t => {
@@ -60,9 +64,24 @@ layout: default
               relations.push({
                   from: pid,
                   to: t.id,
+                  smooth: {
+                      type: isMethodNode(pid) ? 'continuous' : 'dynamic',
+                      // roundness: 1,
+                  },
+                  chosen: {
+                      edge: true,
+                  },
+                  width: isMethodNode(pid) ? 1 : 1,
+                  dashes: isMethodNode(pid) ? [5, 5] : false,
+                  color: {
+                      color: isMethodNode(pid) ? 'rgba(140,141,141,0.6)' : 'rgb(50,82,129)',
+                      highlight: isMethodNode(pid) ? 'rgba(140,141,141,0.6)' : 'rgb(50,82,129)',
+                      inherit: false,
+                      opacity: isMethodNode(pid) ? 0.3 : 0.7,
+                  },
                   arrows: {
                       to: {
-                          enabled: !['二分查找'].includes(pid),
+                          enabled: !isMethodNode(pid),
                       }
                   }
               });
@@ -97,19 +116,7 @@ layout: default
               size: 16
           },
           borderWidth: 1,
-          borderWidthSelected: 2
-      },
-      edges: {
-          arrows: {
-              to: {
-                  enabled: true,
-              }
-          },
-          color: {inherit: true},
-          width: 1,
-          smooth: {
-              type: "continuous",
-          },
+          borderWidthSelected: 1
       },
       interaction: {
           hideEdgesOnDrag: false,
@@ -118,33 +125,33 @@ layout: default
       groups: {
           leetcode_easy: {
               color: {
-                  border: '#fda022',
-                  background: '#f6ae718f',
+                  border: 'rgb(0,153,74,0.9)',
+                  background: 'rgb(0,153,74,0.4)',
                   highlight: {
-                      border: '#fda022',
-                      background: '#f6ae718f',
+                      border: 'rgb(0,153,74,0.9)',
+                      background: 'rgba(0,153,117,0.4)',
                   }
               },
               borderWidth:1,
           },
           leetcode_medium: {
               color: {
-                  border: '#fda022',
-                  background: '#fd8020d9',
+                  border: 'rgba(237,115,54,0.9)',
+                  background: 'rgba(237,115,54,0.6)',
                   highlight: {
-                      border: '#fda022',
-                      background: '#fd8020d9',
+                      border: 'rgba(237,115,54,0.9)',
+                      background: 'rgba(237,115,54,0.6)',
                   }
               },
               borderWidth:1,
           },
           leetcode_hard: {
               color: {
-                  border: '#fda022',
-                  background: '#ce0000d9',
+                  border: 'rgba(198,0,0,0.9)',
+                  background: 'rgba(198,0,0,0.7)',
                   highlight: {
-                      border: '#fda022',
-                      background: '#ce0000d9',
+                      border: 'rgba(198,0,0,0.9)',
+                      background: 'rgba(198,0,0,0.7)',
                   }
               },
               borderWidth:1,
@@ -156,13 +163,13 @@ layout: default
           clusterThreshold: 150,
           hierarchical: {
               enabled: false,
-              levelSeparation: 250,
+              levelSeparation: 150,
               nodeSpacing: 100,
               treeSpacing: 10,
               blockShifting: true,
               edgeMinimization: true,
               parentCentralization: true,
-              direction: 'RL',        // UD, DU, LR, RL
+              direction: 'LR',        // UD, DU, LR, RL
               sortMethod: 'directed',  // hubsize, directed
               shakeTowards: 'roots'  // roots, leaves
           }
