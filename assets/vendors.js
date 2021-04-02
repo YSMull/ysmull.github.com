@@ -7,6 +7,7 @@ require('./css/grids-responsive-min.css');
 
 // require('./css/syntax.css');
 require('./css/syntax-github.css');
+// require('./css/syntax-magritte.css');
 
 // require('katex/dist/katex.min.css');
 

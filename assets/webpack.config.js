@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+
 const webpack = require('webpack');
 
 module.exports = {
@@ -16,7 +18,8 @@ module.exports = {
             template: __dirname + '/../template/head.ejs',
             filename: __dirname + '/../_includes/head.html',
             inject: false
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
     module: {
         rules: [

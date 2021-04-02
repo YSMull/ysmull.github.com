@@ -3,9 +3,9 @@ layout: default
 ---
 <script >
 let div1 = document.getElementsByClassName('wrapper');
-div1[0].style.setProperty("max-width","700px");
+div1[0].style.setProperty("max-width","800px");
 let div2 = document.getElementsByClassName('header_wrapper');
-div2[0].style.setProperty("max-width","700px");
+div2[0].style.setProperty("max-width","800px");
 </script>
 <div class="post">
     <div id="back" class="post__back">
@@ -61,7 +61,7 @@ let clientHeight = document.documentElement.clientHeight;
 if (toc) {
     function tocShow() {
         let clientWidth = document.documentElement.clientWidth;
-        let tocFixed = clientWidth / 2 - 370 - toc.offsetWidth;
+        let tocFixed = clientWidth / 2 - 470 - toc.offsetWidth;
         if (tocFixed < 5) {
             toc.style.visibility = 'hidden';
         } else {
@@ -69,6 +69,7 @@ if (toc) {
             toc.style.left = tocFixed + 'px';
         }
     }
+
     function tocScroll() {
         let sectionIds = [];
         let sections = [];
@@ -86,15 +87,16 @@ if (toc) {
                 if (document.querySelector('.active')) {
                     document.querySelector('.active').classList.remove('active');
                 }
-                                let queryStr = '[href="#' + sectionIds[i] + '"]';
-                                // console.log(queryStr)
+                let queryStr = '[href="#' + sectionIds[i] + '"]';
+                // console.log(queryStr)
                 document.querySelector(queryStr).classList.add('active');
             }
         }
     }
+
     document.addEventListener('scroll', tocScroll, false);
     window.addEventListener('resize', tocShow, false);
-        // $(toc).ready(tocShow)
+    // $(toc).ready(tocShow)
     tocShow();
 }
 </script>

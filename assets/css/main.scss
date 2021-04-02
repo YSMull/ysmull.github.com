@@ -4,7 +4,7 @@
 
 
 body {
-  background-image: url('http://gameprogrammingpatterns.com/images/background.png');
+  //background-image: url('http://gameprogrammingpatterns.com/images/background.png');
   font-family: $body-font;
   -webkit-font-smoothing: antialiased;
   font-size: 100%;
@@ -146,7 +146,6 @@ blockquote {
 }
 
 .block {
-  position: absolute;
   line-height: 1.2em;
   padding-left: 18px;
   padding-right: 18px;
@@ -273,7 +272,7 @@ blockquote {
     p {
       font-size: 1em;
       font-family: $date-font;
-      border-bottom: 1px solid #ccc;
+      //border-bottom: 1px solid #ccc;
       // font-style: italic;
     }
   }
@@ -287,7 +286,7 @@ blockquote {
   &__content {
     font-family: $post-font;
     padding-top: 13px;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.5;
     color: #444;
     text-align: justify;
@@ -329,7 +328,6 @@ blockquote {
       color: #ac1e06;
       font-weight: normal;
       font-family: $post-h;
-      font-family: $post-h;
     }
 
     h5 {
@@ -338,7 +336,6 @@ blockquote {
       font-size: 1.1em;
       color: #ac1e06;
       font-weight: normal;
-      font-family: $post-h;
       font-family: $post-h;
     }
 
@@ -358,7 +355,7 @@ blockquote {
     }
 
     li {
-      font-size: 14px;
+      font-size: 16px;
       padding-bottom: 5px;
 
     }

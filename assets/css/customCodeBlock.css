@@ -12,8 +12,19 @@ pre {
     border-radius: 4px;
     padding: 10px;
     font-size: 16px;
+    /*width: 900px;*/
+    position: relative;
+}
+
+.post__content {
+    border: 1px solid #e7e5e5;
+    padding: 10px;
+    background-color: #ffffff;
 }
 
 .highlight {
-    background-color: #f1f1f1;
+    /*background-image: url('http://gameprogrammingpatterns.com/images/background.png');*/
+    /*left: 50px;*/
+    /*position: relative;*/
+    /*background-color: #f1f1f1;*/
 }
