@@ -4,13 +4,11 @@ layout: about
 
 我是 YSMull，目前就职于网易杭研。
 
->**在实战中锻炼自己**
->
->**努力提升编码质量和编码效率**
->
->**视野要开阔，借鉴业界最佳实践**
+>在实战中锻炼自己
 
+>努力提升编码质量和编码效率
 
+>视野要开阔，借鉴业界最佳实践
 
 <p><strong>Email</strong>: <span class="dynamic-email">lfzhyy@nyvlha.pbz</span></p>
 

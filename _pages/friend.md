@@ -12,23 +12,17 @@ layout: about
 </style>
 
 
-> `中科大高材生` `民间PL科学家😂`
+> `字节` `爱奇艺` `pdd` `Momenta` `PL专家`
 > 
 > https://zedongh.github.io/blog
 
-> `菜鸟网络` `学长`
+> `电信` `菜鸟` `字节` `学长`
 >
 > https://www.cnblogs.com/stevenczp
 
 > `蚂蚁金服` `大牛姿态`
 >
 > https://samray.me
-
-> `腾讯` `前端`
-> https://xin-tan.com/
-
-> `阿里` `GO语言`
-> https://pengrl.com
 
 <div id="gitalk-container"></div>
 
