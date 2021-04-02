@@ -18,16 +18,18 @@ exclude: [
   "assets/node_modules/",
   "assets/entry.js",
   "assets/webpack.config.js",
-  "assets/css/",
+#  "assets/css/",
   "assets/plugins",
   "assets/package.json",
-  "assets/font",
+#  "assets/font",
   "./upload.sh",
   "CNAME"
 ]
 include: [
   "assets/build",
-  "assets/js"
+  "assets/js",
+  "assets/css",
+  "assets/font"
 ]
 
 author:
@@ -42,9 +44,10 @@ future: true
 
 
 # Markdown
+highlighter: rouge
 markdown: kramdown
 kramdown:
-  syntax_highlighter: none
+  syntax_highlighter: rouge
   math_engine: mathjax
   auto_ids:       true
   auto_id_prefix: 'id-'
@@ -52,13 +55,6 @@ kramdown:
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
   input: GFM
   hard_wrap: true
-  syntax_highlighter_opts:
-    disable: true
-    # syntax_highlighter_opts:
-    # Rouge Options › https://github.com/jneen/rouge#full-options
-    # css_class: 'acc'
-    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
-# highlighter: rouge
 
 collections:
   pages:

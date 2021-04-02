@@ -1,0 +1,19 @@
+/*[data-lang]::before {*/
+/*    content: attr(data-lang);*/
+/*    display: block;*/
+/*    text-align: center;*/
+/*    font-size: 20px;*/
+/*    transform: translate(-2px, -10px);*/
+/*    border: solid 1px red;*/
+/*    max-width: 52px;*/
+/*}*/
+
+pre {
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.highlight {
+    background-color: #f1f1f1;
+}

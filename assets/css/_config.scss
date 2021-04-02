@@ -1,3 +1,5 @@
+@import "../font/iosevka.css";
+
 // COLORS
 $color-black: #272727;
 $color-white: #FFFFFF;
@@ -13,107 +15,43 @@ $color-hire-shadow: rgba(0, 0, 0, 0.2);
 // BREAKPOINTS
 $br: 1000px;
 
-$selection-bg:#8dc1d3;
-$selection-cl:#ffffff;
-h1 code, h2 code, h3 code, h4 code { color: #c7254e }
+$selection-bg: #8dc1d3;
+$selection-cl: #ffffff;
+h1 code, h2 code, h3 code, h4 code {
+  color: #c7254e
+}
+
 ::selection {
-background:$selection-bg;
-color:$selection-cl;
+  background: $selection-bg;
+  color: $selection-cl;
 }
+
 ::-moz-selection {
-background:$selection-bg;
-color:$selection-cl;
+  background: $selection-bg;
+  color: $selection-cl;
 }
+
 ::-webkit-selection {
-background:$selection-bg;
-color:$selection-cl;
+  background: $selection-bg;
+  color: $selection-cl;
 }
 
 
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src:
-  // url('http://onk1k9bha.bkt.clouddn.com/OpenSans.woff') format('woff');
-  url('/assets/font/OpenSans.woff') format('woff');
-}
+$general: 'Iosevka Web';
 
-@font-face {
-  font-family: 'Dosis';
-  font-style: normal;
-  font-weight: 400;
-  src:
-  // url('http://onk1k9bha.bkt.clouddn.com/Dosis.woff') format('woff');
-  url('/assets/font/Dosis.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: 400;
-  src:
-  // url('http://onk1k9bha.bkt.clouddn.com/Inconsolata.woff') format('woff');
-  url('/assets/font/Inconsolata.woff') format('woff');
-  // url('http://onk1k9bha.bkt.clouddn.com/Inconsolata.woff2') format('woff2')  /* chrome、firefox */;
-}
-
-
-@font-face {
-  font-family: 'Shadows Into Light';
-  font-style: normal;
-  font-weight: 400;
-  src:
-  // local('Shadows Into Light'), local('ShadowsIntoLight'),
-  url('/assets/font/ShadowsIntoLight.woff') format('woff');
-  // url('http://onk1k9bha.bkt.clouddn.com/ShadowsIntoLight.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto Slab';
-  font-style: normal;
-  font-weight: 300;
-  src:
-  // local('Roboto Slab Light'), local('RobotoSlab-Light'),
-  //  url('http://onk1k9bha.bkt.clouddn.com/RobotoSlabLight.woff') format('woff');
-  url('/assets/font/RobotoSlabLight.woff') format('woff');
-}
-@font-face {
-  font-family: 'Roboto Slab';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
-  // url('http://onk1k9bha.bkt.clouddn.com/RobotSlabRegular.woff') format('woff');
-  url('/assets/font/RobotSlabRegular.woff') format('woff');
-}
-
-$general: '微软雅黑','Ubuntu', Arial, Helvetica, sans-serif;
-
-// 参考byvoid的字体
-// $body-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Lantinghei TC','Hiragino Kaku Gothic ProN','Heiti TC','MS Mincho','MingLiU',sans-serif;
-// $post-font: 'Open Sans','Helvetica Neue','Arial','Verdana','Hiragino Sans GB','STHeiti','SimSun',sans-serif;
-// $post-h: 'Dosis','Helvetica Neue','Arial','Verdana','Songti SC','STSong','SimSun',serif;
 $body-font: $general;
 $post-font: $general;
 $post-h: $general;
 
-// $title-font: 'Roboto Slab';
 $title-font: $general;
-// $blockquote-font: 'Inconsolata';
 $blockquote-font: $general;
-// $algorithm_id-font: 'Inconsolata';
 $algorithm_id-font: $general;
-// $date-font: 'Inconsolata';
 $date-font: $general;
 
 
 $block-font: $post-font;
 $logo-font: 'Shadows Into Light';
 $menu-font: $body-font;
-// $block-tag-font: 'Roboto Slab';
 $block-tag-font: $general;
-$code-font: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
-// $code-font:"Menlo", "DejaVu Sans Mono", "Liberation Mono", "Consolas", "Ubuntu Mono", "Courier New", "andale mono", "lucida console", monospace;
-// $code-font: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
-// $code-font: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
+$code-font: $general;
 $about_font: $post-font;

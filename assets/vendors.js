@@ -5,6 +5,9 @@ vis = require('./js/vis-network.min');
 require('./css/pure.min.css');
 require('./css/grids-responsive-min.css');
 
+// require('./css/syntax.css');
+require('./css/syntax-github.css');
+
 // require('katex/dist/katex.min.css');
 
 require('gitalk/dist/gitalk.css');

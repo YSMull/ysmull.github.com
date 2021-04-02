@@ -64,7 +64,7 @@
   <script>
   window.onload = function(){
       init()
-      var all_scheme_code = $('pre.language-scheme')
+      let all_scheme_code = $('.language-scheme')
       for (var i = 0; i < all_scheme_code.length; i++) {
           all_scheme_code[i].setAttribute('id','scm-' + i)
           var runner = document.createElement('input');
