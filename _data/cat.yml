@@ -1,33 +1,38 @@
 - item: Functional Programming
   tags:
-        -fp
+    -fp
+
+- item: Algorithm
+  tags:
+    -leetcode
+  page: /algorithm_list
 
 - item: Nodejs & JavaScript
   tags:
-       -javascript
-       -node
+    -javascript
+    -node
 
 - item: Java&JVM
   tags:
-       -java
-       -jvm
+    -java
+    -jvm
 
 - item: Database
   tags:
-       -database
-       -sql
+    -database
+    -sql
   page: /dbNotes
 
 
 - item: Framework
   tags:
-       -framework
+    -framework
 
 - item: Design Pattern
   page: /designPattern
   tags:
-       -design_pattern
+    -design_pattern
 
 - item: Other
   tags:
-       -article
+    -article
