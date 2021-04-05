@@ -6,6 +6,9 @@ tags:
     - 方法学习
 ---
 
+* toc
+{:toc}
+
 ## next_permutation (允许重复)
 ```rust
 impl Solution {
