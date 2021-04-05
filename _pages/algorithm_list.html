@@ -8,21 +8,25 @@ layout: default
     <div class="block" style="font-size:1em;margin:10px">
       <div class="block_tag">LeetCode 笔记<a style="font-size: 16px;right: 20px;position: absolute;" href="/algorithm">切换视图</a></div>
       <ul>
-          {% assign sorted_post = site.algorithms | sort: 'leetcode_id' %}
+          {% assign sorted_post = site.algorithms | sort: 'date' | reverse %}
           {% for post in sorted_post %}
               <li class="pure-g">
                 <div class="pure-u-1" style="white-space: nowrap;text-overflow: ellipsis;">
                   <div class="pure-g">
                     <div class="pure-u-3-24">
-                      <div class="algorithm_id">
                       {% if post.leetcode_id %}
-                        {{ post.leetcode_id }}
+                        <div class="algorithm_id leetcode-{{ post.difficult }}">
+                          <span>{{ post.leetcode_id }}</span>
+                        </div>
                       {% elsif post.interview_origin %}
-                        {{ post.interview_origin }}
+                        <div class="algorithm_id">
+                          <span>{{ post.interview_origin }}</span>
+                        </div>
                       {% else %}
-                        方法
+                        <div class="algorithm_id">
+                          <span>方法</span>
+                        </div>
                       {% endif%}
-                      </div>
                     </div>
                     <div class="pure-u-18-24" style="margin-left:5px;">
                       <a title="{{ post.title }}" href="{{ post.url }}" style="margin-left: 5px;">
@@ -30,10 +34,17 @@ layout: default
                       </a>
                     </div>
                   </div>
+                  <div style="position: absolute;font-size: 10px;left: 16px; font-family: 'Iosevka Web',serif">
+                    <span>{{ post.date | date:"%Y-%m-%d" }}</span>
+                  </div>
                   <div class="category">
-                    {% for cat in post.category %}
-                      <span>{{ cat }}</span>
-                    {% endfor %}
+                    {% if post.category %}
+                      {% for cat in post.category %}
+                        <span>{{ cat }}</span>
+                      {% endfor %}
+                    {% else %}
+                    <span style="border:none;"></span>
+                    {% endif %}
                   </div>
                 </div>
               </li>

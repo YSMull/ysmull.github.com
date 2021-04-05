@@ -28,3 +28,15 @@ pre {
     /*background-color: #f1f1f1;*/
     background-color: #f3f3f3;
 }
+
+.leetcode-hard {
+    background: rgba(198, 0, 0, 0.7);
+}
+
+.leetcode-medium {
+    background: rgba(237, 115, 54, 0.6);
+}
+
+.leetcode-easy {
+    background: rgba(0, 153, 117, 0.4);
+}

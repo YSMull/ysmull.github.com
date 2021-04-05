@@ -11,6 +11,8 @@ div2[0].style.setProperty("max-width","800px");
     <div id="back" class="post__back">
         {% if page.tags contains "design_pattern" %}
             <a href="/design_pattern">&lt;-- Design Pattern</a>
+        {% elsif page.tags contains "leetcode" %}
+            <a href="/algorithm_list">&lt;-- algorithm</a>
         {% else %}
             <a href="/">&lt;-- home</a>
         {% endif %}
