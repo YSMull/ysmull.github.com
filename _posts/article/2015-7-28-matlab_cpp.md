@@ -15,7 +15,7 @@ tags:
 新建一个win32 dll工程，工程名为test，如果你的MATLAB和系统都是64位的，这里要修改平台参数到64位。
 例如要导出`add()`函数，那么头文件里就要写：
 
-```c
+```c++
 //main.h
 extern "C" double __declspec(dllexport)add(double x, double y);
 ```
@@ -23,7 +23,7 @@ extern "C" double __declspec(dllexport)add(double x, double y);
 注意`extern "C"`不能掉，表明它按照C的编译和连接规约来编译和连接,你可以认为这里的C++函数将要给C调用，因为下面讲到的MATLAB的`loadlibrary()`函数只能识别C格式的DLL。
 源文件内容为：
 
-```c
+```c++
 //main.cpp
 #include "main.h"
 double add(double a, double b)
@@ -37,7 +37,7 @@ double add(double a, double b)
 
 
 
-```c
+```c++
 char rep_str(char s)
 {
   return s;

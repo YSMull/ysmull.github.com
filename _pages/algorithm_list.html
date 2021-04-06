@@ -48,6 +48,25 @@ layout: default
                     {% else %}
                     <span style="border:none;"></span>
                     {% endif %}
+
+                    {% assign lan = "" | split: "," %}
+                    {% if post.content contains "```rust" %}
+                    {% assign rust = "Rust" | split: "," %}
+                    {% assign lan = lan | concat: rust %}
+                    {% endif %}
+                    {% if post.content contains "```java" %}
+                    {% assign java = "Java" | split: "," %}
+                    {% assign lan = lan | concat: java %}
+                    {% endif %}
+                    {% if post.content contains "```c++" %}
+                    {% assign cpp = "C++" | split: "," %}
+                    {% assign lan = lan | concat: cpp %}
+                    {% endif %}
+                    {% assign len = lan | size %}
+                    {% if len > 0 %}
+                    <span>{{ lan | join: " / " }}</span>
+                    {% endif %}
+
                   </div>
                 </div>
               </li>
