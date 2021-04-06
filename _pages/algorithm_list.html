@@ -8,8 +8,11 @@ layout: default
     <div class="block" style="font-size:1em;margin:10px">
       <div class="block_tag">LeetCode 笔记<a style="font-size: 16px;right: 20px;position: absolute;" href="/algorithm">切换视图</a></div>
       <ul>
-          {% assign sorted_post = site.algorithms | sort: 'date' | reverse %}
+          {% assign sorted_post = site.algorithms | sort: 'date' | reverse  %}
           {% for post in sorted_post %}
+              {% if post.hide %}
+              {% continue %}
+              {% endif %}
               <li class="pure-g">
                 <div class="pure-u-1" style="white-space: nowrap;text-overflow: ellipsis;">
                   <div class="pure-g">
