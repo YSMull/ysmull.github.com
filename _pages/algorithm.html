@@ -24,7 +24,7 @@ layout: default
         }
         items.push({
             tag: `{{ post.tags[0] }}`,
-            title: `{{ post.title }}`,
+            title: leetcodeProblemGroup[id] ? (leetcodeProblemGroup[id].cnTitle || leetcodeProblemGroup[id].enTitle): `{{ post.title }}`,
             label: id || `{{ post.title }}`,
             url: `{{ post.url }}`,
             id,
