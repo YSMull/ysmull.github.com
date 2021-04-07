@@ -14,7 +14,13 @@ layout: default
         {% endif %}
   </div>
   <div class="post__title">
+      {% if page.leetcode_id %}
+      <h1 id="originLeetcodeCnTitle"></h1>
+      <h1 id="originLeetcodeEnTitle"></h1>
+      <a id="originLeetcodeUrl" target="_blank">原题链接</a>
+      {% else %}
       <h1>{{ page.title }}</h1>
+      {% endif %}
   </div>
   <div class="post__date">
       <p>{{ page.date | date:"%Y/%m/%d" }}</p>
@@ -107,6 +113,21 @@ layout: default
             })(i)
             all_scheme_code[i].appendChild(runner);
         }
+    }
+</script>
+{% endif %}
+
+{% if page.leetcode_id %}
+<script>
+    let problem = leetcodeProblemGroup[`{{ page.leetcode_id }}`];
+    if (problem) {
+        let a = document.querySelector('#originLeetcodeUrl');
+        a.href = `https://leetcode-cn.com/problems/${problem.url}`;
+
+        let cnTitle = document.querySelector('#originLeetcodeCnTitle');
+        cnTitle.innerText = problem.cnTitle;
+        let enTitle = document.querySelector('#originLeetcodeEnTitle');
+        enTitle.innerText = `(${problem.enTitle})`;
     }
 </script>
 {% endif %}
