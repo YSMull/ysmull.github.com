@@ -12,17 +12,17 @@ layout: about
 </style>
 
 
-> `字节` `爱奇艺` `pdd` `Momenta` `PL专家`
+> 网易有数曾经的同事，PL专家
 > 
 > https://zedongh.github.io/blog
 
-> `电信` `菜鸟` `字节` `学长`
->
-> https://www.cnblogs.com/stevenczp
+[comment]: <> (> `电信` `菜鸟` `字节` `学长`)
 
-> `蚂蚁金服` `大牛姿态`
->
-> https://samray.me
+[comment]: <> (> https://www.cnblogs.com/stevenczp)
+
+[comment]: <> (> `蚂蚁金服` `大牛姿态`)
+
+[comment]: <> (> https://samray.me)
 
 <div id="gitalk-container"></div>
 
