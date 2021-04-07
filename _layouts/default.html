@@ -61,36 +61,7 @@
 </script>
 {% endif %}
 
-  <script>
-  window.onload = function(){
-      init()
-      let all_scheme_code = $('.language-scheme')
-      for (var i = 0; i < all_scheme_code.length; i++) {
-          all_scheme_code[i].setAttribute('id','scm-' + i)
-          var runner = document.createElement('input');
-          runner.type = 'button'
-          runner.value = '运行'
-          runner.id = 'scm-' + i + '-runner';
-          runner.style = 'margin-top: 10px'
-          runner.onclick = (function (i) {
-              return function () {
-                  var code = document.querySelector('#scm-' + i + ' code').innerText
-                  var eval_log = clickEval(code)
-                  alert(eval_log)
-                  // var onError = function(e){ console.error(e); }
-                  // var biwa = new BiwaScheme.Interpreter(onError)
-                  // var st = new Date()
-                  // biwa.evaluate(code, function(result) {
-                  //     var et = new Date()
-                  //     var duration = "[Finished in " + (et - st)/1000 + " seconds]"
-                  //     alert(result + "\n\n" + duration);  //=> 3
-                  // });
-              }
-          })(i)
-          all_scheme_code[i].appendChild(runner);
-      }
-  }
-  </script>
+
 <!--  修正 katex dispaly 模式下多余的空行  -->
 <script>
   let display = document.querySelectorAll('.katex-display');

@@ -26,7 +26,7 @@ div2[0].style.setProperty("max-width","800px");
   <div class="post__meta">
       <p>{{ tags_content }}</p>
   </div>
-  <div class="post__content"?>
+  <div class="post__content">
       {{ content }}
   </div>
   <div style="border-top: 1px solid #66666666;margin-top: 15px;margin-bottom: 15px;"></div>
@@ -35,23 +35,7 @@ div2[0].style.setProperty("max-width","800px");
 <!--    <span style="font-size: 14px;color: #7f919e;">感谢指教！</span>-->
 <!--  </div>-->
   <div id="gitalk-container"></div>
-
-<!-- 首行缩进css -->
-<!-- <style>
-    p {
-        text-indent: 2em;
-    }
-    post__date p {
-        text-indent: 0em;
-    }
-    blockquote p {
-        text-indent: 0em;
-    }
-</style> -->
-<!-- 首行缩进js -->
-<!-- <script>
-    document.querySelectorAll('p img').forEach(node => node.parentNode.style.textIndent = '0em')
-</script> -->
+</div>
 <script>
 // 参考 https://github.com/fooleap/fooleap.github.io/blob/master/assets/js/main.js
 let toc = document.querySelector('.post-toc');
@@ -160,3 +144,50 @@ if (toc) {
         gitalk(location.pathname, '{{ page.title }}', allTags, body).render('gitalk-container');
     })()
 </script>
+
+
+{% if page.math %}
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+    });
+</script>
+{% endif %}
+
+{% if page.scheme %}
+<script src="/assets/js/scheme.js"></script>
+<script>
+    window.onload = function(){
+        init()
+        let all_scheme_code = $('.language-scheme')
+        for (var i = 0; i < all_scheme_code.length; i++) {
+            all_scheme_code[i].setAttribute('id','scm-' + i)
+            var runner = document.createElement('input');
+            runner.type = 'button'
+            runner.value = '运行'
+            runner.id = 'scm-' + i + '-runner';
+            runner.style = 'margin-top: 10px'
+            runner.onclick = (function (i) {
+                return function () {
+                    var code = document.querySelector('#scm-' + i + ' code').innerText
+                    var eval_log = clickEval(code)
+                    alert(eval_log)
+                    // var onError = function(e){ console.error(e); }
+                    // var biwa = new BiwaScheme.Interpreter(onError)
+                    // var st = new Date()
+                    // biwa.evaluate(code, function(result) {
+                    //     var et = new Date()
+                    //     var duration = "[Finished in " + (et - st)/1000 + " seconds]"
+                    //     alert(result + "\n\n" + duration);  //=> 3
+                    // });
+                }
+            })(i)
+            all_scheme_code[i].appendChild(runner);
+        }
+    }
+</script>
+{% endif %}

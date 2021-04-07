@@ -2,6 +2,8 @@ $ = require('./js/zepto.min.js');
 _ = require('./js/lodash.min.js');
 vis = require('./js/vis-network.min');
 
+LazyLoad = require("vanilla-lazyload/dist/lazyload.amd");
+
 require('./css/pure.min.css');
 require('./css/grids-responsive-min.css');
 
@@ -9,7 +11,6 @@ require('./css/grids-responsive-min.css');
 require('./css/syntax-github.css');
 // require('./css/syntax-magritte.css');
 
-// require('katex/dist/katex.min.css');
 
 require('gitalk/dist/gitalk.css');
 let Gitalk = require('gitalk');
@@ -30,3 +31,7 @@ gitalk = (id, title, labels, body) => {
     body
   });
 };
+
+readHis = require('./js/reading.js');
+
+// clickEval = require('./js/scheme.js')
