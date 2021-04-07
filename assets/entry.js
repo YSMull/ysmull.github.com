@@ -1,2 +1,2 @@
-require('./css/customCodeBlock.css');
 require('./css/main.scss');
+require('./css/customCodeBlock.css');

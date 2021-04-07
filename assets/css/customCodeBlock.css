@@ -21,22 +21,27 @@ pre {
     padding: 10px;
 }
 
-.highlight {
-    /*background-image: url('http://gameprogrammingpatterns.com/images/background.png');*/
-    /*left: 50px;*/
-    /*position: relative;*/
-    /*background-color: #f1f1f1;*/
-    background-color: #f3f3f3;
-}
-
 .leetcode-hard {
     background: rgba(198, 0, 0, 0.7);
+}
+.leetcode-hard:hover {
+    background: rgba(198, 0, 0, 0.9);
 }
 
 .leetcode-medium {
     background: rgba(237, 115, 54, 0.6);
 }
+.leetcode-medium:hover {
+    background: rgba(237, 115, 54, 0.8);
+}
 
 .leetcode-easy {
     background: rgba(0, 153, 117, 0.4);
+}
+.leetcode-easy:hover {
+    background: rgba(0, 153, 117, 0.6);
+}
+
+.leetcode-other:hover {
+    background: #eee;
 }

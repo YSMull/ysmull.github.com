@@ -32,6 +32,12 @@ gitalk = (id, title, labels, body) => {
   });
 };
 
+// 自己写的一些工具
+
 readHis = require('./js/reading.js');
+initReference = require('./js/reference.js');
+initToc = require('./js/toc.js');
+leetcodeProblemGroup = require('./js/leetcode');
+
 
 // clickEval = require('./js/scheme.js')

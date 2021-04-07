@@ -30,7 +30,7 @@ layout: default
             id,
             type,
             parentId: `{{ post.parent_id | join: "," }}`.split(','),
-            difficult: `{{ post.difficult }}`,
+            difficult: leetcodeProblemGroup[id] ? leetcodeProblemGroup[id].difficult : 'easy',
             category
         });
     }
