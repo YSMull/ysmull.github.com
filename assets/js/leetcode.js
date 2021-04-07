@@ -1,7 +1,11 @@
 let _ = require('lodash');
 let data = require('../../_algorithms/problems.json');
 let translation = require('../../_algorithms/translation.json');
+let tags = require('../../_algorithms/tags.json');
 
+
+// https://leetcode-cn.com/problems/api/tags/
+// https://leetcode-cn.com/api/problems/all/
 
 let trans = translation.data.translations;
 let transTitleMap = _.zipObject(trans.map(i => i.questionId), trans.map(i => i.title));
@@ -22,6 +26,19 @@ let pureData = data.stat_status_pairs.map(i => {
     }
 })
 
-let g = _.zipObject(pureData.map(i => i.id), pureData);
+let leetcodeProblemGroup = _.zipObject(pureData.map(i => i.id), pureData);
 
-module.exports = g;
+let findTagsByProblemId = function (problemId) {
+    let result = [];
+    tags.topics.forEach(topic => {
+        if (topic.questions.includes(problemId)) {
+            result.push(topic.translatedName || topic.name);
+        }
+    })
+    return result.filter(a => a);
+}
+
+module.exports = {
+    findTagsByProblemId,
+    leetcodeProblemGroup
+};

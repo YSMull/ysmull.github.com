@@ -37,7 +37,8 @@ gitalk = (id, title, labels, body) => {
 readHis = require('./js/reading.js');
 initReference = require('./js/reference.js');
 initToc = require('./js/toc.js');
-leetcodeProblemGroup = require('./js/leetcode');
-
+let L = require('./js/leetcode');
+leetcodeProblemGroup = L.leetcodeProblemGroup;
+findTagsByProblemId = L.findTagsByProblemId;
 
 // clickEval = require('./js/scheme.js')

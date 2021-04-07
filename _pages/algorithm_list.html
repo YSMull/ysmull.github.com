@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<script>var pTag = {};</script>
+
 <div class="pure-g">
   <div class="pure-u-1 pure-u-lg-1-2 pure-u-md-1-2 pure-u-sm-1">
     <div class="block" style="font-size:1em;margin:10px">
@@ -37,32 +39,40 @@ layout: default
                   <div style="position: absolute;font-size: 10px;left: 16px; font-family: 'Iosevka Web',serif">
                     <span>{{ post.date | date:"%Y-%m-%d" }}</span>
                   </div>
-                  <div class="category">
+                  <div leetcodeId="{{ post.leetcode_id }}" class="category">
+                    {% assign ca = "" | split: "," %}
                     {% if post.category %}
                       {% for cat in post.category %}
-                        <span>{{ cat }}</span>
+                        {% assign cat1 = cat | split: "$$$" %}
+                        {% assign ca = ca | concat: cat1 %}
                       {% endfor %}
-                    {% else %}
-                    <span style="border:none;padding: 0;"></span>
                     {% endif %}
-
                     {% assign lan = "" | split: "," %}
                     {% if post.content contains "```rust" %}
-                    {% assign rust = "Rust" | split: "," %}
-                    {% assign lan = lan | concat: rust %}
+                      {% assign rust = "Rust" | split: "," %}
+                      {% assign lan = lan | concat: rust %}
                     {% endif %}
                     {% if post.content contains "```java" %}
-                    {% assign java = "Java" | split: "," %}
-                    {% assign lan = lan | concat: java %}
+                      {% assign java = "Java" | split: "," %}
+                      {% assign lan = lan | concat: java %}
                     {% endif %}
                     {% if post.content contains "```c++" %}
-                    {% assign cpp = "C++" | split: "," %}
-                    {% assign lan = lan | concat: cpp %}
+                      {% assign cpp = "C++" | split: "," %}
+                      {% assign lan = lan | concat: cpp %}
                     {% endif %}
+
                     {% assign len = lan | size %}
                     {% if len > 0 %}
-                    <span>{{ lan | join: " / " }}</span>
+                      {% assign lan = lan | join: " / " %}
+                      {% assign lanStrArr = lan | split: "$$$" %}
+                      {% assign ca = ca | concat: lanStrArr %}
                     {% endif %}
+                    <script>
+                      {% for _cat in ca %}
+                      pTag['{{ post.leetcode_id }}'] = (pTag['{{ post.leetcode_id }}'] || []).concat('{{ _cat }}');
+                      {% endfor %}
+                    </script>
+                    <span style="border:none;padding: 1px;position: inherit;"></span>
                   </div>
                 </div>
               </li>
@@ -112,4 +122,25 @@ layout: default
       window.open(`https://leetcode-cn.com/problems/${problem.url}`);
     }
   }
+
+  (function leetcodeTag() {
+    let categoryList = document.querySelectorAll('.category');
+    for (let category of categoryList) {
+      let leetCodeId = category.getAttribute('leetcodeid');
+      let problem = leetcodeProblemGroup[leetCodeId];
+      if (problem) {
+        let tags = findTagsByProblemId(Number.parseInt(leetCodeId));
+        tags = tags.filter(t => !pTag[leetCodeId].some(et => et === t));
+        tags = tags.concat(pTag[leetCodeId] || []);
+        tags.forEach(t => {
+          // removeExistsTag(t, category);
+          let span = document.createElement('span');
+          span.innerText = t;
+          span.style = 'margin-right: 4px;';
+          // category.insertAdjacentElement('afterbegin', span);
+          category.appendChild(span);
+        });
+      }
+    }
+  })();
 </script>
