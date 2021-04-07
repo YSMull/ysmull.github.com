@@ -16,8 +16,10 @@ layout: default
   <div class="post__title">
       {% if page.leetcode_id %}
       <h1 id="originLeetcodeCnTitle"></h1>
-      <h1 id="originLeetcodeEnTitle"></h1>
-      <a id="originLeetcodeUrl" target="_blank">原题链接</a>
+      <br>
+      <h1 id="originLeetcodeEnTitle" style="margin: 0;transform: translate(0px, -20px);font-size: 18px;font-weight: 300;"></h1>
+      <br>
+      <a id="originLeetcodeUrl" style="position: absolute;transform: translate(0px, -25px);" target="_blank">原题链接</a>
       {% else %}
       <h1>{{ page.title }}</h1>
       {% endif %}
@@ -127,7 +129,7 @@ layout: default
         let cnTitle = document.querySelector('#originLeetcodeCnTitle');
         cnTitle.innerText = problem.cnTitle;
         let enTitle = document.querySelector('#originLeetcodeEnTitle');
-        enTitle.innerText = `(${problem.enTitle})`;
+        enTitle.innerText = `${problem.enTitle}`;
     }
 </script>
 {% endif %}
