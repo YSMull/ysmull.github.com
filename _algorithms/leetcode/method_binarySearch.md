@@ -20,7 +20,7 @@ tags:
 class Solution {
     public int binarySearch(int[] nums) {
         int l = 0, r = nums.length;
-        if (l < r) {
+        while (l < r) {
             int m = l + (r - l) / 2;
             if (f(m)) {
                 r = m;
