@@ -1,12 +1,11 @@
 ---
-layout: post
 title: "Java 中如何做类隔离"
 date: 2021-04-13 19:35:00
 tags: ["jvm", "classloader"]
 ---
 
 * toc
-{:toc}
+{:toc} 
 
 ## 准备被依赖模块
 
@@ -331,42 +330,26 @@ I am B 1.0
                     └── B-1.0.jar     <====== 修改为 B-1.0.jar
 ```
 
-重新执行代码：
+重新执行代码报了 `NoSuchMethodException` 错误：
 
-```java
-A 1.0 loaded
-I am A 1.0
-B 1.0 loaded
-I am B 1.0
-
-A 2.0 loaded
-I am A 2.0
-B 1.0 loaded    <======= 注意 1.0 的 B 第二次被 load
-I am B 1.0
-
-I am A 1.0
-I am B 1.0
-
-I am A 2.0
-I am B 1.0
-
-I am A 1.0
-I am B 1.0
-
-I am A 2.0
-I am B 1.0
-
-I am A 1.0
-I am B 1.0
-
-I am A 2.0
-I am B 1.0
-
+```text
+java.lang.reflect.InvocationTargetException
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:498)
+    at com.youdata.Main.invokeAsMethod(Main.java:34)
+    at com.youdata.Main.lambda$loadClassInNewThread$3(Main.java:43)
+    at java.lang.Thread.run(Thread.java:748)
+    Caused by: java.lang.NoSuchMethodException: com.youdata.B.printVersionNew()
+    at java.lang.Class.getMethod(Class.java:1786)
+    at com.youdata.A.printDepVersion(A.java:17)
+    ... 7 more
 ```
 
-实验发现：
+并且实验还发现：
 1. 把 `Thread.currentThread().getContextClassLoader()` 换成 `Main.class.getClassLoader()` 甚至换成 `null` 也是 work 的。
-2. 去掉 sleep，每一次循环都重新加载类并且，两个线程并发运行，也不会发生调用错误。
+2. 去掉 sleep，每一次循环都重新加载类并且，两个线程并发运行，也不会发生调用错误，这说明被加载的类没有相互覆盖。
 ```java
 public static void loadClassInNewThread(String jarPath) {
     new Thread(() -> {
