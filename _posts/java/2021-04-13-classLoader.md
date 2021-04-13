@@ -56,8 +56,10 @@ public class A {
         System.out.println("I am A 2.0");
     }
 
-    public static void printDepVersion() {
-        B.printVersion();
+    // 新版通过反射调用
+    public static void printDepVersion() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method printVersionNew = B.class.getMethod("printVersionNew");
+        printVersionNew.invoke(null);
     }
 }
 ```
@@ -100,7 +102,7 @@ public class B {
         System.out.println("B 2.0 loaded");
     }
 
-    public static void printVersion() {
+    public static void printVersionNew() { // 方法名改了
         System.out.println("I am B 2.0");
     }
 }
@@ -362,3 +364,20 @@ I am B 1.0
 
 ```
 
+实验发现：
+1. 把 `Thread.currentThread().getContextClassLoader()` 换成 `Main.class.getClassLoader()` 甚至换成 `null` 也是 work 的。
+2. 去掉 sleep，每一次循环都重新加载类并且，两个线程并发运行，也不会发生调用错误。
+```java
+public static void loadClassInNewThread(String jarPath) {
+    new Thread(() -> {
+        try {
+            while (true) {
+                Class<?> aClass = loadClassA(jarPath, null);
+                invokeAsMethod(aClass);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }).start();
+}
+```
