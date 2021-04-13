@@ -1,11 +1,12 @@
 ---
+layout: post
 title: "Java 中如何做类隔离"
 date: 2021-04-13 19:35:00
 tags: ["jvm", "classloader"]
 ---
 
 * toc
-{:toc} 
+{:toc}
 
 ## 准备被依赖模块
 
@@ -194,8 +195,6 @@ I am B 2.0
 
 当我们提供 1.0 版本的 B 模块，A 就是用 1.0 的 B 模块工作，当我们提供 2.0 版本的 B 模块，A 就是用 2.0 的 B 模块工作。
 
-
-
 ## 调用方（用类加载器同时加载多版本类）
 
 我们改造调用方的项目结构如下，使用 URLClassLoader 同时加载指定路径的所有 jar 包。
@@ -350,6 +349,7 @@ java.lang.reflect.InvocationTargetException
 并且实验还发现：
 1. 把 `Thread.currentThread().getContextClassLoader()` 换成 `Main.class.getClassLoader()` 甚至换成 `null` 也是 work 的。
 2. 去掉 sleep，每一次循环都重新加载类并且，两个线程并发运行，也不会发生调用错误，这说明被加载的类没有相互覆盖。
+
 ```java
 public static void loadClassInNewThread(String jarPath) {
     new Thread(() -> {
