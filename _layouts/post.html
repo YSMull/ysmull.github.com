@@ -129,7 +129,12 @@ layout: default
         let cnTitle = document.querySelector('#originLeetcodeCnTitle');
         cnTitle.innerText = problem.cnTitle;
         let enTitle = document.querySelector('#originLeetcodeEnTitle');
-        enTitle.innerText = `${problem.enTitle}`;
+        if (problem.enTitle.includes('LCOF')) {
+            enTitle.innerText = `剑指offer`;
+        } else {
+            enTitle.innerText = `${problem.enTitle}`;
+        }
+
     }
 </script>
 {% endif %}
