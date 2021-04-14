@@ -19,7 +19,7 @@ layout: default
           {% assign max_show_nums = 0 %}
           {% assign everything = site.posts | concat: site.algorithms | sort: 'date' | reverse %}
           {% for post in everything %}
-            {% if max_show_nums >= 5 %}
+            {% if max_show_nums >= 5 and item.item != 'Algorithm' %}
               {% break %}
             {% endif %}
             {% assign show = 0 %}
