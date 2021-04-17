@@ -8,7 +8,12 @@ layout: default
   <div class="pure-u-1 pure-u-lg-1-2 pure-u-md-1 pure-u-sm-1-1">
     <div class="outer_block">
       <div class="block">
-      <div class="block_tag">{{ item.item }}
+      <div class="block_tag">
+        {% if item.item == 'Algorithm' %}
+        Algorithm(条数暂放开)
+        {% else %}
+        {{ item.item }}
+        {% endif %}
         {% if item.page  %}
         <a class="tag_text" href="{{ item.page }}" style="font-size:0.7em">more...</a>
         {% endif %}
