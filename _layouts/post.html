@@ -127,7 +127,7 @@ layout: default
         a.href = `https://leetcode-cn.com/problems/${problem.url}`;
 
         let cnTitle = document.querySelector('#originLeetcodeCnTitle');
-        cnTitle.innerText = problem.cnTitle;
+        cnTitle.innerText = `${problem.id}.${problem.cnTitle}`;
         let enTitle = document.querySelector('#originLeetcodeEnTitle');
         if (problem.cnTitle !== problem.enTitle) {
             if (problem.enTitle.includes('LCOF')) {
