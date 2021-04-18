@@ -130,7 +130,7 @@ layout: default
       let problem = leetcodeProblemGroup[leetCodeId];
       if (problem) {
         let tags = findTagsByProblemId(Number.parseInt(leetCodeId));
-        tags = tags.filter(t => !pTag[leetCodeId].some(et => et === t));
+        tags = tags.filter(t => pTag[leetCodeId] && !pTag[leetCodeId].some(et => et === t));
         tags = tags.concat(pTag[leetCodeId] || []);
         tags.forEach(t => {
           // removeExistsTag(t, category);
