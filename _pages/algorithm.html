@@ -36,153 +36,165 @@ layout: default
     }
     {% endfor %}
 
+    var methodNodes = [...new Set(items.flatMap(item => item.parentId))].filter(a => a && a.startsWith('__')).map(a => a.slice(2));
 
+    var itemNodes = items.filter(i => !methodNodes.includes(i.id));
 
-  // create an array with nodes
-  var nodes = new vis.DataSet(items.map(t => {
-      let group = t.tag;
-      if (t.tag === 'leetcode') {
-          group = `${t.tag}_${t.difficult || 'easy'}`
-      }
-      return {
-          id: t.id,
-          label: t.label,
-          title: t.title,
-          group
-      }
-  }));
+    var gNodes = [];
 
-    let isMethodNode = pid => {
-        return ['二分查找', '全排列', '搜索'].includes(pid);
-    }
+    itemNodes.forEach(t => {
+        let group = t.tag;
+        if (t.tag === 'leetcode') {
+            group = `${t.tag}_${t.difficult || 'easy'}`
+        }
+        gNodes.push({
+            id: t.id,
+            label: t.label || t.id,
+            title: t.title || t.id,
+            group
+        });
+    });
 
-  // create an array with edges
-  var relations = [];
-  items.forEach(t => {
-      if (t.parentId) {
-          t.parentId.forEach(pid => {
-              relations.push({
-                  from: pid,
-                  to: t.id,
-                  smooth: {
-                      type: isMethodNode(pid) ? 'continuous' : 'dynamic',
-                      // roundness: 1,
-                  },
-                  chosen: {
-                      edge: true,
-                  },
-                  width: isMethodNode(pid) ? 1 : 1,
-                  dashes: isMethodNode(pid) ? [5, 5] : false,
-                  color: {
-                      color: isMethodNode(pid) ? 'rgba(140,141,141,0.6)' : 'rgb(50,82,129)',
-                      highlight: isMethodNode(pid) ? 'rgba(140,141,141,0.6)' : 'rgb(50,82,129)',
-                      inherit: false,
-                      opacity: isMethodNode(pid) ? 0.3 : 0.7,
-                  },
-                  arrows: {
-                      to: {
-                          enabled: !isMethodNode(pid),
-                      }
-                  }
-              });
-          })
-      }
-  });
-  relations = relations.filter(a => a);
-  var edges = new vis.DataSet(relations);
+    methodNodes.forEach(t => {
+        gNodes.push({
+            id: t,
+            label: t,
+            title: t,
+            group: '方法学习'
+        });
+    });
 
-  // create a network
-  var container = document.getElementById("mynetwork");
-  var data = {
-      nodes: nodes,
-      edges: edges,
-  };
-  var options = {
-      nodes: {
-          physics: true,
-          shape: "box",
-          scaling: {
-              min: 10,
-              max: 30,
-              label: {
-                  enabled: true,
-                  min: 14,
-                  max: 30,
-                  maxVisible: 30,
-                  drawThreshold: 5
-              },
-          },
-          font: {
-              size: 16
-          },
-          borderWidth: 1,
-          borderWidthSelected: 1
-      },
-      interaction: {
-          hideEdgesOnDrag: false,
-          tooltipDelay: 200,
-      },
-      groups: {
-          leetcode_easy: {
-              color: {
-                  border: 'rgb(0,153,74,0.9)',
-                  background: 'rgb(0,153,74,0.4)',
-                  highlight: {
-                      border: 'rgb(0,153,74,0.9)',
-                      background: 'rgba(0,153,117,0.4)',
-                  }
-              },
-              borderWidth:1,
-          },
-          leetcode_medium: {
-              color: {
-                  border: 'rgba(237,115,54,0.9)',
-                  background: 'rgba(237,115,54,0.6)',
-                  highlight: {
-                      border: 'rgba(237,115,54,0.9)',
-                      background: 'rgba(237,115,54,0.6)',
-                  }
-              },
-              borderWidth:1,
-          },
-          leetcode_hard: {
-              color: {
-                  border: 'rgba(198,0,0,0.9)',
-                  background: 'rgba(198,0,0,0.7)',
-                  highlight: {
-                      border: 'rgba(198,0,0,0.9)',
-                      background: 'rgba(198,0,0,0.7)',
-                  }
-              },
-              borderWidth:1,
-          }
-      },
-      layout: {
-          randomSeed: undefined,
-          improvedLayout: true,
-          clusterThreshold: 150,
-          hierarchical: {
-              enabled: false,
-              levelSeparation: 150,
-              nodeSpacing: 100,
-              treeSpacing: 10,
-              blockShifting: true,
-              edgeMinimization: true,
-              parentCentralization: true,
-              direction: 'LR',        // UD, DU, LR, RL
-              sortMethod: 'directed',  // hubsize, directed
-              shakeTowards: 'roots'  // roots, leaves
-          }
-      }
-  };
+    // create an array with nodes
+    var nodes = new vis.DataSet(gNodes);
+    let isMethodNode = pid => pid.startsWith('__');
 
-  var network = new vis.Network(container, data, options);
+    // create an array with edges
+    var relations = [];
+    items.forEach(t => {
+        if (t.parentId) {
+            t.parentId.forEach(pid => {
+                relations.push({
+                    from: isMethodNode(pid) ? pid.slice(2) : pid,
+                    to: isMethodNode(t.id) ? t.pid.slice(2) : t.id,
+                    smooth: {
+                        type: isMethodNode(pid) ? 'continuous' : 'dynamic',
+                        // roundness: 1,
+                    },
+                    chosen: {
+                        edge: true,
+                    },
+                    width: isMethodNode(pid) ? 1 : 1,
+                    dashes: isMethodNode(pid) ? [5, 5] : false,
+                    color: {
+                        color: isMethodNode(pid) ? 'rgba(140,141,141,0.6)' : 'rgb(50,82,129)',
+                        highlight: isMethodNode(pid) ? 'rgba(140,141,141,0.6)' : 'rgb(50,82,129)',
+                        inherit: false,
+                        opacity: isMethodNode(pid) ? 0.3 : 0.7,
+                    },
+                    arrows: {
+                        to: {
+                            enabled: !isMethodNode(pid),
+                        }
+                    }
+                });
+            })
+        }
+    });
+    relations = relations.filter(a => a);
+    var edges = new vis.DataSet(relations);
 
-  network.on('doubleClick',function({nodes}){
-      if (nodes.length > 0) {
-          let nodeId = nodes[0];
-          let item = items.find(i => i.id === nodeId);
-          item && window.open(item.url);
-      }
-  })
+    // create a network
+    var container = document.getElementById("mynetwork");
+    var data = {
+        nodes: nodes,
+        edges: edges,
+    };
+    var options = {
+        nodes: {
+            physics: true,
+            shape: "box",
+            scaling: {
+                min: 10,
+                max: 30,
+                label: {
+                    enabled: true,
+                    min: 14,
+                    max: 30,
+                    maxVisible: 30,
+                    drawThreshold: 5
+                },
+            },
+            font: {
+                size: 16
+            },
+            borderWidth: 1,
+            borderWidthSelected: 1
+        },
+        interaction: {
+            hideEdgesOnDrag: false,
+            tooltipDelay: 200,
+        },
+        groups: {
+            leetcode_easy: {
+                color: {
+                    border: 'rgb(0,153,74,0.9)',
+                    background: 'rgb(0,153,74,0.4)',
+                    highlight: {
+                        border: 'rgb(0,153,74,0.9)',
+                        background: 'rgba(0,153,117,0.4)',
+                    }
+                },
+                borderWidth: 1,
+            },
+            leetcode_medium: {
+                color: {
+                    border: 'rgba(237,115,54,0.9)',
+                    background: 'rgba(237,115,54,0.6)',
+                    highlight: {
+                        border: 'rgba(237,115,54,0.9)',
+                        background: 'rgba(237,115,54,0.6)',
+                    }
+                },
+                borderWidth: 1,
+            },
+            leetcode_hard: {
+                color: {
+                    border: 'rgba(198,0,0,0.9)',
+                    background: 'rgba(198,0,0,0.7)',
+                    highlight: {
+                        border: 'rgba(198,0,0,0.9)',
+                        background: 'rgba(198,0,0,0.7)',
+                    }
+                },
+                borderWidth: 1,
+            }
+        },
+        layout: {
+            randomSeed: undefined,
+            improvedLayout: true,
+            clusterThreshold: 150,
+            hierarchical: {
+                enabled: false,
+                levelSeparation: 150,
+                nodeSpacing: 100,
+                treeSpacing: 10,
+                blockShifting: true,
+                edgeMinimization: true,
+                parentCentralization: true,
+                direction: 'LR',        // UD, DU, LR, RL
+                sortMethod: 'directed',  // hubsize, directed
+                shakeTowards: 'roots'  // roots, leaves
+            }
+        }
+    };
+
+    var network = new vis.Network(container, data, options);
+
+    network.on('doubleClick', function ({nodes}) {
+        if (nodes.length > 0) {
+            let nodeId = nodes[0];
+            let item = items.find(i => i.id === nodeId);
+            item && window.open(item.url);
+        }
+    })
 </script>

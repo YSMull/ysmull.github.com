@@ -2,7 +2,6 @@
 title: "如何进行二分查找"
 date: 2021-01-23 20:3s0:00
 method_id: 二分查找
-parent_id: 搜索
 hide: true
 tags:
     - 方法学习
