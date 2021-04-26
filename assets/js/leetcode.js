@@ -18,17 +18,19 @@ function getDifficult(level) {
 
 let pureData = data.stat_status_pairs.map(i => {
     return {
-        id: _.get(i, 'stat.question_id'),
+        id: _.get(i, 'stat.frontend_question_id'),
+        originalId: _.get(i, 'stat.question_id'),
         enTitle: _.get(i, 'stat.question__title'),
         cnTitle: transTitleMap[_.get(i, 'stat.question_id')] || _.get(i, 'stat.question__title'),
         url: _.get(i, 'stat.question__title_slug'),
         difficult: getDifficult(_.get(i, 'difficulty.level')),
     }
-})
+});
 
 let leetcodeProblemGroup = _.zipObject(pureData.map(i => i.id), pureData);
 
 let findTagsByProblemId = function (problemId) {
+    problemId = leetcodeProblemGroup[problemId].originalId;
     let result = [];
     tags.topics.forEach(topic => {
         if (topic.questions.includes(problemId)) {
