@@ -1,6 +1,6 @@
 ---
-method_id: 子集
+method_id: 快慢指针
 parent_id:
-    - __DFS
+    - __链表
 hide: true
 ---
