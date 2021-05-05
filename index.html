@@ -10,7 +10,7 @@ layout: default
       <div class="block">
       <div class="block_tag">
         {% if item.item == 'Algorithm' %}
-        Algorithm(条数暂放开)
+        Algorithm
         {% else %}
         {{ item.item }}
         {% endif %}
@@ -24,7 +24,7 @@ layout: default
           {% assign max_show_nums = 0 %}
           {% assign everything = site.posts | concat: site.algorithms | sort: 'date' | reverse %}
           {% for post in everything %}
-            {% if max_show_nums >= 5 and item.item != 'Algorithm' %}
+            {% if max_show_nums >= 5 %}
               {% break %}
             {% endif %}
             {% assign show = 0 %}
