@@ -7,11 +7,6 @@
     -leetcode
   page: /algorithm_list
 
-- item: Nodejs & JavaScript
-  tags:
-    -javascript
-    -node
-
 - item: Java&JVM
   tags:
     -java
@@ -32,6 +27,11 @@
   page: /designPattern
   tags:
     -design_pattern
+
+- item: Nodejs & JavaScript
+  tags:
+    -javascript
+    -node
 
 - item: Other
   tags:
