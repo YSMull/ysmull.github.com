@@ -1,11 +1,18 @@
 ---
 layout: default
 ---
+<script >
+    let div1 = document.getElementsByClassName('wrapper');
+    div1[0].style.setProperty("max-width", document.body.clientWidth + "px");
+    let div2 = document.getElementsByClassName('header_wrapper');
+    div2[0].style.setProperty("max-width", document.body.clientWidth + "px");
+</script>
 
 <div class="block_tag">LeetCode 笔记  <a style="font-size: 16px;" href="/algorithm_list">列表视图</a></div>
-<div id="mynetwork" style="height: 680px"></div>
+<div id="mynetwork"></div>
 
 <script>
+    document.getElementById("mynetwork").style.setProperty("height", window.screen.availHeight - 200 + "px");
     var items = [];
     {% assign sorted_post = site.algorithms | sort: 'leetcode_id' %}
     {% for post in sorted_post %}
