@@ -91,7 +91,7 @@ for (let projectId of Object.keys(xxxMap)) {
 
 ```javascript
 Connection.prototype.beginTransaction = function beginTransaction(options, callback) {
-    // ...
+    // ....
     options = options || {};
     options.sql = 'START TRANSACTION';
     options.values = null;
