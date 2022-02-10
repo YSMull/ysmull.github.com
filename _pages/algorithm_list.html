@@ -56,6 +56,10 @@ layout: default
                       {% assign java = "Java" | split: "," %}
                       {% assign lan = lan | concat: java %}
                     {% endif %}
+                    {% if post.content contains "```js" %}
+                      {% assign js = "javascript" | split: "," %}
+                      {% assign lan = lan | concat: js %}
+                    {% endif %}
                     {% if post.content contains "```c++" %}
                       {% assign cpp = "C++" | split: "," %}
                       {% assign lan = lan | concat: cpp %}
@@ -63,7 +67,7 @@ layout: default
 
                     {% assign len = lan | size %}
                     {% if len > 0 %}
-                      {% assign lan = lan | join: " / " %}
+                      {% assign lan = lan | join: " & " %}
                       {% assign lanStrArr = lan | split: "$$$" %}
                       {% assign ca = ca | concat: lanStrArr %}
                     {% endif %}
