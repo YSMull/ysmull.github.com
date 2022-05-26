@@ -20,7 +20,6 @@
     - '[107,110]'
 
 
-
 - title: A Little Java, A Few Patterns
   id: a_little_java
   url: https://book.douban.com/subject/2709130/
@@ -28,12 +27,6 @@
   progress:
     - '[1, 41]'
 
-- title: Java函数式编程
-  id: Java_FP
-  url: https://book.douban.com/subject/27594722/
-  page: 490
-  progress:
-    - '[1, 1]'
 
 - title: 揭秘Java虚拟机
   id: JVM_S
@@ -49,12 +42,6 @@
   progress:
     - '[1, 1]'
 
-- title: 架构探险-从零开始写Java Web框架
-  id: Java_Web_Framwork
-  url: https://book.douban.com/subject/26593466/
-  page: 349
-  progress:
-    - '[1, 1]'
 
 - title: Java并发编程实战
   id: java_multi
@@ -69,41 +56,6 @@
   page: 250
   progress:
     - '[0, 0]'
-
-- title: Spring技术内幕
-  id: Spring_Internals
-  url: https://book.douban.com/subject/10470970/
-  page: 349
-  progress:
-    - '[1, 1]'
-
-
-- title: 深入浅出Node.js
-  id: nodejs_easy_to_understand
-  url: https://book.douban.com/subject/25768396/
-  page: 305
-  progress:
-    - '[0, 0]'
-
-- title: JavaScript 函数式编程
-  id: jsfp
-  url: https://book.douban.com/subject/26579320/
-  page: 199
-  progress:
-    - '[1,1]'
-
-- title: JavaScript ES6 函数式编程入门经典
-  id: jsfp_es6
-  url: https://book.douban.com/subject/30180100/
-  page: 172
-  progress:
-    - '[1,1]'
-
-- title: ES6 标准入门
-  id: es6_tutorial
-  url: https://book.douban.com/subject/27127030/
-  page: 678
-  progress: '[1,1]'
 
 - title: MySQL技术内幕：InnoDB存储引擎
   id: MySQL_internals
@@ -130,12 +82,5 @@
   id: DDD
   url: https://book.douban.com/subject/5344973/
   page: 349
-  progress:
-    - '[0, 0]'
-
-- title: 哈佛极简经济学
-  id: minimalism
-  url: https://book.douban.com/subject/27022424/
-  page: 305
   progress:
     - '[0, 0]'
