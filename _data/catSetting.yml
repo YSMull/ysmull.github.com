@@ -8,8 +8,17 @@ oj:
       - interview
       - 方法学习
       - other
-
+network:
+  sub_tags:
+      - {type: application, name: '应用层'}
+      - {type: transport, name: '传输层'}
+      - {type: internet, name: '网络层'}
+      - {type: network access, name: '网络接口层'}
 algorithm_tags:
   - 动态规划
   - 字符串
   - 数组
+math:
+  sub_tags:
+      - {type: inequation, name: '不等式'}
+      - {type: probability, name: '概率论'}

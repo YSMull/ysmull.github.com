@@ -7,8 +7,14 @@
 - title: Algorithm
   url: /algorithm
 
+- title: Network
+  url: /network
+
 - title: Design Pattern
   url: /designPattern
+
+- title: Math
+  url: /math
 
 - title: Life
   url: /life

@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<div class="pure-g">  
+  {% assign types = site.data.catSetting.math.sub_tags | map: "type" %}
+  {% for typename in types %}
+    {% assign cat = site.data.catSetting.math.sub_tags | where: "type" , typename %}
+    <div class="pure-u-1">
+      <div class="outer_block">
+      <div class="block" style="font-size:1em;margin:10px">
+        <div class="block_tag">{{ cat[0].name }}</div>
+        <ul>
+          {% for tag in site.tags reversed %}
+            {% if types contains tag[0] %}
+              {% assign sorted_post = tag[1] %}
+              {% for post in sorted_post %}
+              {% assign post_tag = post.tags[1] %}
+              {% if post_tag == typename %}
+              <li class="pure-g">
+                <div class="pure-u-1" style="white-space: nowrap;text-overflow: ellipsis;">
+                    <div class="pure-u-6-24 pure-u-md-3-24 pure-u-lg-2-24">
+                        <span class="date">{{ post.date | date:"%Y-%m-%d" }}</span>
+                    </div>
+                    <div class="pure-u-18-24 pure-u-md-21-24 pure-u-lg-22-24" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                      <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
+                    </div>
+                </div>
+              </li>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    </div>
+  {% endfor %}
+</div>
