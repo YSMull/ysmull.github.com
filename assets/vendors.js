@@ -1,6 +1,7 @@
 $ = require('./js/zepto.min.js');
-_ = require('./js/lodash.min.js');
-vis = require('./js/vis-network.min');
+_ = require('lodash');
+vis = require('vis-network');
+visData = require('vis-data');
 
 LazyLoad = require("vanilla-lazyload/dist/lazyload.amd");
 

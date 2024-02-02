@@ -14,30 +14,44 @@ layout: default
 <script>
     document.getElementById("mynetwork").style.setProperty("height", window.screen.availHeight - 200 + "px");
     var items = [];
-    {% assign sorted_post = site.algorithms | sort: 'leetcode_id' %}
+    {% assign sorted_post = site.algorithms %}
     {% for post in sorted_post %}
     {
         let category = [];
         {% for cat in post.category %}
         category.push('{{ cat }}');
         {% endfor %}
-        let id , type;
+        let id , type, label,
+            title = `{{ post.title }}`;
         if (`{{ post.leetcode_id }}`) {
             id = `{{ post.leetcode_id }}`;
-            type = 'LeetCode'
+            type = 'LeetCode';
+            label = id;
+            if (leetcodeProblemGroup[id]) {
+                title = leetcodeProblemGroup[id].cnTitle || leetcodeProblemGroup[id].enTitle;
+            }
         } else if (`{{ post.method_id }}`) {
             id = `{{ post.method_id }}`;
             type = 'method'
+            label = id;
+        } else if (`{{ post.lintcode_id }}`) {
+            id = `{{ post.lintcode_id }}`;
+            type = 'LintCode'
+            label = `{{ post.title }}`;
+        } else {
+            id = `{{ post.interview_origin }}`;
+            type = 'other'
+            label = `{{ post.title }}`;
         }
         items.push({
             tag: `{{ post.tags[0] }}`,
-            title: leetcodeProblemGroup[id] ? (leetcodeProblemGroup[id].cnTitle || leetcodeProblemGroup[id].enTitle): `{{ post.title }}`,
-            label: id || `{{ post.title }}`,
+            title,
+            label,
             url: `{{ post.url }}`,
             id,
             type,
             parentId: `{{ post.parent_id | join: "," }}`.split(',').filter(a => a),
-            difficult: leetcodeProblemGroup[id] ? leetcodeProblemGroup[id].difficult : 'easy',
+            difficult: '{{ post.difficult }}' || (leetcodeProblemGroup[id] ? leetcodeProblemGroup[id].difficult : '{{ post.difficult }}'),
             category
         });
     }
@@ -51,12 +65,12 @@ layout: default
 
     itemNodes.forEach(t => {
         let group = t.tag;
-        if (t.tag === 'leetcode') {
-            group = `${t.tag}_${t.difficult || 'easy'}`
+        if (t.tag === 'leetcode' || t.tag === 'lintcode') {
+            group = `leetcode_${t.difficult || 'easy'}`
         }
         gNodes.push({
             id: t.id,
-            label: t.label || t.id,
+            label: t.label,
             title: t.title || t.id,
             group
         });
@@ -72,8 +86,8 @@ layout: default
     });
 
     // create an array with nodes
-    var nodes = new vis.DataSet(gNodes);
-    let isMethodNode = pid => pid.startsWith('__');
+    var nodes = new visData.DataSet(gNodes);
+    let isMethodNode = pid => pid && pid.startsWith('__');
 
     // create an array with edges
     var relations = [];
@@ -108,7 +122,7 @@ layout: default
         }
     });
     relations = relations.filter(a => a);
-    var edges = new vis.DataSet(relations);
+    var edges = new visData.DataSet(relations);
 
     // create a network
     var container = document.getElementById("mynetwork");
@@ -166,14 +180,25 @@ layout: default
             },
             leetcode_hard: {
                 color: {
-                    border: 'rgba(198,0,0,0.9)',
-                    background: 'rgba(198,0,0,0.7)',
+                    border: 'rgba(198,0,0,0.66)',
+                    background: 'rgba(198,0,0,0.66)',
                     highlight: {
-                        border: 'rgba(198,0,0,0.9)',
-                        background: 'rgba(198,0,0,0.7)',
+                        border: 'rgba(198,0,0,0.66)',
+                        background: 'rgba(198,0,0,0.66)',
                     }
                 },
                 borderWidth: 1,
+            },
+            方法学习: {
+                color: {
+                    border: 'rgba(181,185,201,0.9)',
+                    background: 'rgba(181,185,201,0.7)',
+                    highlight: {
+                        border: 'rgba(181,185,201,0.9)',
+                        background: 'rgba(181,185,201,0.7)',
+                    }
+                },
+                borderWidth: 2,
             }
         },
         layout: {

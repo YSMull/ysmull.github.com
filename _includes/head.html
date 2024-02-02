@@ -2,7 +2,6 @@
     data-home="{{ site.home }}"
     data-api="{{ site.api }}"
     data-img="{{ site.IMG_PATH }}"
-    data-tags="{{ page.tags | join: "," }}"
     data-layout="{{ page.layout }}"
     data-id="{{ page.id }}"
     data-title="{{ page.title }}"
@@ -22,7 +21,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.3, user-scalable=no" />
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{% if page.layout == "post" %}{{ page.content | split: '</p>' | first | strip_html }}{% else %}{{ site.description }}{% endif %}{% endif %}" />
     <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ', '}}{% else %}{{ site.keywords | join: ', ' }}{% endif %}" />
     <meta name="author" content="ysmull" />
     <meta name="renderer" content="webkit">
@@ -32,8 +30,8 @@
     <!-- <link rel="icon" href="/favicon.ico" /> -->
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Atom Feed" href="https://ysmull.cn/atom.xml" />
     <!-- <link rel="icon" href="/assets/img/favicon.png"> -->
-    <script type="text/javascript" src="/assets/build/index.5ec8b0ff72551c35fb6e.js"></script>
-    <script type="text/javascript" src="/assets/build/vendors.5ec8b0ff72551c35fb6e.js"></script>
+    <script type="text/javascript" src="/assets/build/index.5f939fa1c704173f0b26.js"></script>
+    <script type="text/javascript" src="/assets/build/vendors.5f939fa1c704173f0b26.js"></script>
     <!-- <script src="/assets/js/biwascheme-0.6.8-min.js"></script> -->
 <!--    <link rel="stylesheet" type="text/css" href="/assets/css/customCodeBlock.css">-->
 </head>
