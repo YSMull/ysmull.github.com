@@ -5,6 +5,9 @@
 - item: Algorithm
   tags:
     -leetcode
+    -lintcode
+    -interview
+    -algorithm
   page: /algorithm_list
 
 - item: Math
