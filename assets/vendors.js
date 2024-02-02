@@ -10,6 +10,7 @@ require('./css/grids-responsive-min.css');
 
 // require('./css/syntax.css');
 require('./css/syntax-github.css');
+// require('./css/syntax-base16.solarized.css');
 // require('./css/syntax-magritte.css');
 
 
