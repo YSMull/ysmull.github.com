@@ -17,7 +17,7 @@ module.exports = {
             minify: false,
             template: path.resolve(__dirname, '../template/head.ejs'), // 模板文件位置
             filename: path.resolve(__dirname, '../_includes/head.html'), // 输出文件位置
-            inject: true // 不自动注入资源文件，因为我们设置了 inject: false
+            inject: false // 不自动注入资源文件，因为我们设置了 inject: false
         }),
         new CleanWebpackPlugin(), // 清理 /build 文件夹
     ],
