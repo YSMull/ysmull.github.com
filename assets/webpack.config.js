@@ -7,8 +7,6 @@ module.exports = {
         index: path.resolve(__dirname, 'entry.js'), // 主入口文件
         vendors: path.resolve(__dirname, 'vendors.js'), // 第三方库入口文件
         'vendors-leetcode': path.resolve(__dirname, 'vendors-leetcode.js'), // 第三方库入口文件
-        'vendors-css': path.resolve(__dirname, 'vendors-css.js'), // 第三方库入口文件
-        'vendors-gitalk': path.resolve(__dirname, 'vendors-gitalk.js'), // 第三方库入口文件
     },
     output: {
         path: path.resolve(__dirname, 'build'), // 打包输出的目录
