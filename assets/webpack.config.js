@@ -54,7 +54,7 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all', // 优化所有类型的 chunk
+            chunks: 'async', // 优化所有类型的 chunk
             minSize: 30000, // 形成一个新代码块最小的体积
             maxSize: 30000, // 代码块最大的体积
             minChunks: 1, // 在分割之前，这个代码块最小应该被引用的次数（默认为1）

@@ -64,7 +64,7 @@ collections:
   algorithms:
     output: true
     layout: post
-    permalink: /alg/:title.html
+    permalink: /:path/
 
 defaults:
   - scope:
