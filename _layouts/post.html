@@ -50,17 +50,17 @@ layout: default
 </script>
 
 <!--侧边栏目录-->
-<script>
+<script type="module">
     initToc();
 </script>
 
 <!--站外资料，引用-->
-<script>
+<script type="module">
     initReference()
 </script>
 
 <!--gitalk评论区 & 文章同步-->
-<script>
+<script type="module">
     let allTags = [];
     {% for tag in page.tags %}
     allTags.push('{{ tag }}');
@@ -120,7 +120,7 @@ layout: default
 {% endif %}
 
 {% if page.leetcode_id %}
-<script>
+<script type="module">
     let problem = leetcodeProblemGroup[`{{ page.leetcode_id }}`];
     if (problem) {
         let a = document.querySelector('#originLeetcodeUrl');

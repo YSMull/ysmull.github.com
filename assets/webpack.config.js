@@ -6,19 +6,18 @@ module.exports = {
     entry: {
         index: path.resolve(__dirname, 'entry.js'), // 主入口文件
         vendors: path.resolve(__dirname, 'vendors.js'), // 第三方库入口文件
-        'vendors-leetcode': path.resolve(__dirname, 'vendors-leetcode.js'), // 第三方库入口文件
     },
     output: {
         path: path.resolve(__dirname, 'build'), // 打包输出的目录
-        chunkFilename: '[name].[hash].chunk.js', // 非入口 chunk 的名称
-        filename: '[name].[hash].js', // 入口文件的输出名称
+        chunkFilename: '[name].[contenthash].chunk.js', // 非入口 chunk 的名称
+        filename: '[name].[contenthash].js', // 入口文件的输出名称
     },
     plugins: [
         new HtmlWebpackPlugin({
             minify: false,
             template: path.resolve(__dirname, '../template/head.ejs'), // 模板文件位置
             filename: path.resolve(__dirname, '../_includes/head.html'), // 输出文件位置
-            inject: false // 不自动注入资源文件，因为我们设置了 inject: false
+            inject: true // 不自动注入资源文件，因为我们设置了 inject: false
         }),
         new CleanWebpackPlugin(), // 清理 /build 文件夹
     ],
@@ -55,7 +54,7 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'async', // 优化所有类型的 chunk
+            chunks: 'all', // 优化所有类型的 chunk
             minSize: 30000, // 形成一个新代码块最小的体积
             maxSize: 30000, // 代码块最大的体积
             minChunks: 1, // 在分割之前，这个代码块最小应该被引用的次数（默认为1）

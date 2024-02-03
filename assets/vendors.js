@@ -38,3 +38,8 @@ initToc = require('./js/toc.js');
 
 // clickEval = require('./js/scheme.js')
 
+// leetcode 元信息
+let L = require('./js/leetcode');
+leetcodeProblemGroup = L.leetcodeProblemGroup;
+findTagsByProblemId = L.findTagsByProblemId;
+

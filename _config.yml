@@ -59,11 +59,12 @@ kramdown:
 collections:
   pages:
     output: true
+    layout: post
     permalink: /:path/
   algorithms:
     output: true
     layout: post
-    permalink: /:path/
+    permalink: /alg/:title.html
 
 defaults:
   - scope:
