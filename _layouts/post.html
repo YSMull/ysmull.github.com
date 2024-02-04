@@ -44,23 +44,23 @@ layout: default
 <!--调整post区域的宽度-->
 <script>
     let div1 = document.getElementsByClassName('wrapper');
-    div1[0].style.setProperty("max-width","800px");
+    div1[0].style.setProperty("max-width", "800px");
     let div2 = document.getElementsByClassName('header_wrapper');
-    div2[0].style.setProperty("max-width","800px");
+    div2[0].style.setProperty("max-width", "800px");
 </script>
 
 <!--侧边栏目录-->
-<script type="module">
+<script>
     initToc();
 </script>
 
 <!--站外资料，引用-->
-<script type="module">
+<script>
     initReference()
 </script>
 
 <!--gitalk评论区 & 文章同步-->
-<script type="module">
+<script>
     let allTags = [];
     {% for tag in page.tags %}
     allTags.push('{{ tag }}');
@@ -73,15 +73,16 @@ layout: default
 
 <!--是否启用到数学公式渲染-->
 {% if page.math %}
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
+<script>
+    MathJax = {
+        tex: {
             skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
             inlineMath: [['$','$']]
         }
-    });
+    };
 </script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
 {% endif %}
 
 <!--是否启用scheme语言的运行-->
@@ -120,7 +121,7 @@ layout: default
 {% endif %}
 
 {% if page.leetcode_id %}
-<script type="module">
+<script>
     let problem = leetcodeProblemGroup[`{{ page.leetcode_id }}`];
     if (problem) {
         let a = document.querySelector('#originLeetcodeUrl');

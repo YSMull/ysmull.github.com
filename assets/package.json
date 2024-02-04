@@ -6,7 +6,6 @@
     "clean-webpack-plugin": "^4.0.0",
     "clipboard": "^2.0.4",
     "gitalk": "^1.8.0",
-    "katex": "^0.16.9",
     "lodash": "^4.17.21",
     "vanilla-lazyload": "^10.20.1",
     "vis-data": "^7.1.9",
