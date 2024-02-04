@@ -3,6 +3,7 @@ title: "如何进行二分查找"
 date: 2021-01-23 20:30:00
 method_id: 二分查找
 method: true
+alg_tag: 模板
 tags:
   - 方法学习
 ---
