@@ -3,7 +3,6 @@ date: 2021-04-01 22:33:10
 parent_id: 
     - __DFS
 method_id: 全排列
-hide: true
 tags:
     - 方法学习
     - leetcode
