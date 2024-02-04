@@ -74,15 +74,24 @@ layout: default
 <!--是否启用到数学公式渲染-->
 {% if page.math %}
 <script>
-    MathJax = {
+    window.MathJax = {
         tex: {
+            inlineMath: [['$','$']],
+            // tags: 'all'
+        },
+        options: {
+            enableMenu: false,
             skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']]
+        },
+        svg: {
+            fontCache: 'local'
         }
     };
 </script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+<!--<script id="MathJax-script" async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>-->
+<script id="MathJax-script" async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-svg.js"></script>
+
 {% endif %}
 
 <!--是否启用scheme语言的运行-->
