@@ -194,7 +194,8 @@ class Solution {
 }
 ```
 
-### 性质破坏时缩小窗口（求最长）
+### 性质被破坏时缩小窗口（求最长）
+在扩大窗口的过程中，一开始性质是满足的，随着窗口的变大，可能不满足了
 #### 模板
 ```java
 void slidingWindow(String s) {
@@ -220,7 +221,7 @@ class Solution {
     public int lengthOfLongestSubstring(String s) {
         HashMap<Character, Integer> window = new HashMap<>();
         int left = 0, right = 0;
-        int minLen = 0;
+        int maxLen = 0;
         while (right < s.length()) {
             Character c = s.charAt(right++);
             window.put(c, window.getOrDefault(c, 0) + 1);
@@ -228,9 +229,9 @@ class Solution {
                 Character d = s.charAt(left++);
                 window.put(d, window.getOrDefault(d, 0) - 1);
             }
-            minLen = Math.max(right - left, minLen);
+            maxLen = Math.max(right - left, maxLen);
         }
-        return minLen;
+        return maxLen;
     }
 }
 ```
@@ -255,8 +256,8 @@ window.put(d, window.get(d) - 1);
 
 上文中所有的算法解答，window 描述的都是 left 和 right 包裹的子串的字符频数信息，如果为了节约内存，可以仅在 window 中保留关注的字符的频数信息
 比如上文中，凡是有 need 这个 map 的解答
-1. if (need.get(c) != null) 再更新 window 和 valid
-2. if (need.get(d) != null) 再更新 window 和 valid
+1. 窗口增大时，if (need.get(c) != null) 再更新 window 和 valid
+2. 窗口缩小时，if (need.get(d) != null) 再更新 window 和 valid
 
 否则，在更新 valid 的判断时，if (window.get(c).equals(need.get(c)))，window 必须在左边，因为 c 不是一个被关注的字符，所以 need.get(c) 可能为 null
 
