@@ -64,7 +64,7 @@ void slidingWindow(String s) {
 }
 ```
 
-### 找到字符串中所有字母异位词
+### 438.找到字符串中所有字母异位词(medium)
 
 题目链接: [leetcode 438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
 
@@ -98,7 +98,7 @@ class Solution {
     }
 }
 ```
-### 字符串的排列
+### 567.字符串的排列(medium)
 
 题目链接: [leetcode 567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string/description/)
 
@@ -137,7 +137,7 @@ class Solution {
 此时不能用窗口大小来作为缩小窗口的触发条件了，而是，当要最根据性质是否满足来触发窗口缩小
 
 ### 性质满足时缩小窗口（求最短）
-
+初始窗口不满足，增大窗口过程中可能突然满足（**或超出**）条件要求了
 #### 模板
 ```java
 void slidingWindow(String s) {
@@ -155,7 +155,7 @@ void slidingWindow(String s) {
 }
 ```
 
-#### 最小覆盖子串(hard)
+#### 76.最小覆盖子串(hard)
 
 题目链接: [76.最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring/description/)
 ```java
@@ -194,6 +194,39 @@ class Solution {
 }
 ```
 
+#### 209.长度最小的子数组(medium)
+
+题目链接: [长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/description/)
+
+```java
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        int total = 0;
+        for (int i = 0; i < nums.length; i++) {
+            total += nums[i];
+        }
+        if (total < target) return 0;
+        
+        int left = 0, right = 0;
+        int sum = 0;
+        int minLen = nums.length;
+        while (right < nums.length) {
+            int c = nums[right++];
+            sum += c;
+            // 这个是性质可能满足时
+            while (sum >= target) {
+                if (right - left <= minLen) {
+                    minLen = right - left;
+                }
+                int d = nums[left++];
+                sum -= d; 
+            }
+        }
+        return minLen;
+    }
+}
+```
+
 ### 性质被破坏时缩小窗口（求最长）
 在扩大窗口的过程中，一开始性质是满足的，随着窗口的变大，可能不满足了
 #### 模板
@@ -212,7 +245,7 @@ void slidingWindow(String s) {
     }
 }
 ```
-#### 无重复字符串的最长子串
+#### 3.无重复字符串的最长子串(medium)
 
 题目链接: [leetcode 3. 无重复字符串的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/)
 
