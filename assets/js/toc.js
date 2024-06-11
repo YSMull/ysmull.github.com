@@ -3,13 +3,14 @@ module.exports = function () {
     let toc = document.querySelector('.post-toc');
     // toc.offsetWidth = 170;
     // console.log(toc.offsetWidth)
-    let subTitles = document.querySelectorAll('.post__content h2,h3');
+    let subTitles = document.querySelectorAll('.post__content h2,h3,h4');
 
     let clientHeight = document.documentElement.clientHeight;
     if (toc) {
         function tocShow() {
             let clientWidth = document.documentElement.clientWidth;
-            let tocFixed = clientWidth / 2 - 470 - toc.offsetWidth;
+            let tocFixed = clientWidth / 2 - 420 - toc.offsetWidth;
+            console.log(`clientWidth: ${clientWidth}, toc.offsetWidth:${toc.offsetWidth}, tocFixed:${tocFixed}`)
             if (tocFixed < 5) {
                 toc.style.visibility = 'hidden';
             } else {

@@ -158,7 +158,7 @@ class Solution {
 
 此时不能用窗口大小来作为缩小窗口的触发条件了，而是，当要最根据性质是否满足来触发窗口缩小
 
-### 性质满足时缩小窗口（求最短）
+### 性质满足时缩小窗口
 初始窗口不满足，增大窗口过程中可能突然满足（**或超出**）条件要求了
 #### 模板
 ```java
@@ -200,6 +200,7 @@ class Solution {
             if (window.get(c).equals(need.get(c)))
                 valid++;
 
+            // 性质满足时
             while (valid == need.size()) {
                 if (right - left <= minLen) {
                     minStr = s.substring(left, right);
@@ -235,7 +236,7 @@ class Solution {
         while (right < nums.length) {
             int c = nums[right++];
             sum += c;
-            // 这个是性质可能满足时
+            // 性质满足时
             while (sum >= target) {
                 if (right - left <= minLen) {
                     minLen = right - left;
@@ -249,8 +250,12 @@ class Solution {
 }
 ```
 
-### 性质被破坏时缩小窗口（求最长）
-在扩大窗口的过程中，一开始性质是满足的，随着窗口的变大，可能不满足了
+### 性质被破坏时缩小窗口
+
+如果不需要收缩窗口，且性质时满足的，就不断的更新当前 left 下的答案
+
+随着窗口的变大，性质可能不满足了，此时需要缩小窗口让再次满足性质
+
 #### 模板
 ```java
 void slidingWindow(String s) {
@@ -258,7 +263,8 @@ void slidingWindow(String s) {
     while (right < s.size()) {
         Character c = s.charAt(right++);
         window.put(c, window.getOrDefault(c, 0) + 1);
-        while (性质被破坏时) {
+        // update，713 题告诉我们，根据题目要求的性质，是无法保证 left 小于 right 的
+        while (left < right && 性质被破坏时) {
             Character d = s.charAt(left++);
             window.put(d, window.getOrDefault(d, 0) - 1);
         }
@@ -291,6 +297,155 @@ class Solution {
 }
 ```
 
+#### 395.最少K个重复字符的最长子串(medium)
+
+##### 固定长度窗口解法
+这道题，有两种做法，遍历最长子串的长度，1~s.length()，原题转化为**固定长度的滑动窗口问题**，复杂度较高，会超时
+```java
+class Solution {
+
+    public boolean isValidWindow(HashMap<Character, Integer> window, int k) {
+        boolean isValid = true;
+        for (Map.Entry<Character, Integer> entry: window.entrySet()) {
+            if (entry.getValue() > 0 && entry.getValue() < k) {
+                isValid = false;
+                break;
+            }
+        }
+        return isValid;
+    }
+
+    public boolean longestSubstring(String s, int k, int len) {
+        HashMap<Character, Integer> window = new HashMap<>();
+        int maxLen = 0;
+        int left = 0, right = 0;
+        while (right < s.length()) {
+            Character c = s.charAt(right++);
+            window.put(c, window.getOrDefault(c, 0) + 1);
+            if (right - left >= len) {
+                if (isValidWindow(window, k)) {
+                    return true;
+                }
+                Character d = s.charAt(left++);
+                window.put(d , window.get(d) - 1);
+            }
+        }
+        return false;
+    }
+
+    public int longestSubstring(String s, int k) {
+        // 复杂度较高，为了稳定过题，得把 s.length() 改成 1000（逃
+        for (int i = s.length(); i >= 1; i--) {
+            if (longestSubstring(s, k, i)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+}
+```
+
+##### 不固定长度窗口解法
+由于字符串只包含26个字母，因此可以考虑遍历字符串包含了多少个不同的字符，转化为**不定长滑动窗口问题**
+
+```java
+class Solution {
+
+    public boolean isValidWindow(HashMap<Character, Integer> window, int k, int alphaNum) {
+        if (window.size() != alphaNum)
+            return false;
+        boolean isValid = true;
+        for (Map.Entry<Character, Integer> entry : window.entrySet()) {
+            if (entry.getValue() < k) {
+                isValid = false;
+                break;
+            }
+        }
+        return isValid;
+    }
+
+    public int longestSubstring(String s, int k, int alphaNum) {
+        HashMap<Character, Integer> window = new HashMap<>();
+        int left = 0, right = 0;
+        int max = 0;
+        while (right < s.length()) {
+            Character c = s.charAt(right++);
+            window.put(c, window.getOrDefault(c, 0) + 1);
+            
+            // 字符数一开始不够，增大的过程中会字符种类数会爆掉
+            while (window.size() > alphaNum) {
+                Character d = s.charAt(left++);
+                window.put(d, window.get(d) - 1);
+                if (window.get(d) == 0) {
+                    window.remove(d);
+                }
+            }
+            
+            // 此时满足性质，不断更新最大值
+            if (isValidWindow(window, k, alphaNum)) {
+                max = Math.max(max, right - left);
+            }
+        }
+        return max;
+    }
+
+    public int longestSubstring(String s, int k) {
+        int max = 0;
+        for (int i = 26; i >= 1; i--) {
+            max = Math.max(longestSubstring(s, k, i), max);
+        }
+        return max;
+    }
+
+}
+```
+
+#### 713.乘积小于 K 的子数组(medium)
+
+这题比较隐晦的点在于，需要让统计值加上当前窗口的长度
+
+假设 a\*b\*c\*d<k 且 此时 right++ 把 e 也纳入进来后 a\*b\*c\*d\*e<k，则新增5个答案("abcde"的length)
+
+```text
+原本        新增
+a,b,c,d     e
+ab,bc,cd    de
+abc,bcd     cde
+abce        bcde
+            abcde
+```
+
+假设 a\*b\*c\*d<k 但是 a\*b\*c\*d\*e>=k 了，此时 left++ 假设去掉了 a,b,c 之后, d * e 满足乘积小于 k 了，此时新增2个答案（"de"的length)
+
+```text
+原本        新增
+a,b,c,d     e
+ab,bc,cd    de
+abc,bcd
+abcd
+```
+
+```java
+class Solution {
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        int count = 0;
+        int prod = 1;
+        int left = 0, right = 0;
+        while (right < nums.length) {
+            int c = nums[right++];
+            prod *= c;
+            // 注意这里需要额外加 left < right
+            while (left < right && prod >= k) {
+                int d = nums[left++];
+                prod /= d;
+            }
+            count += right - left;
+        }
+        return count;
+    }
+}
+```
 ## 其它注意点
 
 ### 对称性
@@ -316,6 +471,13 @@ window.put(d, window.get(d) - 1);
 
 否则，在更新 valid 的判断时，if (window.get(c).equals(need.get(c)))，window 必须在左边，因为 c 不是一个被关注的字符，所以 need.get(c) 可能为 null
 
+### 选择哪种非固定长度的滑动窗口？
+根据上面的总结 
+* 求长度最小的子串时，满足性质时收缩，收缩前收集答案求长度最长的子串时
+* 求长度最大的子串时，性质不满足时收缩，收缩后判断是否满足性质，收集答案。（根据395，这里的两个判断可以不一样）
+
+注意：有的使用非固定长度的滑动窗口模板，在收缩条件处可以加一句 $left < right$ 防御一手
+ 
 ## 参考资料
 
 [1]: https://leetcode.cn/problems/find-all-anagrams-in-a-string/solutions/9749/hua-dong-chuang-kou-tong-yong-si-xiang-jie-jue-zi-/ "我写了一首诗，把滑动窗口算法变成了默写题"
