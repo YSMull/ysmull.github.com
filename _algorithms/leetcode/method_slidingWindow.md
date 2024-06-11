@@ -64,7 +64,7 @@ void slidingWindow(String s) {
 }
 ```
 
-### 438.找到字符串中所有字母异位词(medium)
+### 438.找到所有字母异位词(medium)
 
 题目链接: [leetcode 438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
 
@@ -128,6 +128,28 @@ class Solution {
             }
         }
         return false;
+    }
+}
+```
+
+### 239.滑动窗口最大值(hard，超时)
+```java
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int left = 0, right = 0;
+        int max = 0;
+        int[] res = new int[nums.length - k + 1];
+        PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
+        while (right < nums.length) {
+            int c = nums[right++];
+            q.offer(c);
+            if (right - left == k) {
+                res[left] = q.peek();
+                int d = nums[left++];
+                q.remove(d);
+            }
+        }
+        return res;
     }
 }
 ```
