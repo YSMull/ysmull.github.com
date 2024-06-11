@@ -1,10 +1,10 @@
 ---
-title: "滑动窗口总结"
+title: "滑动窗口刷题总结"
 date: 2024-06-11 06:01:00
 method_id: 滑动窗口
 method: true
 math: true
-alg_tag: 模板
+alg_tag: 总结
 tags:
   - 方法学习
 ---

@@ -38,10 +38,6 @@ layout: default
             id = `{{ post.lintcode_id }}`;
             type = 'LintCode'
             label = `{{ post.title }}`;
-        } else {
-            id = `{{ post.interview_origin }}`;
-            type = 'other'
-            label = `{{ post.title }}`;
         }
         items.push({
             tag: `{{ post.tags[0] }}`,
