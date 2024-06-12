@@ -64,6 +64,56 @@ void slidingWindow(String s) {
 }
 ```
 
+### 187.重复的DNA序列(medium)
+
+题目链接: [leetcode 187.重复的DNA序列](https://leetcode.cn/problems/repeated-dna-sequences/)
+
+```java
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        int left = 0, right = 0;
+        Map<String, Integer> map = new HashMap<>();
+        List<String> res = new ArrayList<>();
+        while (right < s.length()) {
+            right++;
+            if (right - left == 10) {
+                String sub = s.substring(left, right);
+                map.put(sub, map.getOrDefault(sub, 0) + 1);
+                left++;
+            }
+        }
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > 1) {
+                res.add(entry.getKey());
+            }
+        }
+        return res;
+    }
+}
+```
+
+### 239.滑动窗口最大值(hard，超时)
+```java
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int left = 0, right = 0;
+        int max = 0;
+        int[] res = new int[nums.length - k + 1];
+        PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
+        while (right < nums.length) {
+            int c = nums[right++];
+            q.offer(c);
+            if (right - left == k) {
+                res[left] = q.peek();
+                int d = nums[left++];
+                q.remove(d);
+            }
+        }
+        return res;
+    }
+}
+```
+
 ### 438.找到所有字母异位词(medium)
 
 题目链接: [leetcode 438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
@@ -98,6 +148,7 @@ class Solution {
     }
 }
 ```
+
 ### 567.字符串的排列(medium)
 
 题目链接: [leetcode 567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string/description/)
@@ -132,28 +183,48 @@ class Solution {
 }
 ```
 
-### 239.滑动窗口最大值(hard，超时)
+### 658.找到 K 个最接近的元素(medium)
+
+题目链接：[leetcode 658.找到 K 个最接近的元素](https://leetcode.cn/problems/find-k-closest-elements/description)
+
 ```java
 class Solution {
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int left = 0, right = 0;
-        int max = 0;
-        int[] res = new int[nums.length - k + 1];
-        PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
-        while (right < nums.length) {
-            int c = nums[right++];
-            q.offer(c);
+        int cur = 0;
+        // 记录每个窗口的绝对值的和
+        List<Integer> acc = new ArrayList<>();
+        while (right < arr.length) {
+            int c = arr[right++];
+            cur += Math.abs(c - x);
             if (right - left == k) {
-                res[left] = q.peek();
-                int d = nums[left++];
-                q.remove(d);
+                acc.add(cur);
+                int d = arr[left++];
+                cur -= Math.abs(d - x);
             }
+        }
+
+        // 寻找第一个最小绝对值的下标
+        int minValue = Integer.MAX_VALUE;
+        for (int i = 0; i < acc.size(); i++) {
+            minValue = Math.min(minValue, acc.get(i));
+        }
+        int finalLeft = -1;
+        for (int i = 0; i < acc.size(); i++) {
+            if (acc.get(i) == minValue) {
+                finalLeft = i;
+                break;
+            }
+        }
+
+        List<Integer> res = new ArrayList<>();
+        for (int i = finalLeft; i < finalLeft + k; i++) {
+            res.add(arr[i]);
         }
         return res;
     }
 }
 ```
-
 ## 非固定长度窗口
 
 此时不能用窗口大小来作为缩小窗口的触发条件了，而是，当要最根据性质是否满足来触发窗口缩小
@@ -299,7 +370,9 @@ class Solution {
 
 #### 395.最少K个重复字符的最长子串(medium)
 
-##### 固定长度窗口解法
+题目链接: [leetcode 395.最少K个重复字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/description)
+
+##### 固定长度窗口解法(超时)
 这道题，有两种做法，遍历最长子串的长度，1~s.length()，原题转化为**固定长度的滑动窗口问题**，复杂度较高，会超时
 ```java
 class Solution {
@@ -403,6 +476,8 @@ class Solution {
 
 #### 713.乘积小于 K 的子数组(medium)
 
+题目链接：[leetcode 713.乘积小于 K 的子数组](https://leetcode.cn/problems/subarray-product-less-than-k/)
+
 这题比较隐晦的点在于，需要让统计值加上当前窗口的长度
 
 假设 a\*b\*c\*d<k 且 此时 right++ 把 e 也纳入进来后 a\*b\*c\*d\*e<k，则新增5个答案("abcde"的length)
@@ -443,6 +518,71 @@ class Solution {
             count += right - left;
         }
         return count;
+    }
+}
+```
+
+#### 1004.最大连续1的个数III(medium)
+
+题目链接：[leetcode 1004.最大连续1的个数III](https://leetcode.cn/problems/max-consecutive-ones-iii)
+
+##### 固定长度窗口解法(超时)
+```java
+class Solution {
+
+    public boolean longestOnes(int[] nums, int k, int len) {
+        int left = 0, right = 0;
+        int zeros = 0;
+        while (right < nums.length) {
+            int c = nums[right++];
+            if (c == 0) {
+                zeros++;
+            }
+            if (right - left == len) {
+                if (zeros <= k) {
+                    return true;
+                }
+                int d = nums[left++];
+                if (d == 0) {
+                    zeros--;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int longestOnes(int[] nums, int k) {
+        for (int len = nums.length; len >= 1; len--) {
+            if (longestOnes(nums, k, len)) {
+                return len;
+            }
+        }
+        return 0;
+    }
+}
+```
+
+##### 不固定长度窗口解法
+```java
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+        int left = 0, right = 0;
+        int zeros = 0;
+        int maxLen = 0;
+        while (right < nums.length) {
+            int c = nums[right++];
+            if (c == 0) {
+                zeros++;
+            }
+            while (left < right && zeros > k) {
+                int d = nums[left++];
+                if (d == 0) {
+                    zeros--;
+                }
+            }
+            maxLen = Math.max(maxLen, right - left);
+        }
+        return maxLen;
     }
 }
 ```
