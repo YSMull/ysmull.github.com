@@ -64,6 +64,125 @@ void slidingWindow(String s) {
 }
 ```
 
+### 30.串联所有单词的子串(hard)
+
+题目链接：[leetcode 30.串联所有单词的子串](https://leetcode.cn/problems/substring-with-concatenation-of-all-words/description/)
+
+#### 窗口每次滑动一个字符
+
+每次固定窗口后，判断窗口是否符合性质，isValid 的复杂度比较高
+
+```java
+class Solution {
+
+    public boolean isValid(String s, int left, int right, int batchSize, HashMap<String, Integer> need) {
+        HashMap<String, Integer> cur = new HashMap<>();
+        for (int i = left; i < right; i += batchSize) {
+            String part = s.substring(i, i + batchSize);
+            cur.put(part, cur.getOrDefault(part, 0) + 1);
+        }
+        if (need.size() == cur.size()) {
+            for (Map.Entry<String, Integer> entry : need.entrySet()) {
+                String needKey = entry.getKey();
+                Integer needValue = entry.getValue();
+                if (!needValue.equals(cur.get(needKey))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public List<Integer> findSubstring(String s, String[] words) {
+        int left = 0, right = 0;
+        int partLen = words[0].length();
+        int len = words.length * partLen;
+
+        HashMap<String, Integer> need = new HashMap<>();
+        for (int i = 0; i < words.length; i++) {
+            need.put(words[i], need.getOrDefault(words[i], 0) + 1);
+        }
+
+        List<Integer> res = new ArrayList<>();
+        while (right < s.length()) {
+            Character c = s.charAt(right++);
+            if (right - left == len) {
+                if (isValid(s, left, right, partLen, need)) {
+                    res.add(left);
+                }
+                Character d = s.charAt(left++);
+            }
+        }
+        return res;
+    }
+}
+```
+
+#### 窗口每次滑动一个单词
+
+单词长度为 k，窗口大小是 k 的倍数，遍历起始滑动位置[0, k)，所以复杂度是 O(k*n)
+
+```java
+class Solution {
+
+    public boolean isValid(HashMap<String, Integer> window, HashMap<String, Integer> need) {
+        for (Map.Entry<String, Integer> entry : need.entrySet()) {
+            String needKey = entry.getKey();
+            Integer needValue = entry.getValue();
+            if (!needValue.equals(window.get(needKey))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public List<Integer> findSubstring(String s, int batchLen, int len, int start, HashMap<String, Integer> need) {
+        int left = start, right = start;
+        List<Integer> res = new ArrayList<>();
+        HashMap<String, Integer> window = new HashMap<>();
+        
+        // 这里注意下
+        while (right + batchLen <= s.length()) {
+            String c = s.substring(right, right + batchLen);
+            right += batchLen;
+            if (need.get(c) != null) {
+                window.put(c, window.getOrDefault(c, 0) + 1);
+            }
+            if (right - left == len) {
+                if (isValid(window, need)) {
+                    res.add(left);
+                }
+                String d = s.substring(left, left + batchLen);
+                left += batchLen;
+                if (need.get(d) != null) {
+                    window.put(d, window.getOrDefault(d, 0) - 1);
+                }
+            }
+        }
+        return res;
+    }
+
+    public List<Integer> findSubstring(String s, String[] words) {
+        int partLen = words[0].length();
+        int len = words.length * partLen;
+
+        HashMap<String, Integer> need = new HashMap<>();
+        for (String word : words) {
+            need.put(word, need.getOrDefault(word, 0) + 1);
+        }
+
+        List<Integer> res = new ArrayList<>();
+        
+        // 这里注意下，start 不需要超过单词长度
+        for (int start = 0; start < partLen; start++) {
+            res.addAll(findSubstring(s, partLen, len, start,  need));
+        }
+        return res;
+    }
+}
+```
+
 ### 187.重复的DNA序列(medium)
 
 题目链接: [leetcode 187.重复的DNA序列](https://leetcode.cn/problems/repeated-dna-sequences/)
