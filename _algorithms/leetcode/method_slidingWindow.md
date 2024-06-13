@@ -344,6 +344,56 @@ class Solution {
     }
 }
 ```
+
+### 1297.子串的最大出现次数(medium)
+
+题目链接：[leetcode 1297.子串的最大出现次数](https://leetcode.cn/problems/maximum-number-of-occurrences-of-a-substring/description)
+
+```java
+class Solution {
+
+    public int maxFreq(String s, int maxLetters, int len) {
+        int left = 0, right = 0;
+        // 记录某个子串出现了多少次
+        Map<String, Integer> countMap = new HashMap<>();
+        // 为了维护区间内的不同的字符数
+        Map<Character, Integer> window = new HashMap<>();
+        while (right < s.length()) {
+            Character c = s.charAt(right++);
+            window.put(c, window.getOrDefault(c, 0) + 1);
+            while (right - left == len) {
+                String cur = s.substring(left, right);
+                if (window.size() <= maxLetters) {
+                    countMap.put(cur, countMap.getOrDefault(cur, 0) + 1);
+                }
+                Character d = s.charAt(left++);
+                window.put(d, window.getOrDefault(d, 0) - 1);
+                if (window.get(d) == 0) {
+                    window.remove(d);
+                }
+            }
+        }
+        
+        // 这个遍历map求max可以在每次更新 countMap 的时候维护
+        int max = 0;
+        for (Map.Entry<String, Integer> entry: countMap.entrySet()) {
+            max = Math.max(entry.getValue(), max);
+        }
+        return max;
+    }
+
+    public int maxFreq(String s, int maxLetters, int minSize, int maxSize) {
+        int max = 0;
+        // 固定长度，遍历子串长度
+        // 用反证法可以证明，如果满足条件的这个字符串出现次数最多，一定存在一个长度为 minSize 子串，也出现了这么多次，所以这里不用遍历到 maxSize
+        for (int i = minSize; i <= maxSize; i++) {
+            max = Math.max(maxFreq(s, maxLetters, i), max);
+        }
+        return max;
+    }
+
+}
+```
 ## 非固定长度窗口
 
 此时不能用窗口大小来作为缩小窗口的触发条件了，而是，当要最根据性质是否满足来触发窗口缩小
