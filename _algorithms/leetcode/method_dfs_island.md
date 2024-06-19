@@ -1,5 +1,5 @@
 ---
-title: "LC上岛屿有关的DFS"
+title: "岛屿上的DFS总结"
 date: 2024-06-15 22:38:00
 method_id: 深度优先搜索
 method: true

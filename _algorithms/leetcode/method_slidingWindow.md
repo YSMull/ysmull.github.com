@@ -1,5 +1,5 @@
 ---
-title: "滑动窗口刷题总结"
+title: "一类滑动窗口的总结"
 date: 2024-06-11 06:01:00
 method_id: 滑动窗口
 method: true
