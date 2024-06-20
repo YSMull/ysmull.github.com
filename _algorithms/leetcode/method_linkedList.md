@@ -246,6 +246,8 @@ class Solution {
 
 每隔着k个元素把链表切断，头和尾搜集到一个 List，最后把 List 中相邻的的元素的尾和头接起来即可
 
+补充，当 k 取 2 的时候，降维打击 leetcode 24 题，[以前总结过](/leetcode/24/)，但不用看那个了
+
 ```java
 class Solution {
     // 标准的反转链表
