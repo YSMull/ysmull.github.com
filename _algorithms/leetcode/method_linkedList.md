@@ -169,10 +169,78 @@ class Solution {
 
 需要依赖206，即便如此还是有点复杂，我不想复习了，[以前总结过](/leetcode/92/)
 
+> 2024-6-20 10:35 update
+早上来公司，看了下官方的题解的思路，一把过
+
+思路：
+```text
+o->o->o->o->o->o->o->o
+   ↑  ↑        ↑  ↑
+ prev l        r succ
+
+l: 待反转的链表的头
+r: 待反转的链表的尾
+prev: 待反转链表的前驱
+succ: 待反转链表的后继
+```
+
+1. 把 l ~ r 从原链表切断
+   * prev.next = null;
+   * r.next = null;
+2. 反转 l ~ r
+3. 重新接回去
+   * prev.next = r; 
+   * l.next = succ;
+
+```java
+class Solution {
+    
+    public ListNode reverseList(ListNode head) {
+        ListNode p = null, q = head;
+        while(q != null) {
+            ListNode tmp = q.next;
+            q.next = p;
+            p = q;
+            q = tmp;
+        }
+        return p;
+    }
+
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        // 技巧：引入一个虚拟头结点
+        ListNode dummyNode = new ListNode();
+        dummyNode.next = head;
+        ListNode p = dummyNode;
+        for (int i = 0; i < left - 1; i++) {
+            p = p.next;
+        }
+        ListNode q = dummyNode;
+        for (int i = 0; i < right; i++) {
+            q = q.next;
+        }
+
+        ListNode prev = p;
+        ListNode succ = q.next;
+        ListNode l = p.next;
+        ListNode r = q;
+
+        prev.next = null;
+        q.next = null;
+
+        reverseList(l);
+
+        l.next = succ;
+        prev.next = r;
+
+        return dummyNode.next;
+    }
+}
+```
+
 
 ### 25.K个一组反转链表(hard)
 
-本来这题依赖 92，而且[以前总结过](/leetcode/25/)，以前的方法也很复杂。
+~~本来这题依赖 92~~（不好直接用92的函数），而且[以前总结过](/leetcode/25/)，以前的方法也很复杂。
 
 这次我用了一个新的方法，不需要很仔细的摆弄指针也能写出来，且击败100%：
 

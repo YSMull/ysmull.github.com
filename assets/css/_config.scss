@@ -1,4 +1,5 @@
 @import "../font/iosevka.css";
+@import "../font/jetbrainsMono.css";
 
 // COLORS
 $color-black: #272727;
@@ -53,5 +54,5 @@ $block-font: $post-font;
 $logo-font: 'Shadows Into Light';
 $menu-font: $body-font;
 $block-tag-font: $general;
-$code-font: $general;
+$code-font: 'JetBrains Mono';
 $about_font: $post-font;
