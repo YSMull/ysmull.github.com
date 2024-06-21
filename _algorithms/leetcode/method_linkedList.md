@@ -304,4 +304,36 @@ class Solution {
 
 ```java
 (账号找回来了再补充代码)
- ```
+```
+
+### 86.分隔链表(medium)
+
+整两个链表分别收集大于等于x的和小于x的节点，这题应该 easy 难度
+
+```java
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode p = new ListNode();
+        ListNode q = new ListNode();
+        ListNode pHead = p;
+        ListNode qHead = q;
+
+        while (head != null) {
+            // 每取一个节点，顺手把它斩断
+            ListNode next = head.next;
+            head.next = null;
+            if (head.val < x) {
+                p.next = head;
+                p = p.next;
+            } else {
+                q.next = head;
+                q = q.next;
+            }
+            head = next;
+        }
+        p.next = qHead.next;
+        return pHead.next;
+    }
+}
+```
+
