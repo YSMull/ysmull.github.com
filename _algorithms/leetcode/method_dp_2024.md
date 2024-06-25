@@ -40,7 +40,7 @@ $$
 \begin{cases}
 \mathrm{nums[0]}, &\text{if } i = 0 \\
 \mathrm{\max\{nums[0], nums[1]\}}, &\text{if } i = 1 \\
-\mathrm{\max\limits_{\substack{k < i - 2}}\{nums[k]\} + nums[i]}, &\text{if } i >= 2\\
+\mathrm{\max\limits_{\substack{0 \leq k < i - 2}}\{nums[k]\} + nums[i]}, &\text{if } i >= 2\\
 \end{cases}
 $$
 
