@@ -71,4 +71,64 @@
     }
   }
 </script>
+<style>
+    .toggle-button {
+        cursor: pointer;
+        color: #ac1e06;
+    }
+
+    .toggle-button:hover {
+        cursor: pointer;
+        color: #de3916;
+    }
+
+    .toggle-button:before {
+        content: '► ';
+        font-family: "SF Pro SC","PingFang SC",-apple-system,"Hiragino Sans GB",STXihei,"Microsoft YaHei",Heiti,sans-serif;
+    }
+
+    .toggle-button.active:before {
+        content: '▼ ';
+    }
+
+    /*div .highlight {*/
+    /*     display: none;*/
+    /*}*/
+
+    /*[class^="language-"] {*/
+    /*    display: none;*/
+    /*}*/
+
+    .copy-button {
+        display: none;
+        float: right;
+        margin: 8px;
+    }
+
+</style>
+<script>
+    document.querySelectorAll('[class^="language-"]').forEach(function(element) {
+        element.innerHTML = '<div class="toggle-button">code</div><button class="copy-button">Copy</button>' + element.innerHTML;
+        let codeDiv = element.querySelector('div.highlight');
+        let copyButton = element.querySelector('.copy-button');
+        let toggleButton = element.querySelector('.toggle-button');
+        codeDiv.style.display = 'none';
+        toggleButton.addEventListener('click', function() {
+            if (codeDiv.style.display === "block") {
+                toggleButton.classList.remove('active');
+                codeDiv.style.display = "none";
+                copyButton.style.display = "none";
+            } else {
+                toggleButton.classList.add('active');
+                codeDiv.style.display = "block";
+                copyButton.style.display = "block";
+            }
+        });
+
+        copyButton.addEventListener('click', function() {
+            navigator.clipboard.writeText(codeDiv.innerText)
+            copyButton.innerText = 'Copied!'
+        });
+    });
+</script>
 </html>
