@@ -67,13 +67,18 @@ class Solution {
 }
 ```
 
-如果定义 dp[i] 是打劫前 i 个房屋的最大盗窃金额，那么转移方程为：
+如果定义 dp[i] 是打劫前 i 个房屋的最大盗窃金额，因为 dp[i] 不确定 i 到底打劫不打劫，所以需要分类讨论分为了两个情况
+1. 如果 i 打劫，则盗窃金额为 dp[i-2] + nums[i]
+2. 如果 i 不打劫，则盗窃金额为 dp[i-1]
+
+转移方程为：
 
 $$
 \mathrm{dp[i] = \max\{dp[i - 2] + nums[i], dp[i-1]\}}
 $$
 
 答案是dp[nums.length - 1];
+
 ```java
 class Solution {
     public int rob(int[] nums) {
@@ -92,6 +97,7 @@ class Solution {
 
 ### 300.最长递增子序列
 
+#### O(n^2) 的解法
 dp[i] 是以第 i 个数字结尾的最长上升子序列，初始值为 1，答案是 dp 数组的最大值
 
 $$
@@ -114,6 +120,87 @@ class Solution {
             max = Math.max(max, dp[i]);
         }
         return max;
+    }
+}
+```
+
+#### O(nlogn) 解法
+
+参考[这篇文章](https://writings.sh/post/longest-increasing-subsequence-revisited)
+
+维护一个 tails 数组，tails[i] 表示长度 i+1 的上升子序列的最小结尾，可以证明 tails 一定是单调递增的
+
+* 如果 nums[i] 大于了 tails 的最后一个元素，那么 tails 也增加一个元素，最长上升序列的长度相应的变大
+* 如果 nums[i] 小于等于 tails 的最后一个元素，那么 tails 中第一个大于 nums[i] 的位置 j 的值可以被更新为 nums[i]（二分），这样**长度为 j + 1 的子序列又被压低了一些**
+
+tails 的思路是，尽可能的维护一个结尾尽可能小的上升子序列，最后答案是 tails 数组的长度
+
+注意 tails 数组不一定就是最长上升子序列本身，因为上面第二种情况，更新了 tails[j] 之后，tails[j] 的元素下标可能在 tails[j+1] 的元素之后
+
+比如 [2, 6, 8, 10, 3, 9, 10]，这个序列
+
+```text
+tails 数组变化情况
+2
+2,6
+2,6,8
+2,6,8,10
+2,3,8,10
+2,3,8,9
+2,3,8,9,10 // 并不是子序列
+```
+
+代码如下：
+
+```java
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        List<Integer> tails = new ArrayList<>();
+        tails.add(nums[0]);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > tails.get(tails.size() - 1)) { // 扩充 tails，长度增长 1
+                tails.add(nums[i]);
+            } else { // 二分查找第一个大于 nums[i] 位置，更新 tails 数组
+                int l = 0, r = tails.size();
+                while (l < r) {
+                    int mid = l + (r - l) / 2;
+                    if (tails.get(mid) >= nums[i]) {
+                        r = mid;
+                    } else {
+                        l = mid + 1;
+                    }
+                }
+                tails.set(l, nums[i]);
+            }
+        }
+        return tails.size();
+    }
+}
+```
+
+也可以简化代码，直接从 i = 0 开始，并且 for 循环里直接开始二分，但是没啥必要，上面的代码可以了
+
+```java
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        List<Integer> tails = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            int l = 0, r = tails.size();
+            while (l < r) {
+                int mid = l + (r - l) / 2;
+                if (tails.get(mid) >= nums[i]) {
+                    r = mid;
+                } else {
+                    l = mid + 1;
+                }
+            }
+            if (l == tails.size()) {
+                tails.add(nums[i]);
+            } else {
+                tails.set(l, nums[i]);
+            }
+        }
+        return tails.size();
     }
 }
 ```

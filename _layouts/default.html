@@ -107,7 +107,11 @@
 
 </style>
 <script>
-    document.querySelectorAll('[class^="language-"]').forEach(function(element) {
+    let codeBlocks = document.querySelectorAll('[class^="language-"]');
+    let filteredCodeBlocks = Array.from(codeBlocks).filter(function(element) {
+        return !element.className.includes('language-text');
+    });
+    filteredCodeBlocks.forEach(function(element) {
         element.innerHTML = '<div class="toggle-button">code</div><button class="copy-button">Copy</button>' + element.innerHTML;
         let codeDiv = element.querySelector('div.highlight');
         let copyButton = element.querySelector('.copy-button');
