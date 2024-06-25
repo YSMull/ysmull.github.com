@@ -206,3 +206,109 @@ class Solution {
 ```
 
 
+
+
+### 121.买卖股票的最佳时机
+一个数组，只能买一次，只能卖一次，求最多能赚多少
+
+最开始，我的想法是，对于每个买入时机，如果能知道未来最高是多少钱，就能计算此时买入最多可以赚多少，不过代码很繁琐，没必要看，搞反了，应该计算每个 i 左边的最小值
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        if (prices.length <= 1) return 0;
+        int[] maxRight = new int[prices.length - 1];
+        maxRight[prices.length - 2] = prices[prices.length - 1];
+        for (int i = prices.length - 3; i >= 0; i--) {
+            maxRight[i] = Math.max(maxRight[i + 1], prices[i + 1]);
+        }
+        int maxProfit = 0;
+        for (int i = 0; i < prices.length - 1; i++) {
+            maxProfit = Math.max(maxProfit, maxRight[i] - prices[i]);
+        }
+        return maxProfit;
+    }
+}
+```
+
+第二个思路是 leetcode 官方思路，每一天都尝试卖，维护这一天之前的史低价格是多少，看卖了能赚多少，不断更新最大值。
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minPrice) { // 更新史低价格
+                minPrice = prices[i];
+            } else { // 用当前价格减去的历史新低
+                maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+            }
+        }
+        return maxProfit;
+    }
+}
+```
+
+如果当天买当天是无效的，对 maxProfit 没影响，代码可以写成这样：
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            minPrice = Math.min(minPrice, prices[i]); // 维护历史最低价
+            maxProfit = Math.max(maxProfit, prices[i] - minPrice); // 卖一下试试
+        }
+        return maxProfit;
+    }
+}
+```
+
+
+
+### 121.买卖股票的最佳时机II
+
+#### 动态规划
+
+设 dp[i][0] 是第 i 天没有持有股票的最大利润，dp[i][1] 是第 i 天持有股票的最大利润
+
+$$
+dp[i][0] = \max\{dp[i-1][1] + prices[i], dp[i-1][0]\} \text{  }(当天卖出)
+$$
+
+$$
+dp[i][1] = \max\{dp[i-1][0] - prices[i], dp[i-1][1]\} \text{  }(当天买入)
+$$
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int[][] dp = new int[prices.length][2];
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            dp[i][0] = Math.max(dp[i-1][1] + prices[i], dp[i-1][0]);
+            dp[i][1] = Math.max(dp[i-1][0] - prices[i], dp[i-1][1]);
+        }
+        return dp[prices.length - 1][0];
+    }
+}
+```
+
+#### 贪心法
+一个数组，可以买卖多次，每天可以同时买和卖
+
+只要相邻两天有递增，这个利润就收入囊中（让前一天买，后一天卖），否则不操作。
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int res = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i-1]) {
+                res += prices[i] - prices[i-1];
+            }
+        }
+        return res;
+    }
+}
+```
