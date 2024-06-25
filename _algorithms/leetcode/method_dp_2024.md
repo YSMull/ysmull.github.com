@@ -1,8 +1,9 @@
 ---
-title: "单调栈总结"
-date: 2024-06-21 18:32:00
-method_id: 单调栈
+title: "dp日经题总结"
+date: 2024-06-24 22:58:00
+method_id: 动态规划
 method: true
+math: true
 alg_tag: 总结
 tags:
   - 方法学习
@@ -12,78 +13,109 @@ tags:
 {:toc}
 
 
+### 53.最大子数组和
 
-### 42.接雨水(hard)
+定义 dp[i] 等于以 i 结尾的最大子数组和，则
 
-#### 动态规划预处理 
-1. 遍历算出每个元素左边最大的元素数组（包含自己）
-2. 遍历算出每个元素右边最大的元素数组（包含自己）
-3. 遍历，计算每个元素左边和右边最大的元素中较小者，减去自己，就是当前格子的雨水高度
+$$
+\mathrm{dp[i]} =
+\begin{cases}
+\mathrm{dp[i-1] + nums[i]}, & \text{if } \mathrm{dp[i-1] > 0} \\
+\mathrm{nums[i]}, & \text{if } \mathrm{dp[i-1] \leq 0}
+\end{cases}
+$$
 
-注意，1 和 2 如果不包括自己，那么在 3 中需要判断减去自己是否大于 0，如果大于 0，那么就把这个值加到 sum 中
+或
 
+$$
+\mathrm{dp[i]= \max\{dp[i-1] + nums[i], nums[i]\}}
+$$
+
+### 198.打家劫舍
+
+如果定义 dp[i] 是最后打劫的是第 i 个房屋的最大盗窃金额，那么转移方程为：
+
+$$
+\mathrm{dp[i]} =
+\begin{cases}
+\mathrm{nums[0]}, &\text{if } i = 0 \\
+\mathrm{\max\{nums[0], nums[1]\}}, &\text{if } i = 1 \\
+\mathrm{\max\limits_{\substack{k < i - 2}}\{nums[k]\} + nums[i]}, &\text{if } i >= 2\\
+\end{cases}
+$$
+
+答案需要单独维护一个 max
 ```java
 class Solution {
-    public int trap(int[] height) {
-        int[] maxLeft = new int[height.length];
-        int[] maxRight = new int[height.length];
-        maxLeft[0] = height[0];
-        maxRight[height.length - 1] = height[height.length - 1];
-        for (int i = 1; i < height.length; i++) {
-            maxLeft[i] = Math.max(maxLeft[i-1], height[i]);
-        }
-        for (int i = height.length - 2; i >= 0; i--) {
-            maxRight[i] = Math.max(maxRight[i+1], height[i]);
-        }
-        int sum = 0;
-        for (int i = 1; i < height.length - 1; i++) {
-            sum += Math.min(maxLeft[i], maxRight[i]) - height[i];
-        }
-        return sum;
-    }
-}
-```
-
-#### 单调栈
-
-站顶到栈底单调递增，push 一个元素，如果破坏了单调性，那么破坏单调性的这个元素，与站顶的下一个元素，可以把栈顶夹出一些雨水
-
-比如：
-```text
-假设 b < c < d
-stack:
-b
-c
-d
-```
-
-此时插入的 a > b && a > c && a < d，则 b、c 一次出栈:
-
-* b 出栈，a 与 c 夹住 b 能夹出一些雨水
-* c 出栈，a 与 d 夹住 c 能夹出一些雨水
-
-1 1 0 1
-
-```java
-class Solution {
-    public int trap(int[] height) {
-        int ans = 0;
-        Deque<Integer> stack = new LinkedList<Integer>();
-        int n = height.length;
-        for (int i = 0; i < n; ++i) {
-            while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
-                int top = stack.pop();
-                if (stack.isEmpty()) {
-                    break;
-                }
-                int left = stack.peek();
-                int currWidth = i - left - 1;
-                int currHeight = Math.min(height[left], height[i]) - height[top];
-                ans += currWidth * currHeight;
+    public int rob(int[] nums) {
+        if (nums.length == 1) return nums[0];
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = nums[1];
+        int max = Math.max(dp[0], dp[1]);
+        for (int i = 2; i < nums.length; i++) {
+            for (int j = i-2; j >= 0; j--) {
+                dp[i] = Math.max(dp[i], dp[j] + nums[i]);
             }
-            stack.push(i);
+            
+            if (dp[i] > max) {
+                max = dp[i];
+            }
         }
-        return ans;
+        return max;
     }
 }
 ```
+
+如果定义 dp[i] 是打劫前 i 个房屋的最大盗窃金额，那么转移方程为：
+
+$$
+\mathrm{dp[i] = \max\{dp[i - 2] + nums[i], dp[i-1]\}}
+$$
+
+答案是dp[nums.length - 1];
+```java
+class Solution {
+    public int rob(int[] nums) {
+        if (nums.length == 1) return nums[0];
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i]);
+        }
+        return dp[nums.length - 1];
+    }
+}
+```
+
+
+### 300.最长递增子序列
+
+dp[i] 是以第 i 个数字结尾的最长上升子序列，初始值为 1，答案是 dp 数组的最大值
+
+$$
+dp[i] = \max_{\substack{0 \leq j\le i \\ nums[i] > nums[j]}}\{dp[j] + 1\}
+$$
+
+```java
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        int max = 1;
+        for (int i = 1; i < nums.length; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            max = Math.max(max, dp[i]);
+        }
+        return max;
+    }
+}
+```
+
+
