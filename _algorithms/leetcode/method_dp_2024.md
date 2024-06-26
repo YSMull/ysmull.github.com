@@ -372,3 +372,57 @@ class Solution {
     }
 }
 ```
+
+### 55.跳跃游戏
+从数组起始位置开始跳格子，每次最多只能往前跳 nums[i] 格，问是否可以跳到数组尾部
+
+#### 贪心
+
+**引理**：如果能跳到 i，那么任意的 j < i 也可以跳到
+证明：假设能跳到 i，但是存在某个**最大的** j（j < i） 是跳不过去的，假设最后一步是通过 k (k < i) 跳到 i 的，此时对 k 分类讨论：
+1. 若 k < j < i，那肯定 k 也能跳到 j，j 是可达的，矛盾
+2. j < k < i，根据 j 的定义，对任意的 k >= j + 1，k 一定是可达的，所以 j+1 一定是可达的，由于 j 不可达到，所以存在 q < j 跳到了 j + 1, 那么 q 一定可以跳到 j，矛盾
+
+
+**定理**：如果某个位置不可达，那么它的后面的位置也不可达
+证明：假设 i 不可达，但是存在某个 j > i 是可达的，根据引理，i 一定是可达的，矛盾。
+
+所以， 从左往右，维护当前最远可以到达的位置，如果遍历过程中发现当前最远也到达不了这个位置，那他后面的位置也到达不了，返回 false
+
+```java
+class Solution {
+    public boolean canJump(int[] nums) {
+        int maxRight = 0;
+        for (int i = 0; i < nums.length; i++) {
+            // 如果能到达结尾，那么数组中任意一个位置都能到达
+            // 这里发现还没到结尾就已经不可到达了
+            if (maxRight < i) {
+                return false;
+            }
+            maxRight = Math.max(maxRight, i + nums[i]);
+        }
+        return true;
+    }
+}
+```
+
+
+#### dp[i] = 是否可以跳到 i
+```java
+class Solution {
+    public boolean canJump(int[] nums) {
+        boolean[] dp = new boolean[nums.length];
+        dp[0] = true;
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                // j 可达，且能一步跳过来
+                if (dp[j] && j + nums[j] >= i) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[nums.length - 1];
+    }
+}
+```
