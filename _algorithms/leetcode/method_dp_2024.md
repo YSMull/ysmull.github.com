@@ -12,7 +12,6 @@ tags:
 * toc
 {:toc}
 
-
 ### 53.最大子数组和
 
 定义 dp[i] 等于以 i 结尾的最大子数组和，则
@@ -93,7 +92,6 @@ class Solution {
     }
 }
 ```
-
 
 ### 300.最长递增子序列
 
@@ -205,9 +203,6 @@ class Solution {
 }
 ```
 
-
-
-
 ### 121.买卖股票的最佳时机
 一个数组，只能买一次，只能卖一次，求最多能赚多少
 
@@ -264,8 +259,6 @@ class Solution {
 }
 ```
 
-
-
 ### 121.买卖股票的最佳时机II
 
 #### 动态规划
@@ -309,66 +302,6 @@ class Solution {
             }
         }
         return res;
-    }
-}
-```
-
-### 72.编辑距离
-
-```text
-  _ w o r d 2
-_ 0 1 2 3 4 5
-w 1
-o 2
-r 3
-d 4
-1 5
-```
-
-leetcode 说只需要三种操作：
-1. 在 word1 新增字符
-2. 在 word2 新增字符
-3. 在 word1 修改字符
-
-实际我感觉为了方便状态转移方程的理解，也可以只用以下三种操作：
-1. 在 word1 删字符
-2. 在 word2 删字符
-3. 在 word1 修改字符
-
->dp[i][j] 表示把 word1[0..i] 和 word2[0..j] 编辑成一样的需要的最小步数
-
-因为操作次序不影响最终答案，每次操作只需要在 i 和 j 处做
-
-$$
-\mathrm{dp[i][j]} = 
-\begin{cases}
-\mathrm{\underset{\text{不需要编辑}}{dp[i-1][j-1]}}, & \text{if } \mathrm{word1[i] = word2[j]} \\
-\mathrm{1 + \min\{\underset{\text{word1[i]修改为word2[j]}}{dp[i-1][j-1]}, \underset{\text{word1[i]删掉}}{dp[i-1][j]}, \underset{\text{word2[j]删掉}}{dp[i][j-1]}\}}, & \text{if } \mathrm{word1[i] \neq word2[j]}
-\end{cases}
-$$
-
-```java
-class Solution {
-    public int minDistance(String word1, String word2) {
-        int len1 = word1.length();
-        int len2 = word2.length();
-        int[][] dp = new int[len1 + 1][len2 + 1];
-        for (int i = 0; i <= len1; i++) {
-            dp[i][0] = i;
-        }
-        for (int j = 0; j <= len2; j++) {
-            dp[0][j] = j;
-        }
-        for (int i = 1; i <= len1; i++) {
-            for (int j = 1; j <= len2; j++) {
-                if (word1.charAt(i-1) == word2.charAt(j-1)) {
-                    dp[i][j] = dp[i-1][j-1];
-                } else {
-                    dp[i][j] = 1 + Math.min(dp[i][j-1], Math.min(dp[i-1][j], dp[i-1][j-1]));
-                }
-            }
-        }
-        return dp[len1][len2];
     }
 }
 ```
