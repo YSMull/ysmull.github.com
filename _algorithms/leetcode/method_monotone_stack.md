@@ -4,6 +4,7 @@ date: 2024-06-21 18:32:00
 method_id: 单调栈
 method: true
 alg_tag: 总结
+math: true
 tags:
   - 方法学习
 ---
@@ -11,7 +12,34 @@ tags:
 * toc
 {:toc}
 
+### 模板
 
+
+```java
+class Solution {
+    public int solve(int[] nums) {
+        // 栈内可以存元素下标，也可以存元素本身
+        Deque<Integer> stack = new LinkedList<Integer>();
+        int n = height.length;
+        for (int i = 0; i < n; ++i) {
+            // 这里的性质是特化的，nums[i] 与 站顶元素的比较
+            while (!stack.isEmpty() && 性质不满足时) {
+                // 收缩窗口，直到满足，有时也可以直接 clear
+                int top = stack.pop();
+                if (stack.isEmpty()) { // 如果下面还要 peek 的话
+                    break;
+                }
+                // 收缩更新当前最新答案
+            }
+            // right++
+            // 也可以在这里更新答案
+            stack.push(i);
+            
+        }
+        return ans;
+    }
+}
+```
 
 ### 42.接雨水(hard)
 
@@ -98,13 +126,77 @@ class Solution {
         LinkedList<Integer> s = new LinkedList<>();
         int max = -1;
         for (int i = 0; i < nums.length; i++) {
-            while (!s.isEmpty() && nums[i] <= s.peek()) {
+            if (!s.isEmpty() && nums[i] <= s.peek()) {
                 max = Math.max(s.size(), max);
                 s.clear();
             }
             s.push(nums[i]);
         }
         return Math.max(max, s.size());
+    }
+}
+```
+
+### 128.最长连续序列
+
+#### 动态规划
+
+$$
+dp[i] =
+\begin{cases}
+dp[i-1] + 1 & \text{if } nums[i] = nums[i-1] + 1 \\
+dp[i-1] & \text{if } nums[i] = nums[i-1] \\
+1 & \text{otherwise}
+\end{cases}
+$$
+
+```java
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if (nums.length == 0) return 0;
+        Arrays.sort(nums);
+        int[] dp = new int[nums.length];
+        int max = 1;
+        dp[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i-1] + 1) {
+                dp[i] = dp[i-1] + 1;
+            } else if (nums[i] == nums[i-1]) {
+                dp[i] = dp[i-1];
+            } else {
+                dp[i] = 1;
+            }
+            if (dp[i] > max) {
+                max = dp[i];
+            }
+        }
+        return max;
+    }
+}
+```
+
+#### 单调栈做
+
+```java
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if (nums.length == 0) return 0;
+        Arrays.sort(nums);
+        LinkedList<Integer> s = new LinkedList<>();
+        int cur = 0;
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int n = nums[i];
+            if (!s.isEmpty() && n != s.peek() && n != s.peek() + 1) {
+                s.clear();
+                cur = 0;
+            }
+            if (s.isEmpty() || n == s.peek() + 1) {
+                max = Math.max(++cur, max);
+            }
+            s.push(n);
+        }
+        return max;
     }
 }
 ```
