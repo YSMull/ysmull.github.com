@@ -14,7 +14,7 @@ tags:
 
 ## 第一类树形dp
 先准备两个题作为工具
-1. 树的深度
+**树的深度**
 ```java
 class Solution {
     public int maxDepth(TreeNode root) {
@@ -24,7 +24,7 @@ class Solution {
 }
 ```
 
-2. 树的最大链长
+**树的最大链长**
 ```java
 class Solution {
     public int dfs(TreeNode root) {
@@ -207,7 +207,69 @@ class Solution {
 
 ## 第二类树形dp
 
-### [1377. T 秒后青蛙的位置(hard)][5]
+### [337. 打家劫舍III(medium)][5]
+题目：二叉树，相邻节点不能同时偷，求最大偷多少
+
+设 dp[node]\[1\] 表示 node 处偷，dp[node]\[0\] 表示 node 处不偷
+
+$$
+\begin{cases}
+\mathrm{\underset{\text{偷}}{dp[node][1]} = dp[left][0] + dp[right][0] + node.val} \\
+\mathrm{\underset{\text{不偷}}{dp[node][0]} = \max\{dp[left][0],dp[left][1]\} + \max\{dp[right][0],dp[right][1]\}} \\
+\end{cases}
+$$
+
+> 注意，我写的时候，不偷时，忘记考虑了 left 和 right 也可以都选择不偷
+
+然后我随手写了个超时的（122 / 124 个通过的测试用例），因为有特别多的重复计算
+```java
+class Solution {
+
+    public int rob(TreeNode root) {
+        return Math.max(dfs(root, 0), dfs(root, 1));
+    }
+
+    public int dfs(TreeNode root, int rob) {
+        if (root == null) return 0;
+        if (rob == 1) {
+            int l0 = dfs(root.left, 0);
+            int r0 = dfs(root.right, 0);
+            return l0 + r0 + root.val;
+        } else {
+            int l0 = dfs(root.left, 0);
+            int r0 = dfs(root.right, 0);
+            int l1 = dfs(root.left, 1); 
+            int r1 = dfs(root.right, 1);
+            return Math.max(l0, l1) + Math.max(r0, r1);
+        }
+    }
+}
+```
+
+应该这样递归
+```java
+class Solution {
+
+    public int rob(TreeNode root) {
+        int[] res = dfs(root);
+        return Math.max(res[0], res[1]);
+    }
+
+    // [偷,不偷]
+    public int[] dfs(TreeNode root) {
+        if (root == null) return new int[]{0, 0};
+        int[] lRes = dfs(root.left);
+        int[] rRes = dfs(root.right);
+        int l0 = lRes[0];
+        int l1 = lRes[1];
+        int r0 = rRes[0];
+        int r1 = rRes[1];
+        return new int[] {Math.max(l0, l1) + Math.max(r0, r1), l0 + r0 + root.val};
+    }
+}
+```
+
+### [1377. T 秒后青蛙的位置(hard)][6]
 题目：无向树，青蛙每一时刻跳一格，概率均等，跳过的地方不能跳了，如果没地方跳了就只能待在原地，问 t 时刻，处于位置 target 的概率
 
 思路：
@@ -373,4 +435,5 @@ class Solution {
 [2]:https://leetcode.cn/problems/distribute-coins-in-binary-tree/description/ "979. 在二叉树中分配硬币(medium)"
 [3]:https://leetcode.cn/problems/binary-tree-maximum-path-sum/description/ "124. 二叉树中的最大路径和(hard)"
 [4]:https://leetcode.cn/problems/longest-path-with-different-adjacent-characters "2246. 相邻字符不同的最长路径(hard)"
-[5]:https://leetcode.cn/problems/frog-position-after-t-seconds/description/ "1377. T 秒后青蛙的位置(hard)"
+[5]:https://leetcode.cn/problems/house-robber-iii/ "337. 打家劫舍III(medium)"
+[6]:https://leetcode.cn/problems/frog-position-after-t-seconds/description/ "1377. T 秒后青蛙的位置(hard)"
