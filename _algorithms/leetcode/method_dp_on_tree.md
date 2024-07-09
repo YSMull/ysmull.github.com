@@ -258,13 +258,9 @@ class Solution {
     // [偷,不偷]
     public int[] dfs(TreeNode root) {
         if (root == null) return new int[]{0, 0};
-        int[] lRes = dfs(root.left);
-        int[] rRes = dfs(root.right);
-        int l0 = lRes[0];
-        int l1 = lRes[1];
-        int r0 = rRes[0];
-        int r1 = rRes[1];
-        return new int[] {Math.max(l0, l1) + Math.max(r0, r1), l0 + r0 + root.val};
+        int[] l = dfs(root.left);
+        int[] r = dfs(root.right);
+        return new int[] {Math.max(l[0], l[1]) + Math.max(r[0], r[1]), l[0] + r[0] + root.val};
     }
 }
 ```
