@@ -16,9 +16,16 @@ pre {
     position: relative;
 }
 
-.post__content {
-    /*border: 1px solid #e7e5e5;*/
-    /*padding: 10px;*/
+.post__content a.leetcode-hard-title {
+    color: rgba(198, 0, 0, 0.9);
+}
+
+.post__content a.leetcode-medium-title {
+    color: rgba(237, 115, 54, 0.9);
+}
+
+.post__content a.leetcode-easy-title {
+    color: rgba(0, 153, 117, 0.9);
 }
 
 .leetcode-hard {

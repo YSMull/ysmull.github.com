@@ -135,4 +135,25 @@
         });
     });
 </script>
+
+<script>
+    window.onload = function() {
+        let titles = document.querySelectorAll('.post-toc a');
+
+        titles.forEach(t => {
+            console.log(t.innerText)
+            if (t.innerText) {
+                if (t.innerText.includes('(easy')) {
+                    t.classList.add('leetcode-easy-title')
+                } else if (t.innerText.includes('(medium')) {
+                    t.classList.add('leetcode-medium-title')
+                } else if (t.innerText.includes('(hard')) {
+                    t.classList.add('leetcode-hard-title')
+                }
+            }
+        })
+    };
+
+
+</script>
 </html>
