@@ -293,7 +293,7 @@ class Solution {
 
     public double frogPosition(int n, int[][] edges, int t, int target) {
         g = new ArrayList[n + 1];
-        dp = new double[51][n + 1];
+        dp = new double[t + 1][n + 1];
         vis = new int[n + 1];
         maxT = t;
         Arrays.setAll(g, e -> new ArrayList<>());
@@ -426,6 +426,106 @@ class Solution {
 }
 ```
 
+> 2024-07-11 07:00 更新
+> 晴神提醒了下，既然只能从上往下计算，可以在递归时把概率算好传给孩子，这题不应该是 hard 难度
+
+所以没必要蹩脚的在递归前整dp的状态转移方程，最开始的代码可以改成:
+```java
+class Solution {
+    private List<Integer>[] g;
+    private double[][] dp;
+    private int maxT;
+    private int[] vis;
+
+    public double frogPosition(int n, int[][] edges, int t, int target) {
+        g = new ArrayList[n + 1];
+        dp = new double[t + 1][n + 1];
+        vis = new int[n + 1];
+        maxT = t;
+        Arrays.setAll(g, e -> new ArrayList<>());
+        for (int i = 0; i < edges.length; i++) {
+            g[edges[i][0]].add(edges[i][1]);
+            g[edges[i][1]].add(edges[i][0]);
+        }
+        dp[0][1] = 1;
+        vis[1] = 1;
+        dfs(0, 1, 1.0);
+
+        return dp[t][target];
+    }
+
+    public void dfs(int t, int n, double p) {
+        if (t > maxT)
+            return;
+        dp[t][n] = p; // <-- 这就清爽多了
+
+        int childLen = 0;
+        for (int c : g[n]) {
+            if (vis[c] == 0)
+                childLen++;
+        }
+        if (childLen > 0) {
+            for (int c : g[n]) {
+                if (vis[c] == 0) {
+                    vis[c] = 1;
+                    dfs(t + 1, c, p * 1.0 / childLen);
+                    vis[c] = 0;
+                }
+            }
+        } else {
+            dfs(t + 1, n, p);
+        }
+    }
+}
+```
+
+然后，因为题目不要求去求任意时刻在任意位置的概率，代码改成这样：
+
+```java
+class Solution {
+    private List<Integer>[] g;
+    private int targetT;
+    private int target;
+
+    public double frogPosition(int n, int[][] edges, int t, int target) {
+        g = new ArrayList[n + 1];
+        this.target = target;
+        targetT = t;
+        Arrays.setAll(g, e -> new ArrayList<>());
+        for (int i = 0; i < edges.length; i++) {
+            g[edges[i][0]].add(edges[i][1]);
+            g[edges[i][1]].add(edges[i][0]);
+        }
+        long r = dfs(0, 1, 0, 1);
+        return r > 0 ? 1.0 / r : 0.0;
+
+    }
+
+    public long dfs(int t, int n, int fa, long p) {
+        if (t > targetT) return 0;
+
+        int childLen = n == 1 ? g[n].size() : (g[n].size() - 1);
+
+        if (n == target) {
+            
+            if (childLen > 0 && t < targetT)
+                // 如果已经走到 target 了，并且还不是叶子结点，并且时间还不是目标时间，那么概率一定是 0
+                return 0;
+            return p; // 已经是叶子结点了，或者刚好是 targetT 到达的
+        }
+
+        long res = 0L;
+        for (int c : g[n]) {
+            if (c != fa) {
+                res += dfs(t + 1, c, n, p * childLen);
+                if (res > 0)
+                    break;
+            }
+        }
+        return res;
+    }
+}
+```
 
 [1]:https://leetcode.cn/problems/diameter-of-binary-tree/description/ "543. 二叉树的直径(easy)"
 [2]:https://leetcode.cn/problems/distribute-coins-in-binary-tree/description/ "979. 在二叉树中分配硬币(medium)"
