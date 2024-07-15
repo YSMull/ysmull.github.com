@@ -98,7 +98,7 @@ layout: default
 {% if page.scheme %}
 <script src="/assets/js/scheme.js"></script>
 <script>
-    window.onload = function(){
+    window.addEventListener('load', function(){
         init()
         let all_scheme_code = $('.language-scheme')
         for (var i = 0; i < all_scheme_code.length; i++) {
@@ -125,7 +125,7 @@ layout: default
             })(i)
             all_scheme_code[i].appendChild(runner);
         }
-    }
+    });
 </script>
 {% endif %}
 

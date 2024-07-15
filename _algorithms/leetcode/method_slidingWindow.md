@@ -399,8 +399,10 @@ class Solution {
 此时不能用窗口大小来作为缩小窗口的触发条件了，而是，当要最根据性质是否满足来触发窗口缩小
 
 ### 性质满足时缩小窗口
+
 初始窗口不满足，增大窗口过程中可能突然满足（**或超出**）条件要求了
 #### 模板
+
 ```java
 void slidingWindow(String s) {
     int left = 0, right = 0;
@@ -786,7 +788,7 @@ window.put(d, window.get(d) - 1);
 * 求长度最大的子串时，性质不满足时收缩，收缩后判断是否满足性质，收集答案。（根据395，这里的两个判断可以不一样）
 
 注意：有的使用非固定长度的滑动窗口模板，在收缩条件处可以加一句 $left < right$ 防御一手
- 
+
 ## 参考资料
 
 [1]: https://leetcode.cn/problems/find-all-anagrams-in-a-string/solutions/9749/hua-dong-chuang-kou-tong-yong-si-xiang-jie-jue-zi-/ "我写了一首诗，把滑动窗口算法变成了默写题"

@@ -112,32 +112,32 @@
         return !element.className.includes('language-text');
     });
     filteredCodeBlocks.forEach(function(element) {
-        element.innerHTML = '<div class="toggle-button">code</div><button class="copy-button">Copy</button>' + element.innerHTML;
-        let codeDiv = element.querySelector('div.highlight');
-        let copyButton = element.querySelector('.copy-button');
-        let toggleButton = element.querySelector('.toggle-button');
-        codeDiv.style.display = 'none';
-        toggleButton.addEventListener('click', function() {
-            if (codeDiv.style.display === "block") {
-                toggleButton.classList.remove('active');
-                codeDiv.style.display = "none";
-                copyButton.style.display = "none";
-            } else {
-                toggleButton.classList.add('active');
-                codeDiv.style.display = "block";
-                copyButton.style.display = "block";
-            }
-        });
-
-        copyButton.addEventListener('click', function() {
-            navigator.clipboard.writeText(codeDiv.innerText)
-            copyButton.innerText = 'Copied!'
-        });
+        // element.innerHTML = '<div class="toggle-button">code</div><button class="copy-button">Copy</button>' + element.innerHTML;
+        // let codeDiv = element.querySelector('div.highlight');
+        // let copyButton = element.querySelector('.copy-button');
+        // let toggleButton = element.querySelector('.toggle-button');
+        // todo: 只有一两行的代码不要折叠，或者md里手动控制是否折叠
+        // codeDiv.style.display = 'none';
+        // toggleButton.addEventListener('click', function() {
+        //     if (codeDiv.style.display === "block") {
+        //         toggleButton.classList.remove('active');
+        //         codeDiv.style.display = "none";
+        //         copyButton.style.display = "none";
+        //     } else {
+        //         toggleButton.classList.add('active');
+        //         codeDiv.style.display = "block";
+        //         copyButton.style.display = "block";
+        //     }
+        // });
+        // copyButton.addEventListener('click', function() {
+        //     navigator.clipboard.writeText(codeDiv.innerText)
+        //     copyButton.innerText = 'Copied!'
+        // });
     });
 </script>
 
 <script>
-    window.onload = function() {
+    window.addEventListener('load', function() {
         let titles = document.querySelectorAll('.post-toc a');
 
         titles.forEach(t => {
@@ -152,7 +152,7 @@
                 }
             }
         })
-    };
+    });
 
 
 </script>

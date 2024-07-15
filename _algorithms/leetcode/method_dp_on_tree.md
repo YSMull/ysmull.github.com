@@ -69,16 +69,16 @@ class Solution {
         if (root == null) return -1;
         int l = dfs(root.left);
         int r = dfs(root.right);
-        max = Math.max(max, l + r + 2); // 当 root 为 没有根的节点是，路径长度为 -1 + -1 + 2 = 0
+        max = Math.max(max, l + r + 2); // 当 root 为 没有根的节点时，路径长度为 -1 + -1 + 2 = 0
         return Math.max(l, r) + 1;
     }
     
     // 推荐用这个版本
-    public int dfs2(TreeNode root) {
+    public int dfs(TreeNode root) {
         if (root == null) return -1;
         int l = dfs(root.left) + 1;
         int r = dfs(root.right) + 1;
-        max = Math.max(max, l + r); // 当 root 为 没有根的节点是，路径长度为 -1 + -1 + 2 = 0
+        max = Math.max(max, l + r);
         return Math.max(l, r);
     }
 }
@@ -134,7 +134,7 @@ class Solution {
 因为任意一个路径一定会在某个祖先节点拐弯，遍历所有的节点
 
 $$
-最大链和(node) = node.val + \underset{\text{如果左右链都是负数就舍弃}}{\max\{0, }\max \{最大链和(node.left),最大链和(node.right)\}\} 
+最大链和(node) = node.val + \underset{\text{如果左右链都是负数就舍弃}}{\max\{0, }\max \{最大链和(node.left),最大链和(node.right)\}\}
 $$
 
 $$
@@ -266,17 +266,18 @@ class Solution {
 ```
 
 ### [1377. T 秒后青蛙的位置(hard)][6]
+
 题目：无向树，青蛙每一时刻跳一格，概率均等，跳过的地方不能跳了，如果没地方跳了就只能待在原地，问 t 时刻，处于位置 target 的概率
 
 思路：
 1. 构建无向的多叉树
-2. 设 dp[t][n] 为 t 时刻处于位置 n 的概率，则
+2. 设 dp\[t][n] 为 t 时刻处于位置 n 的概率，则
 
 $$
 \mathrm{dp[t][n]} =
 \begin{cases}
-\mathrm{dp[t-1][n]}, & 没有可以跳的位置了 \\
-\mathrm{dp[t-1][n] \cdot \frac{1}{k}}, & 还有 k 个可以跳的位置 \\
+\mathrm{dp[t-1][parent]}, & t - 1 时刻没有可以跳的位置了 \\
+\mathrm{dp[t-1][parent] \cdot \frac{1}{k}}, & t - 1 时刻还有 k 个可以跳的位置 \\
 \end{cases}
 $$
 
