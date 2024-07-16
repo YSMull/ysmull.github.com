@@ -6,8 +6,10 @@ layout: about
 
 <p><strong>Email</strong>: <span class="dynamic-email">znblhfh@163.pbz</span></p>
 
-
-<!-- <script src="//onk1k9bha.bkt.clouddn.com/zepto.min.js"></script> -->
+<p><strong>WeChat</strong>:
+<div style="text-align:left">
+    <img src="https://p.ipic.vip/yfckv3.jpg" width="20%" height="auto" alt="">
+</div>
 
 <script type="text/javascript">
 function rot13(str) {
