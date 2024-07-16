@@ -63,7 +63,7 @@ layout: default
 <script>
     function replaceBraces(str) {
         // 使用正则表达式替换所有的 \{
-        str = str.replace(/\\\{/g, '\\textbraceleft').replace(/\\\}/g, '\\textbraceright');
+        str = str.replace(/\\\{/g, '\\textbraceleft ').replace(/\\\}/g, '\\textbraceright ');
         return str;
     }
     function replaceBrackets(str) {
@@ -86,7 +86,6 @@ layout: default
     function expand_comment() {
         let body = `<div>原文链接: <a href="${location.href}">${location.href}</a></div><br>{{ escaped_content }}`;
         var replacedBody = replaceBraces(replaceBrackets(body));
-        alert(replacedBody)
         gitalk(location.pathname, '{{ page.title }}', allTags, replacedBody).render('gitalk-container');
     }
     expand_comment();
