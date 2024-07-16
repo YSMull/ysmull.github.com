@@ -21,4 +21,4 @@ algorithm_tags:
 math:
   sub_tags:
       - {type: inequation, name: '不等式'}
-      - {type: probability, name: '概率论'}
+#      - {type: probability, name: '概率论'}

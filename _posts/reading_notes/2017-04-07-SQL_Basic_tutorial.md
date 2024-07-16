@@ -1,6 +1,7 @@
 ---
 layout: booknote
 permalink: /SQL_Basic_tutorial
+hide: true
 ---
 
 >看这本书的目的是温故标准 SQL 基础知识。

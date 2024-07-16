@@ -4,6 +4,7 @@ title: Builder Pattern
 date: 2017-04-10 20:05:15
 tags:
     - design_pattern
+hide: true
 ---
 
 * toc

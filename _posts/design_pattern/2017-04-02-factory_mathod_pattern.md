@@ -4,6 +4,7 @@ title: Factory Method
 date: 2017-04-02 23:16:28
 tags:
     - design_pattern
+hide: true
 ---
 
 ### 定义

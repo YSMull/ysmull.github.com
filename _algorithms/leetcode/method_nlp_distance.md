@@ -1,5 +1,5 @@
 ---
-title: "nlp中的几种编辑距离"
+title: "nlp 中的几种编辑距离"
 date: 2024-06-29 07:39:00
 method_id: 动态规划
 method: true
@@ -7,6 +7,7 @@ math: true
 alg_tag: 总结
 tags:
   - 方法学习
+post: true
 ---
 
 * toc

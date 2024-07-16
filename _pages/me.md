@@ -2,15 +2,9 @@
 layout: about
 ---
 
-我是 YSMull，18 年毕业后就职于网易杭研。
+我是 YSMull，18 年毕业至今，一直在 ~~网易杭州研究院~~ 研发 [**网易有数 BI**](https://youdata.163.com/)
 
->在实战中锻炼自己
-
->努力提升编码质量和编码效率
-
->视野要开阔，借鉴业界最佳实践
-
-<p><strong>Email</strong>: <span class="dynamic-email">lfzhyy@nyvlha.pbz</span></p>
+<p><strong>Email</strong>: <span class="dynamic-email">znblhfh@163.pbz</span></p>
 
 
 <!-- <script src="//onk1k9bha.bkt.clouddn.com/zepto.min.js"></script> -->

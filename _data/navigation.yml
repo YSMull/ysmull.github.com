@@ -1,20 +1,17 @@
-- title: Reading
-  url: /reading
+#- title: Reading
+#  url: /reading
 
-- title: Database
-  url: /dbNotes
+#- title: Database
+#  url: /dbNotes
 
-- title: Algorithm
-  url: /algorithm
+#- title: Algorithm
+#  url: /algorithm
 
-- title: Network
-  url: /network
+#- title: Design Pattern
+#  url: /designPattern
 
-- title: Design Pattern
-  url: /designPattern
-
-- title: Math
-  url: /math
+#- title: Math
+#  url: /math
 
 - title: Life
   url: /life

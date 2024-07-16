@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "「细谈」Java 中的弱引用(WeakReference)"
+title: "Java 中的 WeakReference"
 date: 2019-08-03 11:13:00
 tags: ["jvm"]
 ---

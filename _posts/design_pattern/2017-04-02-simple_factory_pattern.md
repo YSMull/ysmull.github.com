@@ -4,6 +4,7 @@ title: Simple Factory
 date: 2017-04-02 21:22:11
 tags:
     - design_pattern
+hide: true
 ---
 
 首先说一个被叫做**简单工厂模式**的编程技巧，有说这个其实不算一个设计模式的。

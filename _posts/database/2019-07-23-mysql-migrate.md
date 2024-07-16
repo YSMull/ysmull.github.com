@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 记录一次数据库迁移
+title: 记录一次磁盘满后的 MySQL 数据库迁移
 category: ''
 description: 
 tags:
@@ -13,7 +13,7 @@ tags:
 
 ### 前情提要
 
-几个月前帮同学做了个新闻app，后端基本是（Spring Boot + Kotlin）技术栈，「后台管理」的前端用 react ，打包到 spring boot 的 jar 包里一起启动。服务器购买的华为云。
+这几天帮同学做了个新闻app，后端是（Spring Boot + Kotlin）技术栈，「后台管理」的前端用 react ，打包到 spring boot 的 jar 包里一起启动。服务器购买的华为云。
 
 整个产品由以下几个模块组成：
 1. 爬虫（爬新闻，插入 MySQL 数据库）
@@ -21,7 +21,7 @@ tags:
 3. 新闻后端（给安卓客户端提供后端服务）
 4. 安卓客户端（请另一个同学写的）
 
-同时我使用了~~给我发工资的~~优秀的[网易有数](https://youdata.163.com/)来监控爬虫情况，每天发送爬虫日报。
+同时我使用了[网易有数](https://youdata.163.com/)来监控爬虫情况，每天发送爬虫日报。
 
 ### 问题发现
 

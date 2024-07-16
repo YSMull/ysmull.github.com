@@ -4,6 +4,7 @@ title: Singleton Pattern
 date: 2017-04-12 10:48:25
 tags:
     - design_pattern
+hide: true
 ---
 
 * toc

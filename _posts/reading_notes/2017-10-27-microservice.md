@@ -1,6 +1,7 @@
 ---
 layout: booknote
 permalink: /micro_service
+hide: true
 ---
 
 * toc

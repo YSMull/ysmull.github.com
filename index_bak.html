@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+
+<div class="pure-g">
+  {% for item in site.data.cat %}
+  <div class="pure-u-1 pure-u-lg-1-2 pure-u-md-1 pure-u-sm-1-1">
+    <div class="outer_block">
+      <div class="block">
+      <div class="block_tag">
+        {% if item.item == 'Algorithm' %}
+        Algorithm
+        {% else %}
+        {{ item.item }}
+        {% endif %}
+        {% if item.page  %}
+        <a class="tag_text" href="{{ item.page }}" style="font-size:0.7em">more...</a>
+        {% endif %}
+      </div>
+      {% assign block_tags =  item.tags %}
+      <div class="block_content">
+        <ul>
+          {% assign max_show_nums = 0 %}
+          {% assign everything = site.posts | concat: site.algorithms | sort: 'date' | reverse %}
+          {% for post in everything %}
+            {% if max_show_nums >= 5 %}
+              {% break %}
+            {% endif %}
+            {% assign show = 0 %}
+            {% for post_tag in post.tags %}
+                {% if block_tags contains post_tag %}
+                  {% assign show = 1 %}
+                  {% break %}
+                {% endif %}
+            {% endfor %}
+            {% if show == 1 %}
+              {% assign max_show_nums = max_show_nums | plus: 1 %}
+              <li class="pure-g">
+                <div class="pure-u-6-24 pure-u-md-4-24 pure-u-lg-5-24">
+                  <span class="date">{{ post.date | date:"%Y-%m-%d" }}</span>
+                </div>
+                <div class="pure-u-18-24 pure-u-md-20-24 pure-u-lg-19-24" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                  <a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 如何处理 Nodejs 服务初始化配置中的异步 IO
+title: Nodejs 服务启动时如何异步加载配置
 tags:
     - node
 ---
@@ -42,7 +42,7 @@ module.exports = {
     // ...
     ```
 
-如果我们在的 initConfig() 需要发一个请求获取配置，那么 config.js 就得改写为：
+如果 initConfig() 需要发一个请求获取配置，那么 config.js 就得改写为：
 
 ```javascript
 // config.js
