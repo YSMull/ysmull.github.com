@@ -61,6 +61,11 @@ layout: default
 
 <!--gitalk评论区 & 文章同步-->
 <script>
+    function replaceBraces(str) {
+        // 使用正则表达式替换所有的 \{
+        str = str.replace(/\\\{/g, '\\textbraceleft').replace(/\\\}/g, '\\textbraceright');
+        return str;
+    }
     function replaceBrackets(str) {
         // 替换每一行开头的\[为$$，结尾的\]为$$，保留前置和后置空格
         str = str.replace(/^( *)\\\[|\\\]( *)$/gm, function(match, p1, p2) {
@@ -80,7 +85,7 @@ layout: default
     {% assign escaped_content = content | replace: '`', '\\`' | replace: '\', '\\\\' | replace: '$', '\\$' %}
     function expand_comment() {
         let body = `<div>原文链接: <a href="${location.href}">${location.href}</a></div><br>{{ escaped_content }}`;
-        var replacedBody = replaceBrackets(body);
+        var replacedBody = replaceBraces(replaceBrackets(body));
         alert(replacedBody)
         gitalk(location.pathname, '{{ page.title }}', allTags, replacedBody).render('gitalk-container');
     }
