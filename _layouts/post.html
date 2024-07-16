@@ -77,6 +77,14 @@ layout: default
         });
         return str;
     }
+    function replaceDoubleBackslashes(str) {
+        // 使用正则表达式匹配被 $$ 包裹的内容，并进行替换
+        str = str.replace(/\$\$(.*?)\$\$/gs, function(match, content) {
+            // 在匹配到的内容中，将 \\ 替换为 \\\\
+            return '$$' + content.replace(/\\\\/g, '\\\\\\\\') + '$$';
+        });
+        return str;
+    }
 
     let allTags = [];
     {% for tag in page.tags %}
@@ -85,7 +93,7 @@ layout: default
     {% assign escaped_content = content | replace: '`', '\\`' | replace: '\', '\\\\' | replace: '$', '\\$' %}
     function expand_comment() {
         let body = `<div>原文链接: <a href="${location.href}">${location.href}</a></div><br>{{ escaped_content }}`;
-        var replacedBody = replaceBraces(replaceBrackets(body));
+        var replacedBody = replaceDoubleBackslashes(replaceBraces(replaceBrackets(body)));
         gitalk(location.pathname, '{{ page.title }}', allTags, replacedBody).render('gitalk-container');
     }
     expand_comment();
