@@ -1,12 +1,14 @@
 ---
 layout: post
-title: Extracting Top-K Insight 论文解析
+title: Extracting Top-K Insight 论文实现与解析
 date: 2024-07-16 15:51:02
 math: true
 ---
 
 * toc
-  {:toc}
+{:toc}
+
+> https://acm.sustech.edu.cn/btang/pub/SIGMOD17_insight.pdf
 
 ## 概念
 
@@ -172,7 +174,7 @@ $$Ce=[(\textrm{SUM},\textrm{Sales}),(\Delta_{prev},\textrm{Year}),(\textrm{Rank}
 
 $$\mathbb{R}(\langle\textrm{Year},\textrm{Brand}\rangle,\textrm{Sales})$$
 
-我们将将 $Ce$ 作用到 $SG(\langle\textrm{B},*\rangle, \textrm{Year})$ 上，其结果应该为：
+我们将 $Ce$ 作用到 $SG(\langle\textrm{B},*\rangle, \textrm{Year})$ 上，其结果应该为：
 
 $$\Phi=\begin{aligned} \{(\langle \textrm{B},2010\rangle, \langle \textrm{B},2010\rangle.M_3)&, \\  (\langle \textrm{B},2011\rangle,\langle \textrm{B},2011\rangle.M_3)&, \\  (\langle \textrm{B},2012\rangle,\langle \textrm{B},2012\rangle.M_3)&, \\  (\langle \textrm{B},2013\rangle,\langle \textrm{B},2013\rangle.M_3)&, \\  (\langle \textrm{B},2014\rangle,\langle \textrm{B},2014\rangle.M_3)& \} \end{aligned}$$
 
@@ -390,12 +392,6 @@ sibling cube:
 
 ### 论文伪代码总览
 
-![img](https://p.ipic.vip/hxnpoj.jpg)![img](https://p.ipic.vip/j01661.jpg)
-
-![img](https://p.ipic.vip/jiciq4.jpg)![img](https://p.ipic.vip/b1kgez.jpg)
-
-![img](https://p.ipic.vip/2qbd2k.jpg)![img](https://p.ipic.vip/ufzxib.jpg)
-
 **EKI**：Algorithm 1 + Algorithm 2
 
 **EKIO**：Algorithm 3 + Algorithm 2(slibling cube 版)
@@ -403,6 +399,12 @@ sibling cube:
 **EKISO**：Algorithm 6 + Algorithm 4 + Algorithm 5，
 
 其中 Algorithm 5 使用到了 Algorithm 2(slibling cube 版)
+
+![img](https://p.ipic.vip/hxnpoj.jpg)![img](https://p.ipic.vip/j01661.jpg)
+
+![img](https://p.ipic.vip/jiciq4.jpg)![img](https://p.ipic.vip/b1kgez.jpg)
+
+![img](https://p.ipic.vip/2qbd2k.jpg)![img](https://p.ipic.vip/ufzxib.jpg)
 
 ## 算法性能研究
 
@@ -460,7 +462,7 @@ l_linestates(2)
 
 > 算法只需要 0.17秒
 
-## 如何与有数相结合
+## 如何与传统 BI 相结合
 
 ### 图表恢复：Insight => 图表
 
@@ -526,9 +528,9 @@ l_linestates(2)
 
 ### 数据解释
 
-#### 友商现状
+#### 业界现状
 
-友商已经在增强分析方向做出了产品（字节飞书机器人 & 阿里钉钉机器人）
+业界已经在增强分析方向做出了产品（字节飞书机器人 & 阿里钉钉机器人）
 
 [数字化的尽头是聊天（池建强）](https://mp.weixin.qq.com/s/J7nUQSgv_S_pH6SoHKLfgg)
 
@@ -548,17 +550,19 @@ https://powerbi.microsoft.com/en-us/blog/announcing-power-bi-integration-with-co
 
 **方案：**构造一个 Composit Extractor
 
-$$Ce=[(\textrm{SUM},\textrm{Sales}),(\Delta_{prev},\textrm{Year})]   apply on   \mathrm{SG}(S', \mathrm{Year})   \forall S'\in \langle*,*,\cdots,*\rangle$$
+$$Ce=[(\textrm{SUM},\textrm{Sales}),(\Delta_{prev},\textrm{Year})] \text{ apply on   }\mathrm{SG}(S', \mathrm{Year})   \forall S'\in \langle*,*,\cdots,*\rangle$$
 
 score function 可以取 $\frac{-\Delta_{prev}}{\color{red}101万}$的值（对下降值的占比越高，贡献越显著）
 
 我们跑出来的结果集
-
+```text
 <*, *>  -101万
 
-<中南, *>  -64万         |    <*, 文具>  -63万
+<中南, *>  -64万     |     <*, 文具>  -63万
 
-<中南, 文具> -60万    |
+<中南, 文具> -60万     
+```
+
 
 **优势：**
 
