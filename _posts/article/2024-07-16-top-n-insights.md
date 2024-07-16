@@ -116,7 +116,7 @@ extractor$\xi $，拿 sibling group $\mathrm{SG}(S,D_x)$作为输入，对于每
 
 论文中列举了几个 Extractor
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MWIzZjFjZDk1NDE4YzNjZGRlZDlhNjZjNTc1NjllMTBfWVZTbU5DVGVKek5hTWZFTGloRmRGY3ZJZE5RdFRBUmVfVG9rZW46Ym94Y243eWVraHZhZUJUUjRQdE5zMkZ0elZnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/8hulqc.jpg)
 
 **解释：**
 
@@ -152,17 +152,17 @@ SG(<*，桌子>, 地区) 得到一串子空间，见上一个举例。
 
 **定义：**
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NDg5Y2FmZjc1YmFkNjEyMzU4ZDBjOTI3ZjA3Mzk3MjBfYUthWjhsU1dwSVA3RVJrQldlQ004U2VaQmp0UHozRW5fVG9rZW46Ym94Y25hSXRTT3RGd2hLQVZHUnF6NXpZOXBjXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/hv5zr5.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=ODQzYmFlZGU1MDk1ODMyNmQ1OTUxZTc2MzFkZDFjNzNfb1oxTE04c2puMHliN0c3TGFoSVNKc1kxRFpaYzBwUFNfVG9rZW46Ym94Y255M0JlY0tvR0Z6Ym1GanlHRFM5T09iXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/he1swv.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=M2QwOGQ3MjYxNWJhMDNjYmMzYTg4MDhiNGIzZmZjNDRfMlpQYXF3VUQwV3NndEdqa3ozOHBuOEZ4ZTNkRG5KVk5fVG9rZW46Ym94Y25ibGlnM2RaZDJ6Y2tpRFZjcTFROXNoXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/0axys8.jpg)
 
 **举例：**
 
 以论文中的例子举例
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWQwNzQwNzM3OGYwODAwODJmMzg1YWRjNzQyN2M5ZjBfb2NmUHhtNFNZNVdySkg5REw0SmtkVkxMb2xWUVdpN2tfVG9rZW46Ym94Y25jSUY5UllWNkJ1b2Rid0FjY1Q1WmhjXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/y9340a.jpg)
 
 我们令
 
@@ -202,7 +202,7 @@ $$\Phi=\begin{aligned} \{(\langle \textrm{B},2010\rangle,nil)&, \\  (\langle \te
 
 这就得到了论文引言例子里第二个 Insight
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=YTFiNDJhMzNjMDYzMTY4ZjE3ZDMxNjEzYjg5M2JlZWZfTVlRejBnd01rbW92SXprd0ZQTVJLc014SWtLS0dRYU5fVG9rZW46Ym94Y25kU0ltb2RFZzhuRHNTUnpWY1JSeWNoXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/r8iaol.jpg)
 
 事实上，在这个数据集上，我们使用 Rank 和 ΔPrev 这两个 extractor，还可以算出如下结果，标黄的部分就是上图所示的 Insight
 
@@ -224,7 +224,7 @@ $$\Phi=\begin{aligned} \{(\langle \textrm{B},2010\rangle,nil)&, \\  (\langle \te
 
 **定义：**
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NjZjMzcwM2E0YzMyMjc5ZGU0ZGFlM2EzYzdkOTcyNWFfTG9RVkFydnpBd1ZLUENkaE13bVZoMU5OajV3M0RRUmpfVG9rZW46Ym94Y25FNEVBYUxPNHlGOGRmQ2paZnVLckZnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/iirq4x.jpg)
 
 **解释：**
 
@@ -232,7 +232,7 @@ $$\Phi=\begin{aligned} \{(\langle \textrm{B},2010\rangle,nil)&, \\  (\langle \te
 
 论文的正文给出了两种类型的 Insight（附录给了 corelation 类型的 Insight）：
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=YzEzYzc2MGJjZWUwMWJiYzZmMGZhZGVkNmI1YTY1MjFfaEtqTmJFd25qTlZJT3hRSXJ4Y3llelBuZ1FBYU5QMkFfVG9rZW46Ym94Y25wc1QzZEk5NVNuRm8wa0lhb3UxSDZiXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/b4z8tm.jpg)
 
 所以这个问题如何解决，伪代码就可以先写出来了：
 
@@ -298,7 +298,7 @@ $$\mathrm{\textbf{Imp}}(\mathrm{SG}(S,Di))=\frac{\sum_{S'\in SG(S,Di)}\mathrm{SU
 
 **总览：**
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=YWMyM2ZjNzU1ODBiMzZlYjA5NDg0Y2E5OWM4Y2I1YTNfUDBGVFh1WENCeDRUb3FHRmVvbWszRHI4ZUc0azB4NDRfVG9rZW46Ym94Y244TXVhNUxjTG9KSGJ0UFk2ckJ2ZmxxXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/dl2ku9.jpg)
 
 **可拓展性：**
 
@@ -312,13 +312,15 @@ $$\mathrm{\textbf{Imp}}(\mathrm{SG}(S,Di))=\frac{\sum_{S'\in SG(S,Di)}\mathrm{SU
 
 ### EKI
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MjAwZjUwYzU2ZTU0YjNkOGVhMWZkMTQ1MTE2NGMwN2VfaTgwejRnaXBZV3FiQ21BSVN5UjNaWTRRYmNKcjRqS2lfVG9rZW46Ym94Y25Ha3lrTHRRell1YldWT0s3SExBbmRmXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=YmM3ZGIxZjViMDc4Y2I1NmU0YTA2NjA3NzJhMTFlZGFfZXpIY0ZnVzdkc0h1QVY3NlBmemdZN0ZCSjZNOU1kTjRfVG9rZW46Ym94Y24wQ0NqM2x6QVNiNjhKb2dEd0tZb2tiXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/i311k8.jpg)
+
+![img](https://p.ipic.vip/zsu8kn.jpg)
 
 Algorithm 1 基本上就是上面给出的 js 伪代码
 
 EKI 算法只使用了一个优化策略：**data cube**
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NTdhZmI4N2QyYWVmZThhNDFjZjIxMmI1NGUxOTIzYjZfTlJqSjNNNjVhVnJ1ZnNnN0hERDdpWUI1SUNSRUYwdzBfVG9rZW46Ym94Y25nWDZva1BTRHBuZUlqeXBvMk5aczVkXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/35nter.jpg)
 
 ### EKIO
 
@@ -334,7 +336,7 @@ $$\mathrm{\textbf{Imp}}(S)=\mathbb{S}^{UB}(\mathrm{SG}(S, Di ), Ce , \mathrm{T})
 
 #### Subspace Ordering
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=OGRlNjg2ODVkNDE3MDE0ZTdjNjhjNjg1ODBkYjIzODRfWW5oTnpUdXd6ZHVsWFRqaUVHYk03N0FFenF6VGRidnZfVG9rZW46Ym94Y25JNFdaOWlnUmNhYnNKOTFmUFNlaW1jXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/wwcn14.jpg)
 
 Dfs 的时候，如果我们能先遍历 Imp 比较大的空间，这样就更有可能让分数属于前 k 的结果被提前收集，后面空间得分比较小的空间，就更可能被跳过了，从而实现了剪枝。
 
@@ -344,9 +346,9 @@ Dfs 的时候，如果我们能先遍历 Imp 比较大的空间，这样就更�
 
 **定义：**
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MWIzNGM4Y2Y3YmU4NTM5NTE0MjM4NzkwOGE3ZWM3ZWZfeUJGdVNHNGhTZ0hta293czRLSnJ3QjZua3dsWkpwRHZfVG9rZW46Ym94Y25iWTBCUTVxdGNkY3V4YUc2aHVUR3hmXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/r1f7cn.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NDJmMjU0ODFkN2E4NTJkNjBmMTcwMzBkZGRjOGFhZjFfQTFvQ1hjRFlQaHFEcUhQOTZOZkd4TVd1YllHNVRTd0ZfVG9rZW46Ym94Y25LWEU5dHRiMk1CRHdsM0thSTUwNEZiXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/bfwnax.jpg)
 
 **解释：**
 
@@ -375,11 +377,11 @@ Bottom-up computation of sparse and iceberg cubes.pdf
 
 data cube:
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NTZmYjgwODUzODIyNTQ5ODdjMzVmYjRkYzEyNmE3MDRfQTZWa0c4aUFRZGR4ams3UURQYnlYeEdUWVNXVDYwR2tfVG9rZW46Ym94Y25ZN2cyU3FrNHhjQUh5ZTRMQlNKNEhkXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/1hbnpj.jpg)
 
 sibling cube:
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=OGJhODFlOGE2YmRhOWRiY2I3M2UxNzUzZDQ3ZTRmMDdfdmVrYzlNMjNzUWhTaXJZV3ZaTjNGOTNQRldMTHpRTlBfVG9rZW46Ym94Y25FS0ZiYUp1bnpLZnFndDYxRWNxRkVnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/6orlyp.jpg)
 
 ### EKISO
 
@@ -388,11 +390,11 @@ sibling cube:
 
 ### 论文伪代码总览
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=YjNlOGZiZTliNzFjMWVhYzcyYzA1N2U4ODAyZTEzNzRfMlNNc011Nmd0TTRxUjJZVTRkV0N1TURvbVRkSVhDcUlfVG9rZW46Ym94Y25mazhTcXMxQ1Q1RVByMUJnNjFsTlRoXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWNhOGI2YTcyYjlkODIzNTJiNzk4ZjI1ZTJmMTdiZDlfY2lzaDJ0ODRHaUJSYUpKbWNiTFVRM3BWcUxwa3Z4bk9fVG9rZW46Ym94Y25vWHJmaEU3OVpMYkI1R0ZUTTZJOWpoXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/hxnpoj.jpg)![img](https://p.ipic.vip/j01661.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NDI0NGU1YzFjNWYzZjY0MWI3ZTE5MjMzMTI3ZWNjMzhfWlN4RGZMdmRXMFk5WW12NXl3RVJ1aUdCY01MNmlrNGtfVG9rZW46Ym94Y24weElHeTg5TFBuaFVjS21CcEZkVVNnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=YWRhNDBiNzgzZGQxYmY1NGY5OGUwNzkwNjk3ZjExMGZfem5jRVVIbFNuYzBwbDBiSGpYd0JlWUI3TGo2R0FoSFpfVG9rZW46Ym94Y25DUE1ob0ZLUjdWa3VWME9hNFB4dmFjXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/jiciq4.jpg)![img](https://p.ipic.vip/b1kgez.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=Mzk3OTcxYTM0YzI3ZTI3MTg3NjcyMmRjMTViYjVjYTBfMDdvOFJwMUtpWGlEVmc1a0ZUd2ZLV2RwSmRkRHhTYW9fVG9rZW46Ym94Y240UmI0bXBhS3BUMDNxOGljNWJodHFnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MWQxYmZkZmM5MDFiMDRjMTk4N2NhNDI0MjVjM2I4NDNfaWtmY1hvVFdWM25qQmxOaWJXOEIyR05QZ1dxZFdvbzdfVG9rZW46Ym94Y25WMUlwZnRJQWxGYkZIa1h4c2NWbkZkXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/2qbd2k.jpg)![img](https://p.ipic.vip/ufzxib.jpg)
 
 **EKI**：Algorithm 1 + Algorithm 2
 
@@ -412,7 +414,7 @@ sibling cube:
 
 这份数据是商业数据，不公开，论文没有提数据规模，只是为了显示出，EKISO 的性能很快，而 EKI 不太可用。
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NDU5MDJmNjVmNjFjYjFiOGIyZGU3ZDhkYTM3MDk2M2FfMlpyOXF4TW9lSW96d2szRjFLczkxUkx6WlRMa0JpcG9fVG9rZW46Ym94Y242aE9iNWgzRGJHc2FnQ2xFejlQMlFkXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/yw7omz.jpg)
 
 ### 标准数据集(TPC-H)
 
@@ -432,21 +434,21 @@ l_shipmode(4)
 
 l_linestates(2)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NDg0MTliMmRkNzI2MjdiZjI0ZjY2Njk1N2FlNGQ3MWVfRDA1a0taN3FLQWlpSGtjejdGWTY4Qk5aVkdNNnQ0alVfVG9rZW46Ym94Y25uVm40TEZiRTcyUHJLWldBWnZab0RlXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/bzcspy.jpg)
 
 测试结果如下：
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=OGQxNzhlNjMwMzE2ZWY3OWY2ODNjMDhmYmZmNGJmOGNfUjVDRzlZNFR1MjJGazgzdlVINFF0dURnbkUzaEhQM01fVG9rZW46Ym94Y25ib09FZ0xGMnhRYVQ4cldIVHpXNlJkXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/lqgcsj.jpg)
 
 ## 有效性研究
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NDU0NGI0MzhlYmRhMjdhMjkxZDQwNGU5M2UzNDFkOTNfR1ZCaDF0WHZqSG8wMTV4R2hKWmVYTXpaMkJjWXdQZDhfVG9rZW46Ym94Y25HUUpBbGVLYmFIRmQ0Tmg5YW9jdXVoXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/75j8mk.jpg)
 
 ## 实用性研究
 
 对某公司内部的一个数据集进行了计算，采访了三个经理和三个数据分析师，让他们对生成的洞察的有效性和难度（相对于使用 Excel 透视表复现的难度）进行打分
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NjFjZDk4MWEwNjMzYWIyNjY1NDIzODljNjdhOWZhNGFfZldrR0V1dU16V1hRd1hOTThwaUdDRFRiVEtIVUU0SkdfVG9rZW46Ym94Y243MkJ4UEYwWXBtQ1FsMjg1NG53M29jXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/gfwmbn.jpg)
 
 打分的结果显示，二阶洞察的有效性小于三阶洞察，三阶洞察的实现难度比二阶高。
 
@@ -454,7 +456,7 @@ l_linestates(2)
 
 找了个数据集，给出了一个二阶洞察，让四个资深数据库研究者，分别用 SQL 和 Excel 透视表复现这个洞察，下面是耗时情况（单位分钟）。
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NTFiNWZhYjNjMmY5Yzk5NDIzZThjODhiZDJhNTJhNTZfNTN4ZDJ1N3U5SjB2SXdmWXc0bEZaVG9TZGYzc3F6MHdfVG9rZW46Ym94Y25qa1FRVm5lY3A0dFF2aThucEpWM1hlXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/iw90i8.jpg)
 
 > 算法只需要 0.17秒
 
@@ -466,7 +468,7 @@ l_linestates(2)
 
 我们以论文引言里的数据集作为例子：
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=YjU4YmE4ZmY0ODhlZDk1MjE0OTc5ODNiNTg4ZTVmN2NfV3JmRWRiYnJHbFUyZjZISUVHVnNJdnJtbTV4SFVhWEtfVG9rZW46Ym94Y25nQ3d2WDY1TWpBNlhRcTVjVUk3OHJnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/il8dn3.jpg)
 
 可以跑出如下的 Insight
 
@@ -496,17 +498,25 @@ l_linestates(2)
 0.05428 [(Sum,Sales),(Δprev,Year),(%,Year)] SG(<*,*>,Year) => ,-0.4827586206896552,0.2413793103448276,0.27586206896551724,0.9655172413793104
 ```
 
-以 **[(Sum,Sales),(Δprev,Year)] SG(<*,2014>,Brand) => 15,7,4,2** 举例:
+以 [(Sum,Sales),(Δprev,Year)] SG(<*,2014>,Brand) => 15,7,4,2举例:
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=M2JjNDc5NmE5NzU4YzFjZTRjNjQ3NWJmOWEyMDY3N2Rfako5ZkwyMFNiTzZIanNpTDVwT1BPTTNjMFI0N1I5V0hfVG9rZW46Ym94Y25qVkFMQUJwZmFWY3lKZW9nNkV4Q3ZnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=NDQwZTI0MGYwODM2ZDA5NTI0ZGU3YWQyYThiZGQ4M2Ffak1nd0lnb05YSWo0UDJVS2tEYmd6SU80cXhMdVZXd3BfVG9rZW46Ym94Y25TWDdvVnZnUnFaMTdsUE56YkNHUjJjXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/jnjr9w.jpg)
 
-以 **[(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<H,*>,Year) ,4,3,2,1** 举例:
+![img](https://p.ipic.vip/eni6tr.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MmM3ZDQ3YzhlZTU3YjRhYzNkYjJiOTAwZDgzMGM2ODFfQ2pISTVtdFhXWGtQQ0JaSzd0WEpsVEo5MWR2c2dydUNfVG9rZW46Ym94Y24ybzIyTlQxT1BzVDZxbkdPREc1TGpiXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MDUxZmQwNTQ5MDc0MGFmMzQyNDc3ZTkwNWMyNzBlNjhfZjJQekozeWFsem4yRmVGV3ZTOFJ3aG8wUkpxU1M5QzBfVG9rZW46Ym94Y25MSXZMN0ZTUk5PVG8zTElSdjFNOWFmXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MDgwNjE3NmVjZWEzNTg3NGQwNjFlNDIwYWQ4OWI1ZmZfcHpFc0tBQ1FBZXR5Znc2cGxaQXR6eXdvYXBGbjJkOUhfVG9rZW46Ym94Y25pSEJuVG5tdmQ2TzlhaDdQOExRcVJmXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+以 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<H,*>,Year) ,4,3,2,1 举例:
 
-以 **[(Sum,Sales),(Δprev,Year),(%,Year)] SG(<T,*>,Year) => ,2,0,2.5,-3.5** 举例：
+![img](https://p.ipic.vip/8wjwhp.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=OWE3ZjhiNTQ4ZDlhNjA5NGQzYWRkMTkzYWI0YmJlMzBfVWROMEI0UmVUUFI5eHh4aVNRdHVwZmlTVnNVVTZ5anRfVG9rZW46Ym94Y24wSmROakt3V1F6ZnJVcDVUcU1MNXhjXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MTg3MzdlNGI0Zjg4ZGQyMzViYWEyNmYyYmJkYjU5MjRfYzhGam95bllYVkNybjdYMndwSmQwbDkxcWJuUGRFRkJfVG9rZW46Ym94Y256RXNWYkVMeFhLd3YybmFVem1wMFdmXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/q2gp3z.jpg)
+
+![img](https://p.ipic.vip/32akl0.jpg)
+
+以[(Sum,Sales),(Δprev,Year),(%,Year)] SG(<T,*>,Year) => ,2,0,2.5,-3.5举例：
+
+![img](https://p.ipic.vip/1hhs2g.jpg)
+
+![img](https://p.ipic.vip/p1gej2.jpg)
 
 #### 待继续研究的问题
 
@@ -522,9 +532,11 @@ l_linestates(2)
 
 [数字化的尽头是聊天（池建强）](https://mp.weixin.qq.com/s/J7nUQSgv_S_pH6SoHKLfgg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=MjE3YTMwMjI0ZDJjNzcyMDNmZWU2MzMwZDA1NjViM2Zfa2tDRUhVVTY3WUtkT3Z3Q1Jac0RKUzduQndxVVRlT0tfVG9rZW46Ym94Y25RYlF0bmlQdno2cThDMW1GbThHbTVnXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=Nzg1MjQ4MzQ0NjgwNzEwNWY1ZjBiZmYyYjliMTg2MTBfM1JRbEN0dE00Njc4cElGZFU0Z3RrSmlUUk9aa085TUlfVG9rZW46Ym94Y25ZVUpkcmMzOGY2YWZkRlVCb0lvQ3djXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/4bd6nb.jpg)
 
-![img](https://as9e2kjei0.feishu.cn/space/api/box/stream/download/asynccode/?code=N2M1NTVjNDhjMmIxNWNlNDk4OGY5YmYxNzM3ZWE1MDVfdUk3bVZhZXhoNkdhNGJUZUh0SHlnTER4TVMxenpnWHNfVG9rZW46Ym94Y25IUzhjaHV3UTR6WEtBWEM5UllQcUNlXzE3MjExMTU4ODc6MTcyMTExOTQ4N19WNA)
+![img](https://p.ipic.vip/ayzp2d.jpg)
+
+![img](https://p.ipic.vip/ugqgv3.jpg)
 
 https://powerbi.microsoft.com/en-us/
 
