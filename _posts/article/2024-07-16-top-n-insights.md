@@ -154,11 +154,11 @@ SG(<*，桌子>, 地区) 得到一串子空间，见上一个举例。
 
 **定义：**
 
-![img](https://p.ipic.vip/hv5zr5.jpg)
-
-![img](https://p.ipic.vip/he1swv.jpg)
-
-![img](https://p.ipic.vip/0axys8.jpg)
+<div style="text-align:center">
+  <img src="https://p.ipic.vip/hv5zr5.jpg" alt="图片描述" width="80%" height="auto">
+  <img src="https://p.ipic.vip/he1swv.jpg" alt="图片描述" width="80%" height="auto">
+  <img src="https://p.ipic.vip/0axys8.jpg" alt="图片描述" width="80%" height="auto">
+</div>
 
 **举例：**
 
@@ -204,15 +204,17 @@ $$\Phi=\begin{aligned} \{(\langle \textrm{B},2010\rangle,nil)&, \\  (\langle \te
 
 这就得到了论文引言例子里第二个 Insight
 
-![img](https://p.ipic.vip/r8iaol.jpg)
+<div style="text-align:center">
+  <img src="https://p.ipic.vip/r8iaol.jpg" alt="图片描述" width="50%" height="auto">
+</div>
 
-事实上，在这个数据集上，我们使用 Rank 和 ΔPrev 这两个 extractor，还可以算出如下结果，标黄的部分就是上图所示的 Insight
+事实上，在这个数据集上，我们使用 Rank 和 ΔPrev 这两个 extractor，还可以算出如下结果，箭头所指部分就是上图所示的 Insight
 
 ```Plain
 0.07419 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<H,*>,Year) => ,4,3,2,1
 0.04899 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<*,2014>,Brand) => 1,2,3,4
 0.03395 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<*,2011>,Brand) => 4,3,2,1
-0.03290 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<B,*>,Year) => ,1,2,3,4
+0.03290 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<B,*>,Year) => ,1,2,3,4 <======
 0.00662 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<*,2012>,Brand) => 3,4,1,2
 0.00124 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<T,*>,Year) => ,3,4,4,2
 0.00063 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<F,*>,Year) => ,2,1,1,3
@@ -226,7 +228,9 @@ $$\Phi=\begin{aligned} \{(\langle \textrm{B},2010\rangle,nil)&, \\  (\langle \te
 
 **定义：**
 
-![img](https://p.ipic.vip/iirq4x.jpg)
+<div style="text-align:center">
+  <img src="https://p.ipic.vip/iirq4x.jpg" alt="图片描述" width="80%" height="auto">
+</div>
 
 **解释：**
 
@@ -234,7 +238,9 @@ $$\Phi=\begin{aligned} \{(\langle \textrm{B},2010\rangle,nil)&, \\  (\langle \te
 
 论文的正文给出了两种类型的 Insight（附录给了 corelation 类型的 Insight）：
 
-![img](https://p.ipic.vip/b4z8tm.jpg)
+<div style="text-align:center">
+  <img src="https://p.ipic.vip/b4z8tm.jpg" alt="图片描述" width="80%" height="auto">
+</div>
 
 所以这个问题如何解决，伪代码就可以先写出来了：
 
@@ -314,9 +320,10 @@ $$\mathrm{\textbf{Imp}}(\mathrm{SG}(S,Di))=\frac{\sum_{S'\in SG(S,Di)}\mathrm{SU
 
 ### EKI
 
-![img](https://p.ipic.vip/i311k8.jpg)
-
-![img](https://p.ipic.vip/zsu8kn.jpg)
+<div style="text-align:left">
+  <img src="https://p.ipic.vip/i311k8.jpg" alt="图片描述" width="50%" height="auto">
+  <img src="https://p.ipic.vip/zsu8kn.jpg" alt="图片描述" width="50%" height="auto">
+</div>
 
 Algorithm 1 基本上就是上面给出的 js 伪代码
 
@@ -338,7 +345,9 @@ $$\mathrm{\textbf{Imp}}(S)=\mathbb{S}^{UB}(\mathrm{SG}(S, Di ), Ce , \mathrm{T})
 
 #### Subspace Ordering
 
-![img](https://p.ipic.vip/wwcn14.jpg)
+<div style="text-align:center">
+  <img src="https://p.ipic.vip/wwcn14.jpg" alt="图片描述" width="70%" height="auto">
+</div>
 
 Dfs 的时候，如果我们能先遍历 Imp 比较大的空间，这样就更有可能让分数属于前 k 的结果被提前收集，后面空间得分比较小的空间，就更可能被跳过了，从而实现了剪枝。
 
@@ -348,9 +357,10 @@ Dfs 的时候，如果我们能先遍历 Imp 比较大的空间，这样就更�
 
 **定义：**
 
-![img](https://p.ipic.vip/r1f7cn.jpg)
-
-![img](https://p.ipic.vip/bfwnax.jpg)
+<div style="text-align:center">
+  <img src="https://p.ipic.vip/r1f7cn.jpg" alt="图片描述" width="70%" height="auto">
+  <img src="https://p.ipic.vip/bfwnax.jpg" alt="图片描述" width="70%" height="auto">
+</div>
 
 **解释：**
 
@@ -400,11 +410,20 @@ sibling cube:
 
 其中 Algorithm 5 使用到了 Algorithm 2(slibling cube 版)
 
-![img](https://p.ipic.vip/hxnpoj.jpg)![img](https://p.ipic.vip/j01661.jpg)
+<div style="text-align:center">
+  <img style="float: left;" src="https://p.ipic.vip/hxnpoj.jpg" alt="图片描述" width="40%" height="auto">
+  <img src="https://p.ipic.vip/j01661.jpg" alt="图片描述" width="40%" height="auto">
+</div>
+<div style="text-align:center">
+  <img style="float: left;" src="https://p.ipic.vip/jiciq4.jpg" alt="图片描述" width="40%" height="auto">
+  <img src="https://p.ipic.vip/b1kgez.jpg" alt="图片描述" width="40%" height="auto">
+</div>
+<div style="text-align:center">
+  <img style="float: left;" src="https://p.ipic.vip/2qbd2k.jpg" alt="图片描述" width="40%" height="auto">
+  <img src="https://p.ipic.vip/ufzxib.jpg" alt="图片描述" width="40%" height="auto">
+</div>
 
-![img](https://p.ipic.vip/jiciq4.jpg)![img](https://p.ipic.vip/b1kgez.jpg)
 
-![img](https://p.ipic.vip/2qbd2k.jpg)![img](https://p.ipic.vip/ufzxib.jpg)
 
 ## 算法性能研究
 
@@ -502,23 +521,27 @@ l_linestates(2)
 
 以 [(Sum,Sales),(Δprev,Year)] SG(<*,2014>,Brand) => 15,7,4,2举例:
 
-![img](https://p.ipic.vip/jnjr9w.jpg)
-
-![img](https://p.ipic.vip/eni6tr.jpg)
+<div style="text-align:center">
+  <img style="float: left;" src="https://p.ipic.vip/jnjr9w.jpg" alt="图片描述" width="50%" height="auto">
+  <img src="https://p.ipic.vip/eni6tr.jpg" alt="图片描述" width="30%" height="auto">
+</div>
 
 以 [(Sum,Sales),(Δprev,Year),(Rank,Brand)] SG(<H,*>,Year) ,4,3,2,1 举例:
 
-![img](https://p.ipic.vip/8wjwhp.jpg)
-
-![img](https://p.ipic.vip/q2gp3z.jpg)
-
-![img](https://p.ipic.vip/32akl0.jpg)
+<div style="text-align:left">
+    <img src="https://p.ipic.vip/8wjwhp.jpg" alt="图片描述" width="50%" height="auto">
+</div>
+<div style="text-align:left">
+    <img style="float: left;" src="https://p.ipic.vip/q2gp3z.jpg" alt="图片描述" width="20%" height="auto">
+    <img src="https://p.ipic.vip/32akl0.jpg" alt="图片描述" width="35%" height="auto">
+</div>
 
 以[(Sum,Sales),(Δprev,Year),(%,Year)] SG(<T,*>,Year) => ,2,0,2.5,-3.5举例：
 
-![img](https://p.ipic.vip/1hhs2g.jpg)
-
-![img](https://p.ipic.vip/p1gej2.jpg)
+<div style="text-align:left">
+    <img style="float: left;" src="https://p.ipic.vip/1hhs2g.jpg" alt="图片描述" width="70%" height="auto">
+    <img src="https://p.ipic.vip/p1gej2.jpg" alt="图片描述" width="20%" height="auto">
+</div>
 
 #### 待继续研究的问题
 
@@ -533,18 +556,17 @@ l_linestates(2)
 业界已经在增强分析方向做出了产品（字节飞书机器人 & 阿里钉钉机器人）
 
 [数字化的尽头是聊天（池建强）](https://mp.weixin.qq.com/s/J7nUQSgv_S_pH6SoHKLfgg)
-
-![img](https://p.ipic.vip/4bd6nb.jpg)
-
-![img](https://p.ipic.vip/ayzp2d.jpg)
-
-![img](https://p.ipic.vip/ugqgv3.jpg)
+<div style="text-align:left">
+    <img src="https://p.ipic.vip/4bd6nb.jpg" alt="图片描述" width="50%" height="auto">
+    <img src="https://p.ipic.vip/ayzp2d.jpg" alt="图片描述" width="40%" height="auto">
+    <img src="https://p.ipic.vip/ugqgv3.jpg" alt="图片描述" width="60%" height="auto">
+</div>
 
 https://powerbi.microsoft.com/en-us/
 
 https://powerbi.microsoft.com/en-us/blog/announcing-power-bi-integration-with-cortana-and-new-ways-to-quickly-find-insights-in-your-data/
 
-#### 实现数据解释
+#### 实现数据解释的方案
 
 **问题：**解释 **为什么** **2022** 的销售额相比 **2021** 年**下降了** 101 万
 
