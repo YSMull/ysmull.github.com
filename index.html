@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div style="margin: 50px">
-  {% assign algorithms = site.algorithms | where_exp: "post", "post == true" %}
+  {% assign algorithms = site.algorithms | where: "post", true %}
   {% assign posts = site.posts | where_exp: "post", "post.hide != true" %}
   {% assign everything = posts | concat: algorithms | sort: 'date' | reverse %}
 
