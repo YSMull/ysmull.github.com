@@ -33,7 +33,7 @@ where global_parameter_ref.resource_id = 5471
 
 把 delete 改成 select * 之后，执行起来没有任何问题。同事说，最近我们的 ORM 框架有一个[改动][1]，会影响生成的 where 条件的顺序。 改动前生成的 SQL 如下，可以正常执行：
 ```sql
-select *
+delete
 from global_parameter_ref
 where global_parameter_ref.resource_type = 'CUSTOM_TABLE'
   and global_parameter_ref.resource_id = 5471;
