@@ -246,7 +246,7 @@ class Solution {
 
 因为前 0 个物品，才可以 **恰好装满** 容积为 0 的背包，前 0 个物品无法装满容积为 1 ~ V 的背包
 
-所以这道题，我们不需要考虑价值的事情，只需要考虑是否可以恰好装满背包，所以我们可以随便个每个物品一个价值即可，。
+所以这道题，我们不需要考虑价值的事情，只需要考虑是否可以恰好装满背包，给物品随便赋予一个价值即可。
 
 注意，这个代码也直接上了常数优化，可轻松击败 99.x%
 ```java
@@ -303,6 +303,33 @@ class Solution {
 ```
 
 >上面的两个解法，物品的价值都取的是 1，最终的 ans 分别是，最多（或最少）选取**多少个**数字，其和刚好等于 amount
+
+实际上，这题还可以转化为，装满背包的方案数是否大于 0 来做
+
+```java
+class Solution {
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for (int n : nums) {
+            sum += n;
+        }
+        if (sum % 2 == 1) return false;
+        int amount = sum / 2;
+        int[] dp = new int[amount + 1];
+        dp[0] = 1;
+        for (int c : nums) {
+            sum -= c;
+            int bound = Math.max(c, amount - sum); 
+            for (int v = amount; v >= bound; v--) {
+                dp[v] += dp[v - c];
+                dp[v] %= 1000000007; // 因为方案数太大，这里为了防止爆掉，取了一个比较大的质因子，让转移的时候，方案不会突然变成 0（很低的概率）
+            }
+        }
+        int ans = dp[amount];
+        return ans > 0; // 方案数是否大于 0
+    }
+}
+```
 
 ### [LeetCode 494. 目标和](https://leetcode.cn/problems/target-sum/description/)
 
