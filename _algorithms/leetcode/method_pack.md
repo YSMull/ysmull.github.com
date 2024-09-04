@@ -616,6 +616,80 @@ class Solution {
 }
 ```
 
+### [LeetCode 2400. 恰好移动k步到达](https://leetcode.cn/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps/description/)
+
+> 初始在某个位置，每次可以向左或者向右移动一个单位距离，求恰好移动 k 步到达某个位置的方案数。
+
+把移动的 2 个方向看做是 2 个物品，-1 和 1 分别是物品的体积，总共向右移动了 moved 步（可能是负数），每次移动的价值是 1，那么这个问题转化成了，恰好装满背包且价值恰好为 k 的方案数。
+这种背包问题我们从来没有接触过，背包问题，只见过恰好装满背包，怎么还能同时要求恰好达到某价值呢？
+
+其实，如果我们把每次选择某个移动方向产生的 +1 的步数也看做体积就好了，也就是每个物品的体积是二维的了，这就跟 [LeetCode 474. 一和零](https://leetcode.cn/problems/ones-and-zeroes/description/) 这道题一样了。
+
+但是，背包问题是不允许负数体积的，我们得做额外的处理。
+
+假设向左移动了 k1 步，向右移动了 k2 步，那么有如下关系：
+
+$$
+\begin{aligned}
+-k_1 + k_2 &= moved \\
+k_1 + k_2 &= k
+\end{aligned}
+$$
+
+解得：
+
+$$
+\begin{aligned}
+k_1 &= \frac{k - moved}{2} \\
+k_2 &= \frac{k + moved}{2}
+\end{aligned}
+$$
+
+我们只需要对原式进行变形：
+
+$$
+\begin{aligned}
+{\color{red}{1}} \cdot k_1 + {\color{red}{2}} \cdot k_2 &= moved + 2\cdot k_1 + k_2  \\
+k_1 + k_2 &= k
+\end{aligned}
+$$
+
+令 $amount = moved + 2\cdot k_1 + k_2$，易证 amount 是正数
+
+这样我们就成功的构造了一个合法的背包问题，每个物品的体积是 (1, 1) 和 (2, 1)，求恰好装满容积为 (amount, k) 的背包的方案数。
+
+> 这里之所以要构造两个体积不同的物品，是因为背包问题求刚好放满背包的方案数的代码，只能作用在所有物品的体积都不同的情况下，如果存在某俩物品的体积相同，就会出现重复计算的情况。
+> ——————
+> 所以上式中的 2，也可以构造成 3，4，5...，只要保证是不等于 1 的正数就行。
+
+> 以上这一点是我独立发现的密宗(笑，没看别的文章特别强调过，leetcode 上求方案数的题目，题目都会强调体积不同，且你无法添加体积相同的测试用例。
+
+```java
+class Solution {
+    public int numberOfWays(int startPos, int endPos, int k) {
+        int moved = endPos - startPos;
+        if ((moved + k) % 2 == 1) return 0;
+        int k1 = (k - moved) / 2;
+        int k2 = (k + moved) / 2;
+        int amount = moved + 2 * k1 + k2;
+        int[][] dp = new int[amount + 1][k + 1];
+        int[] things = new int[] { 1 , 2 };
+        dp[0][0] = 1;
+        for (int p = 1; p <= amount; p++) {
+            for (int q = 1; q <= k; q++) {
+                for (int c : things) {
+                    if (p >= c) {
+                        dp[p][q] += dp[p - c][q - 1];
+                        dp[p][q] %= 1000000007;
+                    }
+                }
+            }
+        }
+        return dp[amount][k];
+    }
+}
+```
+
 
 ## 总结
 
@@ -623,6 +697,7 @@ class Solution {
 
 1. 求最大(最小)物品个数，就定义每个物品的价值为 1，求最大或最小价值即可，状态转移时用 Max 或 Min
 2. 求恰好装满背包的方案数，不需要定义价值，状态转移时用 Sum (完全背包的话，如果是排列总数，需要先遍历体积)，初始化时 dp[0] = 1，其它为 0
+   * 但是要求所有物品的体积都不同，否则会出现重复计算
 3. 求恰好装满背包的最大（最小）价值，初始化时 dp[0] = 0，dp[1~V] 取负无穷（正无穷）
    * Java 里，负无穷用 Integer.MIN_VALUE，合法的价值要根据题意来看，远大于负无穷，比如如果是物品的个数时，合法的价值要大于 0
    * Java 里，正无穷用 Integer.MAX_VALUE / 2，合法的价值只需要判断是小于 Integer.MAX_VALUE / 2 的即可
