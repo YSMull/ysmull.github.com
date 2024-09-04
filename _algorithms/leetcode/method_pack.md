@@ -1,5 +1,5 @@
 ---
-title: "背包问题笔记"
+title: "《背包2讲》"
 date: 2024-09-03 10:13:00
 method_id: 动态规划
 method: true
@@ -553,7 +553,7 @@ class Solution {
     public int combinationSum4(int[] nums, int target) {
         int[] dp = new int[target + 1];
         dp[0] = 1;
-        for (int v = 1; v <= target; v++) {
+        for (int v = 0; v <= target; v++) {
             for (int n : nums) {
                 if (v >= n) {
                     dp[v] += dp[v - n];
@@ -649,20 +649,36 @@ $$
 
 $$
 \begin{aligned}
-{\color{red}{1}} \cdot k_1 + {\color{red}{2}} \cdot k_2 &= moved + 2\cdot k_1 + k_2  \\
+{\color{red}{0}} \cdot k_1 + {\color{red}{1}} \cdot k_2 &= moved + k_1  \\
 k_1 + k_2 &= k
 \end{aligned}
 $$
 
-令 $amount = moved + 2\cdot k_1 + k_2$，易证 amount 是正数
+令 $amount = moved + k_1$，显然 amount 是正数
 
-这样我们就成功的构造了一个合法的背包问题，每个物品的体积是 (1, 1) 和 (2, 1)，求恰好装满容积为 (amount, k) 的背包的方案数。
+这样我们就成功的构造了一个合法的背包问题，每个物品的体积是 (0, 1) 和 (1, 1)，求恰好装满容积为 (amount, k) 的背包的方案数。
+
+**注释1：**
 
 > 这里之所以要构造两个体积不同的物品，是因为背包问题求刚好放满背包的方案数的代码，只能作用在所有物品的体积都不同的情况下，如果存在某俩物品的体积相同，就会出现重复计算的情况。
 > ——————
-> 所以上式中的 2，也可以构造成 3，4，5...，只要保证是不等于 1 的正数就行。
+> 以上这一点是我独立发现的密宗(笑，没看别的文章特别强调过，leetcode 上求完全背包方案数的题目，题干都会强调体积各不相同，且你无法添加体积相同的测试用例。
 
-> 以上这一点是我独立发现的密宗(笑，没看别的文章特别强调过，leetcode 上求方案数的题目，题目都会强调体积不同，且你无法添加体积相同的测试用例。
+**注释2：**
+
+>如果上面按如下方法构造背包，我们就把原问题转化为了一个爬楼梯问题的变体
+>
+>$$
+>\begin{aligned}
+>{\color{red}{1}} \cdot k_1 + {\color{red}{2}} \cdot k_2 &= moved + 2\cdot k_1 + k_2  \\
+>k_1 + k_2 &= k
+>\end{aligned}
+>$$
+> 
+> 每次可以爬1层或者2层，恰好在第k步爬到第n层的方案数。（既要k，又要n，两个恰好）
+
+
+
 
 ```java
 class Solution {
@@ -671,21 +687,73 @@ class Solution {
         if ((moved + k) % 2 == 1) return 0;
         int k1 = (k - moved) / 2;
         int k2 = (k + moved) / 2;
-        int amount = moved + 2 * k1 + k2;
+        int amount = moved + k1;
         int[][] dp = new int[amount + 1][k + 1];
-        int[] things = new int[] { 1 , 2 };
+        int[][] things = new int[][] { { 0, 1 }, { 1, 1 } };
         dp[0][0] = 1;
-        for (int p = 1; p <= amount; p++) {
-            for (int q = 1; q <= k; q++) {
-                for (int c : things) {
-                    if (p >= c) {
-                        dp[p][q] += dp[p - c][q - 1];
+        // 求方案的排列数，先遍历体积，再遍历物品
+        for (int p = 0; p <= amount; p++) {
+            for (int q = 0; q <= k; q++) {
+                for (int[] c : things) {
+                    if (p >= c[0] && q >= c[1]) {
+                        dp[p][q] += dp[p - c[0]][q - c[1]];
                         dp[p][q] %= 1000000007;
                     }
                 }
             }
         }
         return dp[amount][k];
+    }
+}
+```
+
+### [LeetCode 62. 不同路径](https://leetcode.cn/problems/unique-paths/description/)
+
+> 一个机器人位于一个 m x n 网格的左上角（起始点在下图中标记为“Start” ）。
+> 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+> 问总共有多少条不同的路径？
+
+这题的传统做法是：
+
+```java
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < n; i++) {
+            dp[0][i] = 1;
+        }
+        for (int i = 0; i < m; i++) {
+            dp[i][0] = 1;
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i-1][j] + dp[i][j-1];
+            }
+        }
+        return dp[m-1][n-1];
+    }
+}
+```
+
+但也可以强行用完全背包的刚好装满的方案的排列数来做，思路同 [LeetCode 2400. 恰好移动k步到达](https://leetcode.cn/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps/description/)
+
+```java
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int vx = m - 1; // 横向最大体积
+        int vy = n - 1; // 纵向最大体积
+        int[][] dp = new int[vx + 1][vy + 1];
+        dp[0][0] = 1;
+        int[][] things = new int[][]{ {1, 0}, {0, 1} };
+        for (int i = 0; i <= vx; i++) {
+            for (int j = 0; j <= vy; j++) {
+                for (int[] c : things) {
+                    if (i >= c[0] && j >= c[1])
+                        dp[i][j] += dp[i-c[0]][j - c[1]];
+                }
+            }
+        }
+        return dp[vx][vy];
     }
 }
 ```
@@ -710,7 +778,7 @@ class Solution {
 **完全背包才适用的经验**:
 * 求最优价值：
   * 既可以先遍历物品，再遍历容积
-  * 也可以先遍历容积 [1, V]，再遍历物品
+  * 也可以先遍历容积 [**0**, V]，再遍历物品
 * 如果是求恰好装满的方案数
   * 如果是求组合数，必须先遍历物品，再遍历容积
   * 如果是求排列数，必须先遍历容积，再遍历物品
