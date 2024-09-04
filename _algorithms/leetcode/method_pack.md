@@ -579,7 +579,7 @@ class Solution {
         int[] dp = new int[len + 1];
         Arrays.fill(dp, Integer.MIN_VALUE);
         dp[0] = 0;
-        for (int v = 1; v <= len; v++) {
+        for (int v = 0; v <= len; v++) {
             for (String word : wordDict) {
                 int c = word.length();
                 if (c <= v) {
@@ -601,7 +601,7 @@ class Solution {
         int len = s.length();
         boolean[] dp = new boolean[len + 1];
         dp[0] = true;
-        for (int v = 1; v <= len; v++) {
+        for (int v = 0; v <= len; v++) {
             for (String word : wordDict) {
                 int c = word.length();
                 if (c <= v) {
