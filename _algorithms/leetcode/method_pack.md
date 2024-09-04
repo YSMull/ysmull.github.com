@@ -332,6 +332,31 @@ class Solution {
 }
 ```
 
+对于是否可以恰好装满背包的问题，因为与价值无关，而且我们也不关心有多少方案数可以恰好装满，可以定义 dp[v] 为 boolean 类型，表示是否有方案可以恰好装满 v,dp[0] = true, dp[1]~dp[V] 初始化为 false
+
+```java
+class Solution {
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for (int n : nums) {
+            sum += n;
+        }
+        if (sum % 2 == 1) return false;
+        int amount = sum / 2;
+        boolean[] dp = new boolean[amount + 1];
+        dp[0] = true;
+        for (int c : nums) {
+            sum -= c;
+            int bound = Math.max(c, amount - sum); 
+            for (int v = amount; v >= bound; v--) {
+                dp[v] |= dp[v - c];
+            }
+        }
+        return dp[amount];
+    }
+}
+```
+
 ### [LeetCode 494. 目标和](https://leetcode.cn/problems/target-sum/description/)
 
 >给你一个非负整数数组 nums 和一个整数 target 。
@@ -505,14 +530,112 @@ class Solution {
 }
 ```
 
+### [LeetCode 377. 组合总和 Ⅳ](https://leetcode.cn/problems/combination-sum-iv/description/)
+
+>给你一个由 不同 整数组成的数组 nums ，和一个目标整数 target 。请你从 nums 中找出并返回总和为 target 的元素组合的个数。
+> 输入：nums = [1,2,3], target = 4
+输出：7
+解释：
+所有可能的组合为：
+(1, 1, 1, 1)
+(1, 1, 2)
+(1, 2, 1)
+(1, 3)
+(2, 1, 1)
+(2, 2)
+(3, 1)
+**请注意，顺序不同的序列被视作不同的组合。**
+
+这题跟 518 题几乎一模一样，都是求方案数，但是要求选择的某个物品的个数虽然相同，但是顺序不同，也算不同的方案，**这类排列型的完全背包的方案数，需要先遍历容积，再遍历物品。**
+
+```java
+class Solution {
+    public int combinationSum4(int[] nums, int target) {
+        int[] dp = new int[target + 1];
+        dp[0] = 1;
+        for (int v = 1; v <= target; v++) {
+            for (int n : nums) {
+                if (v >= n) {
+                    dp[v] += dp[v - n];
+                }
+            }
+        }
+        return dp[target];
+    }
+}
+```
+
+### [LeetCode 139. 单词拆分](https://leetcode.cn/problems/word-break/description/)
+
+>给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s 则返回 true。
+>注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。
+
+此题 s 是背包，wordDict 中的每个单词是物品，物品可以反复使用，问是否可以**恰好**装满背包。
+
+```java
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        int len = s.length();
+        int[] dp = new int[len + 1];
+        Arrays.fill(dp, Integer.MIN_VALUE);
+        dp[0] = 0;
+        for (int v = 1; v <= len; v++) {
+            for (String word : wordDict) {
+                int c = word.length();
+                if (c <= v) {
+                    if (s.substring(v - c, v).equals(word)) {
+                        dp[v] = Math.max(dp[v], dp[v - c] + 1);
+                    }
+                }
+            }
+        }
+        return dp[len] > 0;
+    }
+}
+```
+
+不关注价值和方案数，用 boolean 来转移
+```java
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        int len = s.length();
+        boolean[] dp = new boolean[len + 1];
+        dp[0] = true;
+        for (int v = 1; v <= len; v++) {
+            for (String word : wordDict) {
+                int c = word.length();
+                if (c <= v) {
+                    if (s.substring(v - c, v).equals(word)) {
+                        dp[v] |= dp[v - c];
+                    }
+                }
+            }
+        }
+        return dp[len];
+    }
+}
+```
+
+
 ## 总结
 
-不论是 01 背包还是完全背包：
+**01 背包和完全背包都适用的经验**：
 
 1. 求最大(最小)物品个数，就定义每个物品的价值为 1，求最大或最小价值即可，状态转移时用 Max 或 Min
-2. 求恰好装满背包的方案数，不需要定义价值，状态转移时用 Sum，初始化时 dp[0] = 1，其它为 0
+2. 求恰好装满背包的方案数，不需要定义价值，状态转移时用 Sum (完全背包的话，如果是排列总数，需要先遍历体积)，初始化时 dp[0] = 1，其它为 0
 3. 求恰好装满背包的最大（最小）价值，初始化时 dp[0] = 0，dp[1~V] 取负无穷（正无穷）
    * Java 里，负无穷用 Integer.MIN_VALUE，合法的价值要根据题意来看，远大于负无穷，比如如果是物品的个数时，合法的价值要大于 0
    * Java 里，正无穷用 Integer.MAX_VALUE / 2，合法的价值只需要判断是小于 Integer.MAX_VALUE / 2 的即可
+4. 对于是否可以恰好装满背包的问题，因为与价值无关，且也不关心有多少方案数可以恰好装满，可以定义 dp[v] 为 boolean 类型，表示是否有方案可以恰好装满 v,dp[0] = true, dp[1]~dp[V] 默认初始化为 false
 
-01 背包，不论是求方案数还是求最优价值，都可以上常数优化。
+
+**01背包才适用的经验**：
+* 不论是求方案数还是求最优价值，都可以上常数优化。
+
+**完全背包才适用的经验**:
+* 求最优价值：
+  * 既可以先遍历物品，再遍历容积
+  * 也可以先遍历容积 [1, V]，再遍历物品
+* 如果是求恰好装满的方案数
+  * 如果是求组合数，必须先遍历物品，再遍历容积
+  * 如果是求排列数，必须先遍历容积，再遍历物品
