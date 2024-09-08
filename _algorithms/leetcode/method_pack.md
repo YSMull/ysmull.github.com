@@ -427,6 +427,286 @@ class Solution {
 }
 ```
 
+### [LeetCode 1049. 最后一块石头的重量 II](https://leetcode.cn/problems/last-stone-weight-ii/description/)
+
+> 有一堆石头，每块石头的重量都是正整数, 每一回合，从中选出两块 最重的 石头，然后将它们一起粉碎。
+> 如果两块石头重量相同，粉碎后没有残渣。如果两块石头的重量不同，粉碎后的残渣重量为两块石头的重量之差，残渣重新放入石堆中。
+> 求最后一块石头的重量最小是多少。
+
+这道题转化为，给一个全为正数的数组，每个数字添加正号或者负号，相加后，求其最小非负值是多少。
+即最终的答案是如下多项式的最小非负值：
+
+$$
+\sum_{i=1}^{N} k_i \cdot x_i, \text{其中 } k_i \in \{-1, 1\}
+$$
+
+证明这个需要从两个方向出发
+1. 证明最终的答案一定可以用这个多项式来表达
+2. 再证明这个多项式的最小非负值是一个合法的答案
+
+换一种说法来表述要证的是什么： 
+* 设 A 是所有拿法的最后一块石头的重量的集合
+* 设 B 是所有划分的的差的绝对值的集合
+
+A 和 B 都是下确界大于等于 0 的有限数集，我们要证明的是：
+1. A ∈ B
+2. min{B} ∈ A
+
+若 1 满足，可以推出 min{B} <= min{A} 
+若 2 满足，可以推出 min{B} >= min{A}
+ 
+因此才有 min{B} = min{A}，即多项式的最小非负值是就是所有拿法的最小值
+
+
+关于 **2** 的证明，leetcode 官方答案题解已经给出了，它把所有的石头分为添加了正号的堆和添加了负号的堆。然后构造了一种拿法，每次从两堆中取最大的石子，然后从另一堆随机取石子碰撞，使其最终结果是这个多项式的最小非负值，即证明了最小非负值是合法的。 这里不再赘述。 现在来讲一下为什么 1 是正确的。
+
+**1 的证明思路:**
+每次拿两个石头相撞，不就是一个减法表达式么，表达式丢回原始集合，下次被拿出来继续减或者被减，最后的石头的重量就是一个大的只包含减法和括号的表达式，每个元素出现一次，去掉这个表达式的所有括号，即可得到一个多项式，每个项的系数不是 1 就是 -1。
+
+这里只是粗略给个思路，实际上每次拿两个表达式相减，如果值已经是 0 了，就不用放回原始集合里。可以把这样的表达式放到另一个 Zeros 集合里，最后原始集合还剩一个表达式，依次减去 Zeros 集合里的表达式，再去掉所有括号，就也得到了一个合法的多项式。
+
+代码只需要求解一个 0 1 背包入门题，从若干个数中选取一些数，使得和小于等于，但是尽可能接近 sum/2，求这个和是多少。
+
+背包中每个石头 $x_i$ 的体积和价值都是 $x_i$ 即可，即可求不装满 sum/2 的最大价值。
+
+```java
+class Solution {
+    public int lastStoneWeightII(int[] stones) {
+        int sum = 0;
+        for (int n : stones) sum += n;
+        int amount = sum / 2;
+        int[] dp = new int[amount + 1];
+        for (int n : stones) {
+            for (int v = amount; v >= n; v--) { // 这里还可以上常数优化，不再赘述
+                dp[v] = Math.max(dp[v], dp[v  - n] + n);
+            }
+        }
+        return sum - 2 * dp[amount];
+    }
+}
+```
+
+扩展一下，如果需要求具体的拿法，要怎么做？
+
+我们只需要使用背包九讲第九讲中记录方案数的方法，额外开一个 G 数组，记录每个物品是否被选取即可，然后就得到了正数堆和负数堆。最后再按照 leetcode 对 2 的证明，使用两个大顶堆进行模拟即可。
+
+这里给出如何得到数组的划分的代码：
+
+```java
+class Solution {
+    public int lastStoneWeightII(int[] stones) {
+        int sum = 0;
+        for (int n : stones) sum += n;
+        int amount = sum / 2;
+        int[] dp = new int[amount + 1];
+        int[][] G = new int[stones.length][amount + 1];
+        for (int i = 0; i < stones.length; i++) {
+            int n = stones[i];
+            for (int v = amount; v >= n; v--) {
+                if (dp[v-n] + n >= dp[v]) {
+                    dp[v] = dp[v  - n] + n;
+                    G[i][v] = 1;
+                }
+            }
+        }
+        List<Integer> negs = new ArrayList<>();
+        List<Integer> poss = new ArrayList<>();
+        int v = dp[amount];
+        for (int i = stones.length - 1; i >= 0; i--) {
+            if (G[i][v] > 0) {
+                negs.add(stones[i]);
+                v -= stones[i];
+            } else {
+                poss.add(stones[i]);
+            }
+        }
+
+        System.out.println(poss);
+        System.out.println(negs);
+        return sum - 2 * dp[amount];
+    }
+}
+```
+
+```text
+输入：
+[2,7,4,1,8,1]
+输出：
+[1, 4, 7]
+[1, 8, 2]
+
+输入：
+[31,26,33,21,40]
+输出：
+[21, 26, 31]
+[40, 33]
+```
+
+### [LeetCode 805. 数组的均值分割](https://leetcode.cn/problems/split-array-with-same-average/description/)
+
+>给定一个整数数组 A，只有可以将其划分为两个具有相同平均值的非空子集时才返回 true，否则返回 false。
+
+设数组的长度为 len，我们把集合划分为了两个子集 A 和 B，设集合 A 的元素葛素为 lenA，其和为 sumA，集合 B 的元素个数为 lenB，其和为 sumB，那么有：
+
+$$
+\begin{aligned}
+\mathrm{\frac{sumA}{lenA} = \frac{sumB}{lenB} = \frac{sumA + sumB}{lenA + lenB} = \frac{sum}{len}}
+\end{aligned}
+$$
+
+即，每个部分的平均值就是整个数组的平均值，只要划分中其中一个子集的平均值满足条件即可。
+
+于是问题转化为，能否从数组中选取一些数，使得其平均值是 $\frac{sum}{len}$，再翻译翻译，即：
+
+>能否从数组里**恰好**选取 $\mathrm{lenA}$ 个元素，使其和**恰好**为 $\mathrm{\frac{sum \cdot lenA}{len}}$，其中 $\mathrm{lenA \in [1, \frac{len}{2}]}$
+
+这是一个标准的二维费用背包问题，并且需要**“恰好”**，**“能否满足”**，前面 474 已经讲解过这种题目如何做了，这里就不再赘述。
+
+耗时765ms：
+```java
+class Solution {
+    public boolean splitArraySameAverage(int[] nums) {
+        int len = nums.length;
+        int sum = 0;
+        for (int n : nums) sum += n;
+        
+        int amount = sum;
+        // 对称性，只需考虑拿一半
+        int count = len / 2;
+          
+        // 0 1 背包，二维费用 + 恰好 + 可行性（三个要素）
+        boolean[][] dp = new boolean[count + 1][amount + 1];
+        dp[0][0] = true;
+        for (int n : nums) {
+            for (int i = count; i >= 1; i--) {
+                for (int j = amount; j >= n; j--) {
+                    dp[i][j] |= dp[i - 1][j - n];
+                }
+            }
+        }
+        
+        // 遍历每种可能的 lenA，看是否存在可以恰好拿满 sumA 
+        for (int lenA = count; lenA >= 1; lenA--) {
+            if ((sum * lenA) % len != 0) continue;
+            if (dp[lenA][sum * lenA / len]) return true;
+        }
+        return false;
+    }
+}
+```
+
+上面这个算法的时间复杂度是 $O(\mathrm{\frac{len}{2}\cdot sum})$，实际上，我们不可能让所要寻找的子集的和达到 sum，因此可以先确定可能的最大 sum，能减少 dp 遍历的次数
+
+耗时307ms：
+```java
+class Solution {
+    public boolean splitArraySameAverage(int[] nums) {
+        int len = nums.length;
+        int sum = 0;
+        for (int n : nums) sum += n;
+
+        int amount = 0;
+        // 这里是一个优化，取所有可能的和里最大的那个，如果不优化，amount 取 sum 也行
+        for (int lenA = len - 1; lenA >= 1; lenA--) {
+            if ((sum * lenA) % len != 0) continue;
+            amount = Math.max(amount, sum * lenA / len);
+        }
+        int count = len / 2;
+        
+        // 0 1 背包二维费用 + 恰好 + 可行性（三个要素）
+        boolean[][] dp = new boolean[count + 1][amount + 1];
+        dp[0][0] = true;
+        for (int n : nums) {
+            for (int i = count; i >= 1; i--) {
+                for (int j = amount; j >= n; j--) {
+                    dp[i][j] |= dp[i - 1][j - n];
+                }
+            }
+        }
+
+        // 遍历每种可能的 lenA，看是否存在可以恰好拿满 sumA 
+        for (int lenA = count; lenA >= 1; lenA--) {
+            if ((sum * lenA) % len != 0) continue;
+            if (dp[lenA][sum * lenA / len]) return true;
+        }
+        return false;
+    }
+}
+```
+
+上的算法改进后，复杂度是 $O(\mathrm{\frac{len}{2}\cdot C\cdot sum})$, $C \in (0, 1)$，进行了常数优化后，耗时从 765ms 来到了 307ms，我们可以进一步优化。
+
+注意到，我们的 dp 数组实际上求出了**所有合法的划分**(因为我们没上常数优化)，实际上如果我们每次只关注一个划分，最终是否是合法的，那么背包就可以使用常数优化了。
+
+因此我们可以在 [1, len/2] 中遍历 lenA，当确定了 lenA，就可以确定需要的 sumA = lenA / len * sum
+
+耗时 229ms：
+```java
+class Solution {
+    public boolean splitArraySameAverage(int[] nums) {
+        int len = nums.length;
+        int sum = 0;
+        for (int n : nums) sum += n;
+        boolean flag = false;
+        for (int lenA = len / 2; lenA >= 1; lenA--) {
+            if ((sum * lenA) % len != 0) continue;
+            if (pack(nums, lenA, sum * lenA / len, sum)) {
+                // 强行让每种情况都跑一遍，其实为 true 时就可以返回了
+                flag =  true;
+            }
+        }
+        return flag;
+    }
+
+    // 从 nums 选取选取 k 个物品，其和恰好为 target，是否存在这种取法
+    public boolean pack(int[] nums, int k, int target, int sum) {
+        boolean[][] dp = new boolean[k + 1][target + 1];
+        dp[0][0] = true;
+        // 因为只关注终态，所以可以上常数优化
+        int totalN = nums.length;
+        int totalSum = sum;
+        for (int n : nums) {
+            totalSum -= n;
+            totalN -= 1;
+            int nBound = Math.max(1, k - totalN);
+            int sumBound = Math.max(n, target - totalSum);
+            for (int i = k; i >= nBound; i--) {
+                for (int j = target; j >= sumBound; j--) {
+                    dp[i][j] |= dp[i - 1][j - n];
+                }
+            }
+        }
+        return dp[k][target];
+    }
+}
+```
+
+上面的代码，我们强行在已经找到合法解的情况下，继续遍历更小的二维费用背包，你会发现，之前只在原空间运行一次的背包，性能甚至赶不上上了常数优化后反复跑的背包的和，可见01背包的常数优化的优化力度还是挺大的！
+
+最后，我们找到合法解就返回，性能来到 161ms
+
+耗时：161ms
+```java
+public boolean splitArraySameAverage(int[] nums) {
+    int len = nums.length;
+    int sum = 0;
+    for (int n : nums) sum += n;
+    for (int lenA = len / 2; lenA >= 1; lenA--) {
+        if ((sum * lenA) % len != 0) continue;
+        if (pack(nums, lenA, sum * lenA / len, sum)) {
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+这道题官方推荐做法是使用 meet in the middle 策略，二分数组后分别遍历子集和再合并答案，可以做到 60ms 的性能，后面再写文章总结。
+> 本题能用背包偷鸡成功的原因是因为数据范围
+> 1 <= nums.length <= 30
+> 1 <= nums[i] <= 10^4
+所以背包的时间复杂度是 O(10^5)，是可以接受的
+
 ## 完全背包问题
 
 与01背包的不同之处是，每个物品可以重复取，转移方程也只有标红的地方不一样
@@ -623,7 +903,7 @@ class Solution {
 把移动的 2 个方向看做是 2 个物品，-1 和 1 分别是物品的体积，总共向右移动了 moved 步（可能是负数），每次移动的价值是 1，那么这个问题转化成了，恰好装满背包且价值恰好为 k 的方案数。
 这种背包问题我们从来没有接触过，背包问题，只见过恰好装满背包，怎么还能同时要求恰好达到某价值呢？
 
-其实，如果我们把每次选择某个移动方向产生的 +1 的步数也看做体积就好了，也就是每个物品的体积是二维的了，这就跟 [LeetCode 474. 一和零](https://leetcode.cn/problems/ones-and-zeroes/description/) 这道题一样了。
+其实，如果我们把每次选择某个移动方向产生的 +1 的步数也看做体积就好了，也就是每个物品的体积（或费用）是二维的了，这就跟 [LeetCode 474. 一和零](https://leetcode.cn/problems/ones-and-zeroes/description/) 这道题一样了。
 
 但是，背包问题是不允许负数体积的，我们得做额外的处理。
 
@@ -774,11 +1054,14 @@ class Solution {
 
 **01背包才适用的经验**：
 * 不论是求方案数还是求最优价值，都可以上常数优化。
+* 常数优化实际上会产生信息损失，如果只关注最终态，可以上常数优化，如果还需要事后遍历 dp 数组考察其它状态，则不可上常数优化。
 
 **完全背包才适用的经验**:
 * 求最优价值：
   * 既可以先遍历物品，再遍历容积
-  * 也可以先遍历容积 [**0**, V]，再遍历物品
+  * 也可以先遍历容积，再遍历物品
+    * 如果体积可能为0（体积有分量的时候）， [**0**, V]
+    * 否则从 [1, V]
 * 如果是求恰好装满的方案数
   * 如果是求组合数，必须先遍历物品，再遍历容积
   * 如果是求排列数，必须先遍历容积，再遍历物品
