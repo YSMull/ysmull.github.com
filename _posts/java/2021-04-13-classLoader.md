@@ -3,6 +3,7 @@ layout: post
 title: "Java 中如何做类隔离"
 date: 2021-04-13 19:35:00
 tags: ["jvm", "classloader"]
+hide: true
 ---
 
 * toc
