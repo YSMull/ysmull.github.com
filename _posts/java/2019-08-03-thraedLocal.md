@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Java ThreadLocal"
+title: "理解 Java 中的 ThreadLocal"
 date: 2019-08-03 19:35:00
 tags: ["jvm", "multi thread"]
 hide: false
